@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<HTML>
+	<head>
+		<meta charset="utf-8" />
+		<link href="css/app.css"rel="stylesheet"type="text/css" />
+		<link href="https://fonts.googleapis.com/css?family=Prosto+One" rel="stylesheet">
+		<title>Create Workout</title>
+		<h1>Create Workout</h1>
+		<div class="topnav" id="myTopnav">
+  		<a href="index.html">Home</a>
+  		<a href="#news">Calendar</a>
+  		<a href="workouts.html">Create Workout</a>
+  		<a href="#about">Videos</a>
+		</div>
+	</head>
+	<body>
+		<br />
+		<div id="border">
+			<div>
+				<h5 class="formatInput">Workout Name:</h5>
+				<input type="text" id="wrkoutNameInput" placeholder="Workout Name"/>
+			</div>
+			<br />
+			<div class="usrNameRow">
+				<h5 class="formatInput">Exercise 1:</h5>
+				<input type="text" class="formatInput" id="exerciseInput1" placeholder="Squat"/>
+				<h5 class="formatInput">Weight:</h5>
+				<input type="text" class="formatInput" id="weightInput1" placeholder="80 Lbs"/>
+			</div>
+			<br />
+			<div class="usrNameRow">
+				<h5 class="formatInput">Exercise 2:</h5>
+				<input type="text" class="formatInput" id="exerciseInput2" placeholder="Bench Press"/>
+				<h5 class="formatInput">Weight:</h5>
+				<input type="text" class="formatInput" id="weightInput2" placeholder="80 Lbs"/>
+			</div>
+			<br />
+			<div class="usrNameRow">
+				<h5 class="formatInput">Exercise 3:</h5>
+				<input type="text" class="formatInput" id="exerciseInput3" placeholder="Barbell Row"/>
+				<h5 class="formatInput" id="exerciseText">Weight:</h5>
+				<input type="text" class="formatInput" id="weightInput3" placeholder="80 Lbs"/>
+			</div>
+			<br />
+			<button id="createWrkoutBtn">Create</button>
+		</div>
+	</body>
+	<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBvBaCN1y4klYAtCCeB6zvUAm4pxUR44aE",
+    authDomain: "workoutapp-c49bb.firebaseapp.com",
+    databaseURL: "https://workoutapp-c49bb.firebaseio.com",
+    projectId: "workoutapp-c49bb",
+    storageBucket: "workoutapp-c49bb.appspot.com",
+    messagingSenderId: "588388264497"
+  };
+  firebase.initializeApp(config);
+</script>
+	<script src="scripts/create-workout.js"></script>
+</HTML>
