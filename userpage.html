@@ -5,7 +5,7 @@
 		<link href="css/app.css" rel="stylesheet" type="text/css">
 		<link href="https://fonts.googleapis.com/css?family=Prosto+One" rel="stylesheet">
 		<title>JMF Workout</title>
-		<h1 id='userHeader'>Users</h1>
+		<h1 id="userHeader">Users</h1>
 		<div class="topnav" id="myTopnav">
   		<a href="index.html">Home</a>
   		<a href="#news">Calendar</a>
@@ -34,7 +34,7 @@
 
 		</div>
 
-		
+
 		<!-- Container where we'll display the user details -->
          <!-- <div class="quickstart-user-details-container">
             Firebase sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
@@ -55,6 +55,11 @@
     messagingSenderId: "588388264497"
   };
   firebase.initializeApp(config);
+</script>
+<script type="text/javascript">
+	window.onload = function showUserInfo() {
+		document.getElementById('userHeader').innerHTML = 'John';
+	}
 </script>
 <script src="./scripts/authentication.js"></script>
 </HTML>

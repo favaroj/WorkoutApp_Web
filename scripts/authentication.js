@@ -1,5 +1,12 @@
 var userRef = firebase.database().ref('Users');
 
+
+
+
+
+
+
+
 document.getElementById('signUpBtn').addEventListener('click', function() {
 	var userName = document.getElementById('displayNameInput').value.trim();
 	var userDisplay = document.getElementById('border');
@@ -28,17 +35,33 @@ document.getElementById('signUpBtn').addEventListener('click', function() {
 var userHeader = document.getElementById('userHeader');
 var div = document.getElementById('border');
 userRef.on("child_added", function(child) {
+
   //console.log(child.key+': '+child.val().name);
   var tr = document.createElement('button');
   tr.id = " " + child.val().name;
 
   tr.onclick = function() {
+	  var userHeader = document.getElementById('userHeader');
+	  var div = document.getElementById('createWorkoutArea');
+	  div.style.display = 'none';
 	var id = this.id;
 	alert(id);
 	//document.getElementById('userHeader').innerHTML = child.val().name;
+	//userHeader.innerHTML = " " + id;
+	displayModal();
+	var signUpBtn = document.getElementById('signUpBtn');
+	signUpBtn.style.display = 'none';
+	document.getElementById('mainHeader').innerHTML = id;
+	document.getElementById('subHeader').innerHTML = 'Workouts';
+	document.getElementById('border').innerHTML = '';
+	document.getElementById('subHeader2').style.display = 'none';
+	document.getElementById('exercise1Text').style.display = 'inline';
+	//var text1 = document.createElement('h5');
+	//text1.id = 'exercise1Text';
+	//text1.innerText = "Exercise 1";
+	//div.appendChild(text1);
 
-	window.location.href = "userpage.html";
-	userHeader.innerHTML = " " + id;
+
   };
   //console.log(" " + tr.id);
   var td = document.createElement('td');
@@ -50,7 +73,41 @@ userRef.on("child_added", function(child) {
  //div.innerHTML = '<button id=" "+ child.val().name + value=""+child.val().name onClick="goToUserPage()"/>';
 });
 
+function displayModal() {
 
+	var displayNameInput = document.getElementById('displayNameInput').value.trim();
+	alert('' + displayNameInput);
+
+
+	// Get the modal
+	var modal = document.getElementById('myModal');
+
+	// Get the button that opens the modal
+	var btn = document.getElementById("createWrkoutBtn");
+	btn.style.display = "block";
+
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
+
+	// When the user clicks on the button, open the modal
+	btn.onclick = function() {
+	    modal.style.display = "block";
+	}
+
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+	    modal.style.display = "none";
+	}
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+	    if (event.target == modal) {
+	        modal.style.display = "none";
+	    }
+	}
+
+
+}
 
 function saveToFB(userName) {
 	// save data to Amazon Firebase

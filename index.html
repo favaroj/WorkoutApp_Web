@@ -5,16 +5,16 @@
 		<link href="css/app.css" rel="stylesheet" type="text/css">
 		<link href="https://fonts.googleapis.com/css?family=Prosto+One" rel="stylesheet">
 		<title>JMF Workout</title>
-		<h1>JMF Workout</h1>
+		<h1 id='mainHeader'>JMF Workout</h1>
 		<div class="topnav" id="myTopnav">
-  		<a href="#home">Home</a>
+  		<a href="index.html">Home</a>
   		<a href="#news">Calendar</a>
   		<a href="workouts.html">Workouts</a>
   		<a href="#about">Videos</a>
 		</div>
 	</head>
 	<body>
-		<h3>Users</h3>
+		<h3 id='subHeader'>Users</h3>
 		<ol id='userList'></ol>
 		<div id="border">
 
@@ -33,14 +33,27 @@
 		-->
 
 		</div>
-
+		<button id="createWrkoutBtn">Create Workout</button>
 		<br />
-		<h3>First Time Registration</h3>
-		<div id="border">
+		<h3 id='subHeader2'>First Time Registration</h3>
+		<div id="createWorkoutArea">
 			<div class="usrNameRow">
 				<h5 id="sgnUpText">Name:</h5>
 				<input id="displayNameInput" type="text" placeholder="Name"/>
+				<br>
+				<div id='createWorkoutArea' class='createWorkoutArea'>
+					<h5 id="sgnUpText">Name:</h5>
+					<input id="displayNameInput" type="text" placeholder="Name"/>
+					<h5 class='exercise1Text' id="exercise1Text">Exercise 1:</h5>
+					<input class='exercise1Input' id="displayNameInput" type="text" placeholder="Name"/>
+					<h5 id="sgnUpText">Exercise 2:</h5>
+					<input id="displayNameInput" type="text" placeholder="Name"/>
+
+
+				</div>
+
 			</div>
+
 			<!--<br />
 			<div class="usrNameRow">
 				<h5 id="sgnUpText">Email:</h5>
@@ -58,6 +71,54 @@
 
 		</div>
 		<br />
+		<!-- Modal content -->
+
+		<!-- Trigger/Open The Modal -->
+
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Create Workout</p>
+	<div class="usrNameRow">
+		<h5 class="formatInput">Exercise 1:</h5>
+		<input type="text" class="formatInput" id="exerciseInput1" placeholder="Squat"/>
+		<h5 class="formatInput">Weight:</h5>
+		<input type="text" class="formatInput" id="weightInput1" placeholder="80 Lbs"/>
+		<h5 class="formatInput">Reps:</h5>
+		<input type="text" class="formatInput" id="weightInput1" placeholder="5"/>
+		<h5 class="formatInput">Exercise 2:</h5>
+		<input type="text" class="formatInput" id="exerciseInput2" placeholder="Squat"/>
+		<h5 class="formatInput">Weight:</h5>
+		<input type="text" class="formatInput" id="weightInput1" placeholder="80 Lbs"/>
+		<h5 class="formatInput">Reps:</h5>
+		<input type="text" class="formatInput" id="weightInput1" placeholder="5"/>
+		<h5 class="formatInput">Exercise 3:</h5>
+		<input type="text" class="formatInput" id="exerciseInput1" placeholder="Squat"/>
+		<h5 class="formatInput">Weight:</h5>
+		<input type="text" class="formatInput" id="weightInput1" placeholder="80 Lbs"/>
+		<h5 class="formatInput">Reps:</h5>
+		<input type="text" class="formatInput" id="weightInput1" placeholder="5"/>
+		<h5 class="formatInput">Exercise 4:</h5>
+		<input type="text" class="formatInput" id="exerciseInput2" placeholder="Squat"/>
+		<h5 class="formatInput">Weight:</h5>
+		<input type="text" class="formatInput" id="weightInput1" placeholder="80 Lbs"/>
+		<h5 class="formatInput">Reps:</h5>
+		<input type="text" class="formatInput" id="weightInput1" placeholder="5"/>
+		<h5 class="formatInput">Exercise 5:</h5>
+		<input type="text" class="formatInput" id="exerciseInput2" placeholder="Squat"/>
+		<h5 class="formatInput">Weight:</h5>
+		<input type="text" class="formatInput" id="weightInput1" placeholder="80 Lbs"/>
+		<h5 class="formatInput">Reps:</h5>
+		<input type="text" class="formatInput" id="weightInput1" placeholder="5"/>
+		<button>Create</button>
+	</div>
+  </div>
+
+</div>
 		<!-- Container where we'll display the user details -->
          <!-- <div class="quickstart-user-details-container">
             Firebase sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
@@ -65,6 +126,7 @@
             <pre><code id="quickstart-account-details">null</code></pre>
           </div>
 	  	-->
+
 	</body>
 	<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
 <script>
