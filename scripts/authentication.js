@@ -1,8 +1,90 @@
 var userRef = firebase.database().ref('Users');
+var johnRef = userRef.child('John');
+
+
+document.getElementById('johnBtn').addEventListener('click', function() {
+	displayModal();
+	var signUpBtn = document.getElementById('signUpBtn');
+	signUpBtn.style.display = 'none';
+	document.getElementById('mainHeader').innerHTML = 'John';
+	document.getElementById('subHeader').innerHTML = 'Workouts';
+	document.getElementById('border').innerHTML = '';
+	document.getElementById('subHeader2').style.display = 'none';
+	document.getElementById('exercise1Text').style.display = 'inline';
+	document.getElementById('createWorkoutArea').style.display = 'none';
+	
+	johnRef.on('value', function(snapshot) {
+		var showWorkouts = snapshot.val().WorkoutName;
+		console.log(showWorkouts);
+		var div1 = document.createElement('div');
+		var header = document.createElement('h4');
+		//header.style.margin-top = '20px';
+		header.innerText = showWorkouts;
+		div1.appendChild(header);
+		var border = document.getElementById('border');
+		border.appendChild(header);
+		header.style.marginTop = '20px';
+	});
 
 
 
+	document.getElementById('prmptCreateWrkoutBtn').addEventListener('click', function() {
+		   //alert('Create Workout Button Pressed');
+		   var workoutName = document.getElementById('workoutNameInput').value.trim();
+		   var exerciseInput1 = document.getElementById('exerciseInput1').value.trim();
+		   var weightInput1 = document.getElementById('weightInput1').value.trim();
+		   var repInput1 = document.getElementById('repInput1').value.trim();
+		   var exerciseInput2 = document.getElementById('exerciseInput2').value.trim();
+		   var weightInput2 = document.getElementById('weightInput2').value.trim();
+		   var repInput2 = document.getElementById('repInput2').value.trim();
+		   var exerciseInput3 = document.getElementById('exerciseInput3').value.trim();
+		   var weightInput3 = document.getElementById('weightInput3').value.trim();
+		   var repInput3 = document.getElementById('repInput3').value.trim();
+		   var exerciseInput4 = document.getElementById('exerciseInput4').value.trim();
+		   var weightInput4 = document.getElementById('weightInput4').value.trim();
+		   var repInput4 = document.getElementById('repInput4').value.trim();
+		   var exerciseInput5 = document.getElementById('exerciseInput5').value.trim();
+		   var weightInput5 = document.getElementById('weightInput5').value.trim();
+		   var repInput5 = document.getElementById('repInput5').value.trim();
+		   var weightInput5 = document.getElementById('weightInput1').value.trim();
+		   alert(' ' + workoutName + ' Created!');
+		   //var newWorkoutRef = johnRef.push();
+		   johnRef.push({
+			  WorkoutName: workoutName,
+			  Exercise1: exerciseInput1,
+			  Weight1: weightInput1,
+			  Reps1: repInput1,
+ 			  Exercise2: exerciseInput2,
+			  Weight2: weightInput2,
+			  Reps2: repInput2,
+ 			  Exercise3: exerciseInput3,
+			  Weight3: weightInput3,
+			  Reps3: repInput3,
+ 			  Exercise4: exerciseInput4,
+			  Weight4: weightInput4,
+			  Reps4: repInput4,
+ 			  Exercise5: exerciseInput5,
+			  Weight5: weightInput5,
+			  Reps5: repInput5,
+		   });
+		   document.getElementById('workoutNameInput').value = '';
+		   /*newWorkoutRef.set({
+			  WorkoutName: workoutName,
+			  Exercise1: 'None',
+			  Exercise2: 'None',
+			  Exercise3: 'None',
+			  Exercise4: 'None',
+			  Exercise5: 'None'
+		  });*/
+		   //firebase.database().ref('Users').child('John/' + workoutName);
+		   /*johnRef.update({
+			   WorkoutName: workoutName
+		   });*/
 
+
+	});
+
+});
 
 
 
@@ -34,18 +116,23 @@ document.getElementById('signUpBtn').addEventListener('click', function() {
 }, false);
 var userHeader = document.getElementById('userHeader');
 var div = document.getElementById('border');
-userRef.on("child_added", function(child) {
+/*userRef.on("child_added", function(child) {
 
   //console.log(child.key+': '+child.val().name);
   var tr = document.createElement('button');
   tr.id = " " + child.val().name;
-
+  //console.log(" " + tr.id);
+  var td = document.createElement('td');
+  td.innerText = child.val().name;
+  //td.onclick = btnHistorySelect;
+  tr.appendChild(td);
+  div.appendChild(tr);
   tr.onclick = function() {
 	  var userHeader = document.getElementById('userHeader');
 	  var div = document.getElementById('createWorkoutArea');
 	  div.style.display = 'none';
 	var id = this.id;
-	alert(id);
+	//alert(id);
 	//document.getElementById('userHeader').innerHTML = child.val().name;
 	//userHeader.innerHTML = " " + id;
 	displayModal();
@@ -63,21 +150,31 @@ userRef.on("child_added", function(child) {
 
 
   };
-  //console.log(" " + tr.id);
-  var td = document.createElement('td');
-  td.innerText = child.val().name;
-  //td.onclick = btnHistorySelect;
-  tr.appendChild(td);
- div.appendChild(tr);
+*/
+/*
+ document.getElementById('prmptCreateWrkoutBtn').addEventListener('click', function() {
+ 		//alert('Create Workout Button Pressed');
+ 		var workoutName = document.getElementById('workoutNameInput').value.trim();
+ 		//alert(' ' + workoutName);
+		var childName = child.val().name;
+		//alert(childName);
+		var rootRef = firebase.database().ref('Users').child(childName);
+		//rootRef.child.val().name;
+		//alert(rootRef);
+		/*rootRef.update({
+			name: userName,
+			workoutName: workoutName
+		});*/
+
+ //});
 
  //div.innerHTML = '<button id=" "+ child.val().name + value=""+child.val().name onClick="goToUserPage()"/>';
-});
+//});
 
 function displayModal() {
 
 	var displayNameInput = document.getElementById('displayNameInput').value.trim();
-	alert('' + displayNameInput);
-
+	//alert(displayNameInput);
 
 	// Get the modal
 	var modal = document.getElementById('myModal');
@@ -105,14 +202,15 @@ function displayModal() {
 	        modal.style.display = "none";
 	    }
 	}
-
-
 }
+
+
 
 function saveToFB(userName) {
 	// save data to Amazon Firebase
 	userRef.push({
-		name: userName
+		name: userName,
+		workoutName: 'Default'
 	});
 	document.getElementById("displayNameInput").value = "";
 

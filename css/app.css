@@ -38,6 +38,7 @@ h3 {
 	flex-direction: row;
 	display: inline;
 	margin: auto;
+	width: 150px;
 }
 /*
 #wrkoutText, #exerciseText, #exerciseInput1, #exerciseInput2, #exerciseInput3 {
