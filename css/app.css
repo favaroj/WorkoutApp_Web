@@ -20,8 +20,20 @@ h1 {
 	font-family: 'Prosto One', cursive;
 }
 
-.exercise1Text, .createWorkoutArea {
+.exercise1Text, .createWorkoutArea, #workoutTable {
 	display: none;
+}
+
+table {
+	border-collapse: separate;
+   	border-spacing: 10px;
+}
+
+th {
+	padding: 5px;
+   border: 1px solid #ccc;
+   width: 25%;
+
 }
 
 h3 {

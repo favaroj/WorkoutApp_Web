@@ -12,10 +12,15 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 	document.getElementById('subHeader2').style.display = 'none';
 	document.getElementById('exercise1Text').style.display = 'inline';
 	document.getElementById('createWorkoutArea').style.display = 'none';
-	
-	johnRef.on('value', function(snapshot) {
+	//document.getElementById('workoutTable').style.display = 'table';
+
+	johnRef.once('child_added', function(snapshot) {
 		var showWorkouts = snapshot.val().WorkoutName;
 		console.log(showWorkouts);
+		var count = snapshot.numChildren();
+		console.log(count);
+		var key = snapshot.key;
+		console.log(key);
 		var div1 = document.createElement('div');
 		var header = document.createElement('h4');
 		//header.style.margin-top = '20px';
@@ -24,6 +29,22 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 		var border = document.getElementById('border');
 		border.appendChild(header);
 		header.style.marginTop = '20px';
+		var table = document.createElement('table');
+		//table.style.cellspacing = '10';
+		table.id = 'workoutTable';
+		var tableRow = document.createElement('tr');
+		var tableHeader1 = document.createElement('th');
+		tableHeader1.innerText = 'Exercise';
+		var tableHeader2 = document.createElement('th');
+		tableHeader2.innerText = 'Weight';
+		var tableHeader3 = document.createElement('th');
+		tableHeader3.innerText = 'Reps';
+		tableRow.appendChild(tableHeader1);
+		tableRow.appendChild(tableHeader2);
+		tableRow.appendChild(tableHeader3);
+		border.appendChild(tableHeader1);
+		border.appendChild(tableHeader2);
+		border.appendChild(tableHeader3);
 	});
 
 
