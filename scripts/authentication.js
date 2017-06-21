@@ -1,7 +1,8 @@
-var userRef = firebase.database().ref('Users');
-var johnRef = userRef.child('John');
 
 
+function userPage(johnRef) {
+	var userRef = firebase.database().ref('Users');
+	var johnRef = userRef.child('John');
 document.getElementById('johnBtn').addEventListener('click', function() {
 	displayModal();
 	var signUpBtn = document.getElementById('signUpBtn');
@@ -17,9 +18,25 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 	johnRef.on('child_added', function(snapshot) {
 		var showWorkouts = snapshot.val().WorkoutName;
 		var exercise1 = snapshot.val().Exercise1;
+		var exercise2 = snapshot.val().Exercise2;
+		var exercise3 = snapshot.val().Exercise3;
+		var exercise4 = snapshot.val().Exercise4;
+		var exercise5 = snapshot.val().Exercise5;
 		var weight1 = snapshot.val().Weight1;
+		var weight2 = snapshot.val().Weight2;
+		var weight3 = snapshot.val().Weight3;
+		var weight4 = snapshot.val().Weight4;
+		var weight5 = snapshot.val().Weight5;
 		var reps1 = snapshot.val().Reps1;
+		var reps2 = snapshot.val().Reps2;
+		var reps3 = snapshot.val().Reps3;
+		var reps4 = snapshot.val().Reps4;
+		var reps5 = snapshot.val().Reps5;
 		var sets1 = snapshot.val().Sets1;
+		var sets2 = snapshot.val().Sets2;
+		var sets3 = snapshot.val().Sets3;
+		var sets4 = snapshot.val().Sets4;
+		var sets5 = snapshot.val().Sets5;
 		var count = snapshot.numChildren();
 		var key = snapshot.key;
 
@@ -71,56 +88,134 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 		var textNode = document.createTextNode(exercise1);
 		exerciseData1.appendChild(textNode);
 		tableRow2.appendChild(exerciseData1);
-		exerciseData1.addEventListener('click', function(exName) {
-			var exerciseName = prompt("Update the exercise name", exName);
-			alert(exerciseName);
+		exerciseData1.addEventListener('click', function() {
+			var exerciseName = prompt("Update the exercise name:");
 			exerciseData1.innerText = exerciseName;
 			//console.log(key);
 			johnRef.child(key).update({
 				Exercise1: exerciseName
 			});
-
-
-			//var data = johnRef.orderByChild('Exercise1').equalTo(exercise1);
-			//console.log(data);
-			//var ref = johnRef.child();
-			/*johnRef.once('value', function(snapshot) {
-    			if( snapshot.val() === null ) {
-        		/
-    			} else {
-        			snapshot.ref.update({"Exercise1": exercise1});
-    			}
-			});*/
-
-			/*if (exName && exerciseName.length > 0) {
-				johnRef.update({
-					Exercise1: exerciseName
-				});
-			}*/
+			alert(exerciseName + ' saved as exercise name.');
 		});
 
 		var setData1 = document.createElement('td');
 		//var textNode = document.createTextNode(sets1);
-		for(var x = 0; x < sets1; x++) {
-			var radioBtns = document.createElement('input');
-			radioBtns.setAttribute('type', 'radio');
-			radioBtns.setAttribute('class', 'setRadioBtns');
-			setData1.appendChild(radioBtns);
-		}
+		createSetRadioBtns(setData1, sets1);
+		//var editBr = document.createElement('br');
+		var editSets = document.createElement('button');
+		editSets.setAttribute('class', 'editSetBtn');
+		editSets.innerText = 'Edit';
+		//setData1.appendChild(editBr);
+		setData1.appendChild(editSets);
 		//setData1.appendChild(textNode);
 		tableRow2.appendChild(setData1);
+		editSets.addEventListener('click', function() {
+			var setAmount = prompt('Update set amount:');
+			setData1.innerText = setAmount;
+			johnRef.child(key).update({
+				Sets1: setAmount
+			});
+			alert(setAmount + ' saved as set amount.');
+			window.location.reload();
+			userPage();
+		});
 
 		var repData1 = document.createElement('td');
 		var textNode = document.createTextNode(reps1);
 		repData1.appendChild(textNode);
 		tableRow2.appendChild(repData1);
+		repData1.addEventListener('click', function() {
+			var repAmount = prompt("Update the rep amount:");
+			repData1.innerText = repAmount;
+			//console.log(key);
+			johnRef.child(key).update({
+				Reps1: repAmount
+			});
+			alert(repAmount + ' saved as rep amount.');
+		});
 
 		var weightData1 = document.createElement('td');
 		var textNode = document.createTextNode(weight1);
 		weightData1.appendChild(textNode);
 		tableRow2.appendChild(weightData1);
+		weightData1.addEventListener('click', function() {
+			var weightAmount = prompt("Update the weight amount:");
+			weightData1.innerText = weightAmount;
+			//console.log(key);
+			johnRef.child(key).update({
+				Weight1: weightAmount
+			});
+			alert(weightAmount + ' saved as weight amount.');
+		});
 
 
+		var tableRow3 = document.createElement('tr');
+		border.appendChild(tableRow3);
+
+		var exerciseData2 = document.createElement('td');
+		//exerciseData1.contentEditable = 'true';
+		var textNode = document.createTextNode(exercise2);
+		exerciseData2.appendChild(textNode);
+		tableRow3.appendChild(exerciseData2);
+		exerciseData2.addEventListener('click', function() {
+			var exerciseName = prompt("Update the exercise name:");
+			exerciseData2.innerText = exerciseName;
+			//console.log(key);
+			johnRef.child(key).update({
+				Exercise2: exerciseName
+			});
+			alert(exerciseName2 + ' saved as exercise name.');
+		});
+
+		var setData2 = document.createElement('td');
+		//var textNode = document.createTextNode(sets1);
+		createSetRadioBtns(setData2, sets2);
+		//var editBr = document.createElement('br');
+		var editSets2 = document.createElement('button');
+		editSets2.setAttribute('class', 'editSetBtn');
+		editSets2.innerText = 'Edit';
+		//setData1.appendChild(editBr);
+		setData2.appendChild(editSets2);
+		//setData1.appendChild(textNode);
+		tableRow3.appendChild(setData2);
+		editSets2.addEventListener('click', function() {
+			var setAmount = prompt('Update set amount:');
+			setData2.innerText = setAmount;
+			johnRef.child(key).update({
+				Sets2: setAmount
+			});
+			alert(setAmount + ' saved as set amount.');
+			window.location.reload();
+			userPage();
+		});
+
+		var repData2 = document.createElement('td');
+		var textNode = document.createTextNode(reps2);
+		repData2.appendChild(textNode);
+		tableRow3.appendChild(repData2);
+		repData2.addEventListener('click', function() {
+			var repAmount = prompt("Update the rep amount:");
+			repData2.innerText = repAmount;
+			//console.log(key);
+			johnRef.child(key).update({
+				Reps2: repAmount
+			});
+			alert(repAmount + ' saved as rep amount.');
+		});
+
+		var weightData2 = document.createElement('td');
+		var textNode = document.createTextNode(weight2);
+		weightData2.appendChild(textNode);
+		tableRow3.appendChild(weightData2);
+		weightData2.addEventListener('click', function() {
+			var weightAmount = prompt("Update the weight amount:");
+			weightData2.innerText = weightAmount;
+			//console.log(key);
+			johnRef.child(key).update({
+				Weight2: weightAmount
+			});
+			alert(weightAmount + ' saved as weight amount.');
+		});
 
 		//tableRow2.appendChild(exerciseData1);
 		//table.appendChild(tableRow2);
@@ -220,12 +315,20 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 		   /*johnRef.update({
 			   WorkoutName: workoutName
 		   });*/
-
-
 	});
-
 });
+}// END userPage function //FOR TESTING - DELETE IF NOT NEEDED!!\\
 
+userPage();
+
+function createSetRadioBtns(setData1, sets1) {
+	for(var x = 0; x < sets1; x++) {
+		var radioBtns = document.createElement('input');
+		radioBtns.setAttribute('type', 'radio');
+		radioBtns.setAttribute('class', 'setRadioBtns');
+		setData1.appendChild(radioBtns);
+	}
+}
 
 
 

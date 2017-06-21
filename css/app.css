@@ -37,7 +37,9 @@ th, td, tr {
    border: 1px solid #ccc;
    width: 50%;
    margin-left: 45%;
-   margin-right: 25%;  
+   margin-right: 25%;
+   margin-top: 15%;
+   margin-bottom: 15%;
 }
 
 .setRadioBtns {
