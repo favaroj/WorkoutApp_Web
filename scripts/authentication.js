@@ -14,13 +14,23 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 	document.getElementById('createWorkoutArea').style.display = 'none';
 	//document.getElementById('workoutTable').style.display = 'table';
 
-	johnRef.once('child_added', function(snapshot) {
+	johnRef.on('child_added', function(snapshot) {
 		var showWorkouts = snapshot.val().WorkoutName;
-		console.log(showWorkouts);
+		var exercise1 = snapshot.val().Exercise1;
+		var weight1 = snapshot.val().Weight1;
+		var reps1 = snapshot.val().Reps1;
+		var sets1 = snapshot.val().Sets1;
 		var count = snapshot.numChildren();
-		console.log(count);
 		var key = snapshot.key;
+
+		console.log(showWorkouts);
+		console.log(exercise1);
+		console.log(weight1);
+		console.log(reps1);
+		console.log(sets1);
+		console.log(count);
 		console.log(key);
+
 		var div1 = document.createElement('div');
 		var header = document.createElement('h4');
 		//header.style.margin-top = '20px';
@@ -31,20 +41,114 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 		header.style.marginTop = '20px';
 		var table = document.createElement('table');
 		//table.style.cellspacing = '10';
-		table.id = 'workoutTable';
-		var tableRow = document.createElement('tr');
+		table.setAttribute('class', 'workoutTable');
+		border.appendChild(table);
+
+		var tableRow1 = document.createElement('tr');
+		border.appendChild(tableRow1);
+
 		var tableHeader1 = document.createElement('th');
 		tableHeader1.innerText = 'Exercise';
+		border.appendChild(tableHeader1);
+
 		var tableHeader2 = document.createElement('th');
-		tableHeader2.innerText = 'Weight';
+		tableHeader2.innerText = 'Sets';
+		border.appendChild(tableHeader2);
+
 		var tableHeader3 = document.createElement('th');
 		tableHeader3.innerText = 'Reps';
-		tableRow.appendChild(tableHeader1);
-		tableRow.appendChild(tableHeader2);
-		tableRow.appendChild(tableHeader3);
-		border.appendChild(tableHeader1);
-		border.appendChild(tableHeader2);
 		border.appendChild(tableHeader3);
+
+		var tableHeader4 = document.createElement('th');
+		tableHeader4.innerText = 'Weight';
+		border.appendChild(tableHeader4);
+
+		var tableRow2 = document.createElement('tr');
+		border.appendChild(tableRow2);
+
+		var exerciseData1 = document.createElement('td');
+		//exerciseData1.contentEditable = 'true';
+		var textNode = document.createTextNode(exercise1);
+		exerciseData1.appendChild(textNode);
+		tableRow2.appendChild(exerciseData1);
+		exerciseData1.addEventListener('click', function(exName) {
+			var exerciseName = prompt("Update the exercise name", exName);
+			alert(exerciseName);
+			exerciseData1.innerText = exerciseName;
+			//console.log(key);
+			johnRef.child(key).update({
+				Exercise1: exerciseName
+			});
+
+
+			//var data = johnRef.orderByChild('Exercise1').equalTo(exercise1);
+			//console.log(data);
+			//var ref = johnRef.child();
+			/*johnRef.once('value', function(snapshot) {
+    			if( snapshot.val() === null ) {
+        		/
+    			} else {
+        			snapshot.ref.update({"Exercise1": exercise1});
+    			}
+			});*/
+
+			/*if (exName && exerciseName.length > 0) {
+				johnRef.update({
+					Exercise1: exerciseName
+				});
+			}*/
+		});
+
+		var setData1 = document.createElement('td');
+		//var textNode = document.createTextNode(sets1);
+		for(var x = 0; x < sets1; x++) {
+			var radioBtns = document.createElement('input');
+			radioBtns.setAttribute('type', 'radio');
+			radioBtns.setAttribute('class', 'setRadioBtns');
+			setData1.appendChild(radioBtns);
+		}
+		//setData1.appendChild(textNode);
+		tableRow2.appendChild(setData1);
+
+		var repData1 = document.createElement('td');
+		var textNode = document.createTextNode(reps1);
+		repData1.appendChild(textNode);
+		tableRow2.appendChild(repData1);
+
+		var weightData1 = document.createElement('td');
+		var textNode = document.createTextNode(weight1);
+		weightData1.appendChild(textNode);
+		tableRow2.appendChild(weightData1);
+
+
+
+		//tableRow2.appendChild(exerciseData1);
+		//table.appendChild(tableRow2);
+		//var tableHeader2 = document.createElement('th');
+		//tableHeader2.innerText = 'Weight';
+		//var tableHeader3 = document.createElement('th');
+		//tableHeader3.innerText = 'Reps';
+		//tableRow1.appendChild(tableHeader1);
+		//tableRow1.appendChild(tableHeader2);
+		//tableRow1.appendChild(tableHeader3);
+		//border.appendChild(tableHeader1);
+		//border.appendChild(tableHeader2);
+		//border.appendChild(tableHeader3);
+
+
+		/*var tableRow2 = document.createElement('tr');
+		var exerciseData1 = document.createElement('td');
+		exerciseData1.innerText = 'Exercise';
+		var weightData1 = document.createElement('td');
+		weightData1.innerText = 'Weight';
+		var repData1 = document.createElement('td');
+		repData1.innerText = 'Reps';
+		tableRow2.appendChild(exerciseData1);
+		tableRow2.appendChild(weightData1);
+		tableRow2.appendChild(repData1);
+		border.appendChild(exerciseData1);
+		border.appendChild(weightData1);
+		border.appendChild(repData1);*/
 	});
 
 
@@ -52,40 +156,55 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 	document.getElementById('prmptCreateWrkoutBtn').addEventListener('click', function() {
 		   //alert('Create Workout Button Pressed');
 		   var workoutName = document.getElementById('workoutNameInput').value.trim();
+
 		   var exerciseInput1 = document.getElementById('exerciseInput1').value.trim();
 		   var weightInput1 = document.getElementById('weightInput1').value.trim();
 		   var repInput1 = document.getElementById('repInput1').value.trim();
+		   var setInput1 = document.getElementById('setInput1').value.trim();
+
 		   var exerciseInput2 = document.getElementById('exerciseInput2').value.trim();
 		   var weightInput2 = document.getElementById('weightInput2').value.trim();
 		   var repInput2 = document.getElementById('repInput2').value.trim();
+		   var setInput2 = document.getElementById('setInput2').value.trim();
+
 		   var exerciseInput3 = document.getElementById('exerciseInput3').value.trim();
 		   var weightInput3 = document.getElementById('weightInput3').value.trim();
 		   var repInput3 = document.getElementById('repInput3').value.trim();
+		   var setInput3 = document.getElementById('setInput3').value.trim();
+
 		   var exerciseInput4 = document.getElementById('exerciseInput4').value.trim();
 		   var weightInput4 = document.getElementById('weightInput4').value.trim();
 		   var repInput4 = document.getElementById('repInput4').value.trim();
+		   var setInput4 = document.getElementById('setInput4').value.trim();
+
 		   var exerciseInput5 = document.getElementById('exerciseInput5').value.trim();
 		   var weightInput5 = document.getElementById('weightInput5').value.trim();
 		   var repInput5 = document.getElementById('repInput5').value.trim();
-		   var weightInput5 = document.getElementById('weightInput1').value.trim();
+		   var setInput5 = document.getElementById('setInput5').value.trim();
+
 		   alert(' ' + workoutName + ' Created!');
 		   //var newWorkoutRef = johnRef.push();
 		   johnRef.push({
 			  WorkoutName: workoutName,
 			  Exercise1: exerciseInput1,
 			  Weight1: weightInput1,
+			  Sets1: setInput1,
 			  Reps1: repInput1,
  			  Exercise2: exerciseInput2,
 			  Weight2: weightInput2,
+			  Sets2: setInput2,
 			  Reps2: repInput2,
  			  Exercise3: exerciseInput3,
 			  Weight3: weightInput3,
+			  Sets3: setInput3,
 			  Reps3: repInput3,
  			  Exercise4: exerciseInput4,
 			  Weight4: weightInput4,
+			  Sets4: setInput4,
 			  Reps4: repInput4,
  			  Exercise5: exerciseInput5,
 			  Weight5: weightInput5,
+			  Sets5: setInput5,
 			  Reps5: repInput5,
 		   });
 		   document.getElementById('workoutNameInput').value = '';

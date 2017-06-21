@@ -24,16 +24,29 @@ h1 {
 	display: none;
 }
 
-table {
+table, .workoutTable {
 	border-collapse: separate;
    	border-spacing: 10px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
 }
 
-th {
+th, td, tr {
 	padding: 5px;
    border: 1px solid #ccc;
-   width: 25%;
+   width: 50%;
+   margin-left: 45%;
+   margin-right: 25%;  
+}
 
+.setRadioBtns {
+	transform: scale(2);
+	margin: 0 10px 0 10px;
+}
+
+body {
+	text-align: center;
 }
 
 h3 {
@@ -149,7 +162,7 @@ button {
     margin: 15% auto; /* 15% from the top and centered */
     padding: 10px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 60%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
