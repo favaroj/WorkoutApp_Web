@@ -42,11 +42,12 @@ th, td, tr {
    margin-bottom: 15%;
 }
 
-.showCLock {
-	display: none;
+.clockContainer {
 	text-align: center;
-	margin-left: 50%;
-	margin-right: 50%;
+}
+.showCLock {
+	display: inline-block;
+	width: auto;
 }
 
 .setRadioBtns {

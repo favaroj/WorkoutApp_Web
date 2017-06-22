@@ -48,11 +48,10 @@
 .flip-clock-meridium a { color: #313333; }
 
 .flip-clock-wrapper {
-  text-align: center;
-  position: relative;
-  width: 100%;
-  margin: 1em;
-  margin-left: 20%;
+    margin: 0 auto;
+    max-width: 460px;
+    margin-top: 2em;
+  
 }
 
 .flip-clock-wrapper:before,
