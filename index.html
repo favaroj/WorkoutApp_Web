@@ -4,6 +4,7 @@
 		<meta charset="utf-8" />
 		<link href="css/app.css" rel="stylesheet" type="text/css">
 		<link href="https://fonts.googleapis.com/css?family=Prosto+One" rel="stylesheet">
+		<link rel="stylesheet" href="./css/flipclock.css">
 		<title>JMF Workout</title>
 		<h1 id='mainHeader'>JMF Workout</h1>
 		<div class="topnav" id="myTopnav">
@@ -14,7 +15,10 @@
 		</div>
 	</head>
 	<body>
-		<h3 id='subHeader'>Users</h3>
+		<h2 id='subHeader'>Users</h2>
+		<div class='showClock'>
+
+		</div>
 		<ol id='userList'></ol>
 		<div id="border">
 			<button id='johnBtn'>John</button>
@@ -184,5 +188,7 @@
   };
   firebase.initializeApp(config);
 </script>
+<script src="./scripts/jquery-3.2.1.js"></script>
+		<script src="./scripts/flipclock.min.js"></script>
 <script src="./scripts/authentication.js"></script>
 </HTML>

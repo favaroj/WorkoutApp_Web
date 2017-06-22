@@ -42,6 +42,13 @@ th, td, tr {
    margin-bottom: 15%;
 }
 
+.showCLock {
+	display: none;
+	text-align: center;
+	margin-left: 50%;
+	margin-right: 50%;
+}
+
 .setRadioBtns {
 	transform: scale(2);
 	margin: 0 10px 0 10px;

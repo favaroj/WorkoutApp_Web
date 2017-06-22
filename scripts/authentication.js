@@ -13,6 +13,7 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 	document.getElementById('subHeader2').style.display = 'none';
 	document.getElementById('exercise1Text').style.display = 'inline';
 	document.getElementById('createWorkoutArea').style.display = 'none';
+
 	//document.getElementById('workoutTable').style.display = 'table';
 
 	johnRef.on('child_added', function(snapshot) {
@@ -87,6 +88,63 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 		//exerciseData1.contentEditable = 'true';
 		var textNode = document.createTextNode(exercise1);
 		exerciseData1.appendChild(textNode);
+
+		//var showClock = document.createElement('div');
+
+		//border.appendChild(showClock);
+		//showClock.setAttribute('class', 'showClock');
+
+		/*var timerButton = document.createElement('button');
+		timerButton.setAttribute('class', 'timerBtn');
+		timerButton.setAttribute('value', 'On');
+		timerButton.innerText = 'Timer';
+		exerciseData1.appendChild(timerButton);
+		tableRow2.appendChild(exerciseData1);
+
+
+		timerButton.addEventListener('click', function() {
+			var clockDiv = document.createElement('div');
+			clockDiv.setAttribute('class', 'clockDisplay');
+			clockDiv.setAttribute('value', 'On');
+			clockDiv.style.color = 'green';
+			exerciseData1.appendChild(clockDiv);
+			var clock = $('.clockDisplay').FlipClock(3000, {
+		clockFace: 'MinuteCounter'
+	});
+			/*clockDiv.setAttribute('class', 'clockDisplay');
+			clockDiv.setAttribute('value', 'On');
+			clockDiv.style.color = 'green';
+			setData1.appendChild(clockDiv);
+			currentvalue = timerButton.value;
+  			if(currentvalue == "Off") {
+    			timerButton.value="On";
+				timerButton.innerText = 'On';
+				exerciseData1.appendChild(timerButton);
+				var initialTime = Date.now();
+
+				function checkTime(){
+	  				var timeDifference = Date.now() - initialTime;
+	  				var formatted = convertTime(timeDifference);
+	  				clockDiv.innerHTML = '' + formatted;
+				}
+
+				function convertTime(miliseconds) {
+	  				var totalSeconds = Math.floor(miliseconds/1000);
+	  				var minutes = Math.floor(totalSeconds/60);
+	  				var seconds = totalSeconds - minutes * 60;
+	  				return minutes + ':' + seconds;
+				}
+				window.setInterval(checkTime, 100);
+            }else{
+    			timerButton.value="Off";
+				timerButton.innerText = 'Off';
+				clockDiv.innerHTML = '';
+  			}*/
+
+
+
+		//});
+
 		tableRow2.appendChild(exerciseData1);
 		exerciseData1.addEventListener('click', function() {
 			var exerciseName = prompt("Update the exercise name:");
@@ -107,6 +165,7 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 		editSets.innerText = 'Edit';
 		//setData1.appendChild(editBr);
 		setData1.appendChild(editSets);
+
 		//setData1.appendChild(textNode);
 		tableRow2.appendChild(setData1);
 		editSets.addEventListener('click', function() {
@@ -217,6 +276,7 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 			alert(weightAmount + ' saved as weight amount.');
 		});
 
+
 		//tableRow2.appendChild(exerciseData1);
 		//table.appendChild(tableRow2);
 		//var tableHeader2 = document.createElement('th');
@@ -326,8 +386,33 @@ function createSetRadioBtns(setData1, sets1) {
 		var radioBtns = document.createElement('input');
 		radioBtns.setAttribute('type', 'radio');
 		radioBtns.setAttribute('class', 'setRadioBtns');
+		radioBtns.setAttribute('id', 'radioBtn ' + x);
+		radioBtns.onclick = function() {
+			var clock = $('.showClock').FlipClock({
+				clockFace: 'MinuteCounter'
+
+			});
+			clock.start(function() {
+				// Optional callback will fire when the clock starts
+			});
+			/*
+			var clockDiv = document.createElement('div'); clockDiv.setAttribute('class', 'clockDisplay'); clockDiv.style.color = 'red'; setData1.appendChild(clockDiv); var initialTime = Date.now();
+
+function checkTime(){
+  var timeDifference = Date.now() - initialTime;
+  var formatted = convertTime(timeDifference);
+  clockDiv.innerHTML = '' + formatted;
+}
+
+function convertTime(miliseconds) {
+  var totalSeconds = Math.floor(miliseconds/1000);
+  var minutes = Math.floor(totalSeconds/60);
+  var seconds = totalSeconds - minutes * 60;
+  return minutes + ':' + seconds;
+}
+window.setInterval(checkTime, 100);*/};
 		setData1.appendChild(radioBtns);
-	}
+	}//END FOR LOOP
 }
 
 
