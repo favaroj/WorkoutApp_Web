@@ -1,5 +1,6 @@
 
 
+
 function userPage(johnRef) {
 	var userRef = firebase.database().ref('Users');
 	var johnRef = userRef.child('John');
@@ -17,6 +18,7 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 	//document.getElementById('workoutTable').style.display = 'table';
 
 	johnRef.on('child_added', function(snapshot) {
+		var dateCompleted = snapshot.val().DateCompleted;
 		var showWorkouts = snapshot.val().WorkoutName;
 		var exercise1 = snapshot.val().Exercise1;
 		var exercise2 = snapshot.val().Exercise2;
@@ -53,10 +55,11 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 		var header = document.createElement('h4');
 		//header.style.margin-top = '20px';
 		header.innerText = showWorkouts;
+		header.style.color = 'green';
 		div1.appendChild(header);
 		var border = document.getElementById('border');
 		border.appendChild(header);
-		header.style.marginTop = '20px';
+		header.style.marginTop = '40px';
 		var table = document.createElement('table');
 		//table.style.cellspacing = '10';
 		table.setAttribute('class', 'workoutTable');
@@ -89,61 +92,6 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 		var textNode = document.createTextNode(exercise1);
 		exerciseData1.appendChild(textNode);
 
-		//var showClock = document.createElement('div');
-
-		//border.appendChild(showClock);
-		//showClock.setAttribute('class', 'showClock');
-
-		/*var timerButton = document.createElement('button');
-		timerButton.setAttribute('class', 'timerBtn');
-		timerButton.setAttribute('value', 'On');
-		timerButton.innerText = 'Timer';
-		exerciseData1.appendChild(timerButton);
-		tableRow2.appendChild(exerciseData1);
-
-
-		timerButton.addEventListener('click', function() {
-			var clockDiv = document.createElement('div');
-			clockDiv.setAttribute('class', 'clockDisplay');
-			clockDiv.setAttribute('value', 'On');
-			clockDiv.style.color = 'green';
-			exerciseData1.appendChild(clockDiv);
-			var clock = $('.clockDisplay').FlipClock(3000, {
-		clockFace: 'MinuteCounter'
-	});
-			/*clockDiv.setAttribute('class', 'clockDisplay');
-			clockDiv.setAttribute('value', 'On');
-			clockDiv.style.color = 'green';
-			setData1.appendChild(clockDiv);
-			currentvalue = timerButton.value;
-  			if(currentvalue == "Off") {
-    			timerButton.value="On";
-				timerButton.innerText = 'On';
-				exerciseData1.appendChild(timerButton);
-				var initialTime = Date.now();
-
-				function checkTime(){
-	  				var timeDifference = Date.now() - initialTime;
-	  				var formatted = convertTime(timeDifference);
-	  				clockDiv.innerHTML = '' + formatted;
-				}
-
-				function convertTime(miliseconds) {
-	  				var totalSeconds = Math.floor(miliseconds/1000);
-	  				var minutes = Math.floor(totalSeconds/60);
-	  				var seconds = totalSeconds - minutes * 60;
-	  				return minutes + ':' + seconds;
-				}
-				window.setInterval(checkTime, 100);
-            }else{
-    			timerButton.value="Off";
-				timerButton.innerText = 'Off';
-				clockDiv.innerHTML = '';
-  			}*/
-
-
-
-		//});
 
 		tableRow2.appendChild(exerciseData1);
 		exerciseData1.addEventListener('click', function() {
@@ -275,7 +223,112 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 			});
 			alert(weightAmount + ' saved as weight amount.');
 		});
+		var btnDiv = document.createElement('div');
+		btnDiv.setAttribute('id', 'btnDiv');
+		//btnDiv.style.flexdirection = 'row';
+		border.appendChild(btnDiv);
+		var completeWorkoutBtn = document.createElement('button');
+		completeWorkoutBtn.innerText = 'Complete Workout';
+		btnDiv.appendChild(completeWorkoutBtn);
+		border.appendChild(completeWorkoutBtn);
+		completeWorkoutBtn.addEventListener('click', function() {
+			var date = new Date().toLocaleString();
+			var newDate = new Date();
+			var getday = newDate.getDay();
+			var day = '';
+			if(getday === 0) {
+				day = 'Sunday';
+			}
+			else if(getday === 1) {
+				day = 'Monday';
+			}
+			else if(getday === 2) {
+				day = 'Tuesday';
+			}
+			else if(getday === 3) {
+				day = 'Wednesday';
+			}
+			else if(getday === 4) {
+				day = 'Thursday';
+			}
+			else if(getday === 5) {
+				day = 'Friday';
+			}
+			else if(getday === 6) {
+				day = 'Saturday';
+			}
+			console.log(day);
+			alert(showWorkouts + '' + ' has been logged for ' + '' + day + ' ' + date);
+			console.log(day);
+			johnRef.child(key).child('Log').push({
+				WorkoutName: showWorkouts,
+				DayCompleted: day,
+				DateCompleted: date,
+  			  	Exercise1: exercise1,
+  			  	Weight1: weight1,
+  			  	Sets1: sets1,
+  			  	Reps1: reps1,
+   			  	Exercise2: exercise2,
+  			  	Weight2: weight2,
+  			  	Sets2: sets2,
+  			  	Reps2: reps2,
+   			  	Exercise3: exercise3,
+  			  	Weight3: weight3,
+  			  	Sets3: sets3,
+  			  	Reps3: reps3,
+   			  	Exercise4: exercise4,
+  			  	Weight4: weight4,
+  			  	Sets4: sets4,
+  			  	Reps4: reps4,
+   			  	Exercise5: exercise5,
+  			  	Weight5: weight5,
+  			  	Sets5: sets5,
+  			  	Reps5: reps5,
+			});
+		});
 
+		var showWrkoutLogBtn = document.createElement('button');
+		showWrkoutLogBtn.innerText = 'Workout Log';
+		showWrkoutLogBtn.style.marginbottom = '20px';
+		btnDiv.appendChild(showWrkoutLogBtn);
+		border.appendChild(showWrkoutLogBtn);
+
+		showWrkoutLogBtn.addEventListener('click', function() {
+			johnRef.child(key).child('Log').on('child_added', function(snapshot) {
+				var dateCompleted = snapshot.val().DateCompleted;
+				var dayCompleted = snapshot.val().DayCompleted;
+				var exercise1 = snapshot.val().Exercise1;
+				var exercise2 = snapshot.val().Exercise2;
+				var exercise3 = snapshot.val().Exercise3;
+				var exercise4 = snapshot.val().Exercise4;
+				var exercise5 = snapshot.val().Exercise5;
+				var weight1 = snapshot.val().Weight1;
+				var weight2 = snapshot.val().Weight2;
+				var weight3 = snapshot.val().Weight3;
+				var weight4 = snapshot.val().Weight4;
+				var weight5 = snapshot.val().Weight5;
+				var reps1 = snapshot.val().Reps1;
+				var reps2 = snapshot.val().Reps2;
+				var reps3 = snapshot.val().Reps3;
+				var reps4 = snapshot.val().Reps4;
+				var reps5 = snapshot.val().Reps5;
+				var sets1 = snapshot.val().Sets1;
+				var sets2 = snapshot.val().Sets2;
+				var sets3 = snapshot.val().Sets3;
+				var sets4 = snapshot.val().Sets4;
+				var sets5 = snapshot.val().Sets5;
+				//console.log(exercise1);
+				var key = snapshot.key;
+				//console.log(dateCompleted);
+				//var ke = snapshot.key;
+				//alert(dayCompleted);
+				console.log(key);
+				alert('' + dayCompleted + ' ' + dateCompleted + '\n' + showWorkouts + '\n' + '' +
+				exercise1 + ': ' + 'Reps: ' + reps1 + ' Weight: ' + '' + weight1 + ' Sets: ' + '' + sets1 + '\n' );
+			});
+			//console.log(key);
+
+		});
 
 		//tableRow2.appendChild(exerciseData1);
 		//table.appendChild(tableRow2);
@@ -376,6 +429,33 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 			   WorkoutName: workoutName
 		   });*/
 	});
+	document.getElementById('calendarLink').addEventListener('click', function() {
+		//alert('Calendar Link Pressed!');
+		//var calendarDiv = document.createElement('div');
+		//document.appendChild(calendarDiv);
+		//calendarDiv.innerText = 'Test';
+		var cal = document.getElementById('showCalendar');
+		//var x = document.getElementById('myDIV');
+   		if (cal.style.display === 'none') {
+	   		cal.style.display = 'inline-block';
+			document.getElementById('subHeader').innerHTML = 'Calendar';
+			$(document).ready(function() {
+
+	    // page is now ready, initialize the calendar...
+
+	    $('#showCalendar').fullCalendar({
+	        // put your options and callbacks here
+	    })
+
+	});
+   		} else {
+	   		cal.style.display = 'none';
+			document.getElementById('subHeader').innerHTML = 'Workouts';
+   		}
+		//console.log(calVal);
+
+
+	});
 });
 }// END userPage function //FOR TESTING - DELETE IF NOT NEEDED!!\\
 
@@ -397,13 +477,11 @@ function createSetRadioBtns(setData1, sets1) {
 			});
 			/*
 			var clockDiv = document.createElement('div'); clockDiv.setAttribute('class', 'clockDisplay'); clockDiv.style.color = 'red'; setData1.appendChild(clockDiv); var initialTime = Date.now();
-
 function checkTime(){
   var timeDifference = Date.now() - initialTime;
   var formatted = convertTime(timeDifference);
   clockDiv.innerHTML = '' + formatted;
 }
-
 function convertTime(miliseconds) {
   var totalSeconds = Math.floor(miliseconds/1000);
   var minutes = Math.floor(totalSeconds/60);
@@ -429,13 +507,11 @@ document.getElementById('signUpBtn').addEventListener('click', function() {
 		alert('Welcome ' + userName);
 		location.reload();
 	/*
-
 	alert('Welcome ' + userName + '!');
 	document.getElementById('displayNameInput').value = "";
 	var userRef = firebase.database().ref('Users').push({
 		name: userName
 	});
-
 	var btn = document.createElement("BUTTON");
     var t = document.createTextNode(userName);
     btn.appendChild(t);
@@ -445,7 +521,6 @@ document.getElementById('signUpBtn').addEventListener('click', function() {
 var userHeader = document.getElementById('userHeader');
 var div = document.getElementById('border');
 /*userRef.on("child_added", function(child) {
-
   //console.log(child.key+': '+child.val().name);
   var tr = document.createElement('button');
   tr.id = " " + child.val().name;
@@ -475,8 +550,6 @@ var div = document.getElementById('border');
 	//text1.id = 'exercise1Text';
 	//text1.innerText = "Exercise 1";
 	//div.appendChild(text1);
-
-
   };
 */
 /*
@@ -567,7 +640,6 @@ function genLinks(key, usName) {
     links += '<a id="deleteBtn" href="javascript:del(\'' + key + '\',\'' + usName + '\')">Delete</a>';
     return links;
 };
-
 function edit(key, usName) {
     var userName = prompt("Update the user name", usName);
     if (usName && userName.length > 0) {
@@ -578,7 +650,6 @@ function edit(key, usName) {
         });
     }
 }
-
 function del(key, usName) {
     var response = confirm("Remove \"" + usName + "\" from the list?");
     if (response == true) {
@@ -587,13 +658,11 @@ function del(key, usName) {
         deleteItemRef.remove();
     }
 }
-
 function buildEndPoint(key) {
 	var userEnd = firebase.database().ref('Users').child(key);
 	location.reload();
 	return userEnd;
 }
-
 // this will get fired on inital load as well as when ever there is a change in the data
 userRef.on("value", function(snapshot) {
 	var data = snapshot.val();
@@ -811,7 +880,6 @@ function toggleSignIn() {
       document.getElementById('signUpBtn').addEventListener('click', handleSignUp, false);
       document.getElementById('verifyEmailBtn').addEventListener('click', sendEmailVerification, false);
       document.getElementById('quickstart-password-reset').addEventListener('click', sendPasswordReset, false);
-
     }
     window.onload = function() {
       initApp();

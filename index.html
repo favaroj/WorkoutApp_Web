@@ -5,11 +5,16 @@
 		<link href="css/app.css" rel="stylesheet" type="text/css">
 		<link href="https://fonts.googleapis.com/css?family=Prosto+One" rel="stylesheet">
 		<link rel="stylesheet" href="./css/flipclock.css">
+		<link rel='stylesheet' href='./css/fullcalendar.css' />
+		<script src='./scripts/jquery.min.js'></script>
+
+		<script src='./scripts/moment.min.js'></script>
+		<script src='./scripts/fullcalendar.js'></script>
 		<title>JMF Workout</title>
 		<h1 id='mainHeader'>JMF Workout</h1>
 		<div class="topnav" id="myTopnav">
   		<a href="index.html">Home</a>
-  		<a href="#news">Calendar</a>
+  		<a id="calendarLink">Calendar</a>
   		<a href="workouts.html">Workouts</a>
   		<a href="#about">Videos</a>
 		</div>
@@ -19,13 +24,16 @@
 		<div class='clockContainer'>
 			<div class='showClock'></div>
 		</div>
-		<ol id='userList'></ol>
+		<div class='calendarConatiner'>
+			<div id='showCalendar'></div>
+		</div>
+		<h4 id='workoutHeader' onclick="loadWorkout()"></h4>
 		<div id="border">
 			<button id='johnBtn'>John</button>
 			<button id='meganBtn'>Megan</button>
 
 			<table id='workoutTable' style="width:100%">
-  				<tr>
+  				<!--<tr>
     				<th>Exercise</th>
     				<th>Weight</th>
     				<th>Reps</th>
@@ -44,7 +52,7 @@
     				<td>John</td>
     				<td>Doe</td>
     				<td>80</td>
-  				</tr>
+  				</tr>-->
 			</table>
 
 			<!--
@@ -175,6 +183,12 @@
 	  	-->
 
 	</body>
+	<script>
+		function loadWorkout() {
+			//document.getElementById('workoutTable').style.display = 'table';
+			console.log('WorkoutHeader clicked!');
+		}
+	</script>
 	<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
 <script>
   // Initialize Firebase
@@ -189,6 +203,9 @@
   firebase.initializeApp(config);
 </script>
 <script src="./scripts/jquery-3.2.1.js"></script>
+<script>
+	jq321 = jQuery.noConflict(true);
+</script>
 		<script src="./scripts/flipclock.min.js"></script>
 <script src="./scripts/authentication.js"></script>
 </HTML>
