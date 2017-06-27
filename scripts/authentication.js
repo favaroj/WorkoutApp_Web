@@ -285,32 +285,33 @@ document.getElementById('johnBtn').addEventListener('click', function() {
   			  	Sets5: sets5,
   			  	Reps5: reps5,
 			});
-			$('#showCalendar').fullCalendar( 'renderEvent', event [
-				{
-					googleCalendarId: 'jmfavaro62@gmail.com',
-					title  : showWorkouts,
-					start  : date
-				}, stick ] );
 
 
 
 
 
+			/////Note:Use this for Google Calendar hookup/////////
+			/*$(document).ready(function() {
 
-			/*.fullCalendar({
-		        // put your options and callbacks here
-				googleCalendarApiKey: 'AIzaSyBvBaCN1y4klYAtCCeB6zvUAm4pxUR44aE',
+	    // page is now ready, initialize the calendar...
 
-				events: [
-	        		{
-						googleCalendarId: 'jmfavaro62@gmail.com',
-	            		title  : showWorkouts,
-	            		start  : date
-	        		},
-	    		]
+	    $('#showCalendar').fullCalendar({
+	        // put your options and callbacks here
+			googleCalendarApiKey: 'AIzaSyBI5ZZD4LzneRjsUWb8fYPqjtWxWOWW-7Y',
+			googleCalendarId: 'jmfavaro62@gmail.com',
+			events: [
+        	{
+				//googleCalendarApiKey: 'AIzaSyBvBaCN1y4klYAtCCeB6zvUAm4pxUR44aE',
 
-		    })*/
+            	title: 'Testing',
+            	start: '2017-06-25'
+        	},
+    		]
+	    })
 
+
+	});*/
+	window.open('https://calendar.google.com/calendar/render?cid=jmfavaro62%40gmail.com#main_7%7Cmonth','_blank');
 		});
 
 		var showWrkoutLogBtn = document.createElement('button');
@@ -471,13 +472,15 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 
 	    $('#showCalendar').fullCalendar({
 	        // put your options and callbacks here
-			googleCalendarApiKey: 'AIzaSyBvBaCN1y4klYAtCCeB6zvUAm4pxUR44aE',
 
+			googleCalendarApiKey: 'AIzaSyBI5ZZD4LzneRjsUWb8fYPqjtWxWOWW-7Y',
 			events:
-        		{
-					googleCalendarId: 'jmfavaro62@gmail.com'
+        	{
 
-        		}
+				googleCalendarId: 'jmfavaro62@gmail.com'
+
+        	}
+
 
 
 
