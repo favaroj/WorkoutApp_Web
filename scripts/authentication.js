@@ -285,6 +285,32 @@ document.getElementById('johnBtn').addEventListener('click', function() {
   			  	Sets5: sets5,
   			  	Reps5: reps5,
 			});
+			$('#showCalendar').fullCalendar( 'renderEvent', event [
+				{
+					googleCalendarId: 'jmfavaro62@gmail.com',
+					title  : showWorkouts,
+					start  : date
+				}, stick ] );
+
+
+
+
+
+
+			/*.fullCalendar({
+		        // put your options and callbacks here
+				googleCalendarApiKey: 'AIzaSyBvBaCN1y4klYAtCCeB6zvUAm4pxUR44aE',
+
+				events: [
+	        		{
+						googleCalendarId: 'jmfavaro62@gmail.com',
+	            		title  : showWorkouts,
+	            		start  : date
+	        		},
+	    		]
+
+		    })*/
+
 		});
 
 		var showWrkoutLogBtn = document.createElement('button');
@@ -445,6 +471,16 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 
 	    $('#showCalendar').fullCalendar({
 	        // put your options and callbacks here
+			googleCalendarApiKey: 'AIzaSyBvBaCN1y4klYAtCCeB6zvUAm4pxUR44aE',
+
+			events:
+        		{
+					googleCalendarId: 'jmfavaro62@gmail.com'
+
+        		}
+
+
+
 	    })
 
 	});
