@@ -229,9 +229,36 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 		border.appendChild(btnDiv);
 		var completeWorkoutBtn = document.createElement('button');
 		completeWorkoutBtn.innerText = 'Complete Workout';
+		completeWorkoutBtn.setAttribute('id', 'completeWorkoutBtn');
 		btnDiv.appendChild(completeWorkoutBtn);
 		border.appendChild(completeWorkoutBtn);
+
+
+
+
+
 		completeWorkoutBtn.addEventListener('click', function() {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 			var date = new Date().toLocaleString();
 			var newDate = new Date();
 			var getday = newDate.getDay();
@@ -289,30 +316,27 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 
 
 
-
+			/*
 			/////Note:Use this for Google Calendar hookup/////////
-			/*$(document).ready(function() {
+			$(document).ready(function() {
 
 	    // page is now ready, initialize the calendar...
+		var date = new Date();
+        var d = date.getDate();
+        var m = date.getMonth();
+        var y = date.getFullYear();
 
-	    $('#showCalendar').fullCalendar({
-	        // put your options and callbacks here
-			googleCalendarApiKey: 'AIzaSyBI5ZZD4LzneRjsUWb8fYPqjtWxWOWW-7Y',
-			googleCalendarId: 'jmfavaro62@gmail.com',
-			events: [
-        	{
-				//googleCalendarApiKey: 'AIzaSyBvBaCN1y4klYAtCCeB6zvUAm4pxUR44aE',
+		var newEvent = {
+			title: 'NEW EVENT',
+			start: new Date(y, m, d)
+		};
+		$('#showCalendar').fullCalendar( 'renderEvent', newEvent , 'stick');
 
-            	title: 'Testing',
-            	start: '2017-06-25'
-        	},
-    		]
-	    })
 
 
 	});*/
-	window.open('https://calendar.google.com/calendar/render?cid=jmfavaro62%40gmail.com#main_7%7Cmonth','_blank');
-		});
+	//window.open('https://calendar.google.com/calendar/render?cid=jmfavaro62%40gmail.com#main_7%7Cmonth','_blank');
+});
 
 		var showWrkoutLogBtn = document.createElement('button');
 		showWrkoutLogBtn.innerText = 'Workout Log';
@@ -321,6 +345,8 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 		border.appendChild(showWrkoutLogBtn);
 
 		showWrkoutLogBtn.addEventListener('click', function() {
+
+
 			johnRef.child(key).child('Log').on('child_added', function(snapshot) {
 				var dateCompleted = snapshot.val().DateCompleted;
 				var dayCompleted = snapshot.val().DayCompleted;
@@ -345,11 +371,12 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 				var sets4 = snapshot.val().Sets4;
 				var sets5 = snapshot.val().Sets5;
 				//console.log(exercise1);
-				var key = snapshot.key;
+				var logKey = snapshot.key;
 				//console.log(dateCompleted);
 				//var ke = snapshot.key;
 				//alert(dayCompleted);
-				console.log(key);
+				console.log(logKey);
+				return logKey;
 				alert('' + dayCompleted + ' ' + dateCompleted + '\n' + showWorkouts + '\n' + '' +
 				exercise1 + ': ' + 'Reps: ' + reps1 + ' Weight: ' + '' + weight1 + ' Sets: ' + '' + sets1 + '\n' );
 			});
@@ -457,6 +484,49 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 		   });*/
 	});
 	document.getElementById('calendarLink').addEventListener('click', function() {
+		johnRef.on('child_added', function(snapshot) {
+			var key = snapshot.key;
+			return key;
+		});
+		function log(key){
+			johnRef.child(key).child('Log').on('child_added', function(snapshot) {
+				var workoutName = snapshot.val().WorkoutName;
+				var dateCompleted = snapshot.val().DateCompleted;
+				var dayCompleted = snapshot.val().DayCompleted;
+				var exercise1 = snapshot.val().Exercise1;
+				var exercise2 = snapshot.val().Exercise2;
+				var exercise3 = snapshot.val().Exercise3;
+				var exercise4 = snapshot.val().Exercise4;
+				var exercise5 = snapshot.val().Exercise5;
+				var weight1 = snapshot.val().Weight1;
+				var weight2 = snapshot.val().Weight2;
+				var weight3 = snapshot.val().Weight3;
+				var weight4 = snapshot.val().Weight4;
+				var weight5 = snapshot.val().Weight5;
+				var reps1 = snapshot.val().Reps1;
+				var reps2 = snapshot.val().Reps2;
+				var reps3 = snapshot.val().Reps3;
+				var reps4 = snapshot.val().Reps4;
+				var reps5 = snapshot.val().Reps5;
+				var sets1 = snapshot.val().Sets1;
+				var sets2 = snapshot.val().Sets2;
+				var sets3 = snapshot.val().Sets3;
+				var sets4 = snapshot.val().Sets4;
+				var sets5 = snapshot.val().Sets5;
+				//console.log(exercise1);
+				var logKey = snapshot.key;
+				//console.log(dateCompleted);
+				//var ke = snapshot.key;
+				//alert(dayCompleted);
+				console.log(logKey);
+				return logKey;
+				alert('' + dayCompleted + ' ' + dateCompleted + '\n' + showWorkouts + '\n' + '' +
+				exercise1 + ': ' + 'Reps: ' + reps1 + ' Weight: ' + '' + weight1 + ' Sets: ' + '' + sets1 + '\n' );
+			});
+		}
+
+
+
 		//alert('Calendar Link Pressed!');
 		//var calendarDiv = document.createElement('div');
 		//document.appendChild(calendarDiv);
@@ -466,25 +536,35 @@ document.getElementById('johnBtn').addEventListener('click', function() {
    		if (cal.style.display === 'none') {
 	   		cal.style.display = 'inline-block';
 			document.getElementById('subHeader').innerHTML = 'Calendar';
-			$(document).ready(function() {
-
-	    // page is now ready, initialize the calendar...
-
-	    $('#showCalendar').fullCalendar({
-	        // put your options and callbacks here
-
-			googleCalendarApiKey: 'AIzaSyBI5ZZD4LzneRjsUWb8fYPqjtWxWOWW-7Y',
-			events:
-        	{
-
-				googleCalendarId: 'jmfavaro62@gmail.com'
-
-        	}
+			$(document).ready(function()
+	{
+		/*
+			date store today date.
+			d store today date.
+			m store current month.
+			y store current year.
+		*/
+		var date = new Date();
+		var d = date.getDate();
+		var m = date.getMonth();
+		var y = date.getFullYear();
 
 
+    $('#calendar').fullCalendar({
+        googleCalendarApiKey: 'AIzaSyBI5ZZD4LzneRjsUWb8fYPqjtWxWOWW-7Y',
+        events: {
+            googleCalendarId: 'jmfavaro62@gmail.com'
+        }
+    });
+
+		/*
+			Initialize fullCalendar and store into variable.
+			Why in variable?
+			Because doing so we can use it inside other function.
+			In order to modify its option later.
+		*/
 
 
-	    })
 
 	});
    		} else {
