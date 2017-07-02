@@ -261,7 +261,8 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 			var m = getDate.getMonth();
 			var y = getDate.getFullYear();
 
-			var date = new Date(y,m,d);
+			//var date = new Date(y,m,d);
+			var date = moment().format();
 			//var date = new Date().toLocaleString();
 			//var newDate = new Date();
 			var getday = getDate.getDay();
@@ -487,16 +488,9 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 		   });*/
 	});
 	document.getElementById('calendarLink').addEventListener('click', function() {
-		function keyFunc() {
-			johnRef.on('child_added', function(snapshot) {
-				var key = snapshot.key;
-				return key;
-				console.log(key);
-			});
 
-		}
 
-		function log(){
+		//function log(){
 
 
 			johnRef.on('child_added', function(childSnapshot) {
@@ -505,8 +499,8 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 				var ref = johnRef.child(childKey);
 				ref.child('Log').on('child_added', function(snapshot) {
 					//var logKey = childSnapshot.key;
-					var dateCompleted = snapshot.val().DateCompleted;
-					var workoutName = snapshot.val().WorkoutName;
+					const dateCompleted = snapshot.val().DateCompleted;
+					const workoutName = snapshot.val().WorkoutName;
 					console.log(workoutName);
 					console.log(dateCompleted);
 
@@ -517,14 +511,14 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 						var m = date.getMonth();
 						var y = date.getFullYear();
 
-		    			$('#showCalendar').fullCalendar({
+		    			/*$('#showCalendar').fullCalendar({
 		        			googleCalendarApiKey: 'AIzaSyBvBaCN1y4klYAtCCeB6zvUAm4pxUR44aE',
 		        			events: {
 		            			googleCalendarId: 'jmfavaro62@gmail.com'
 		        			}
-		    			});
+		    			});*/
 
-		            	var newEvent = {
+		            	const newEvent = {
 		                	title: workoutName,
 		                	start: dateCompleted
 		            	};
@@ -533,6 +527,7 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 		        		$('#showCalendar').fullCalendar({
 		            		editable: true
 		        		});
+
 					});// END document.ready()
 				});
 
@@ -572,8 +567,8 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 				//exercise1 + ': ' + 'Reps: ' + reps1 + ' Weight: ' + '' + weight1 + ' Sets: ' + '' + sets1 + '\n' );*/
 			});
 
-		}
-		log();
+		//}
+		//log();
 
 
 		//alert('Calendar Link Pressed!');
@@ -600,21 +595,13 @@ document.getElementById('johnBtn').addEventListener('click', function() {
         			}
     			});
 
-            	var newEvent = {
-                	title: 'NEW EVENT',
-                	start: new Date(y, m, d)
-            	};
-            	$('#showCalendar').fullCalendar( 'renderEvent', newEvent , true);
 
-        		$('#showCalendar').fullCalendar({
-            		editable: true
-        		});
 			});// END document.ready()
    		} else {
 	   		cal.style.display = 'none';
 			document.getElementById('subHeader').innerHTML = 'Workouts';
    		}
-	});// END Calendar onclick function
+	},false);// END Calendar onclick function
 });
 }// END userPage function //FOR TESTING - DELETE IF NOT NEEDED!!\\
 

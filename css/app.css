@@ -1,8 +1,8 @@
 HTML {
-	font-size: 25px;
-	background-color: #08373f;
+	font-size: 35px;
+	background-color: white;
 	text-align: center;
-	color: white;
+	color: black;
 }
 
 input {
@@ -13,10 +13,10 @@ input {
 }
 h1 {
 	text-align: center;
-	color: white;
-	border-color: black;
+	color: black;
+	border-color: #08373f;
 	border: 5px;
-	text-shadow: 3px 3px 1px black;
+	text-shadow: 3px 3px 1px white;
 	font-family: 'Prosto One', cursive;
 }
 
@@ -152,16 +152,17 @@ ul {
 }
 
 button {
-	background-color: #48BBEC; /* Green */
+	background-color: #08373f; /* Green */
   	border: 3px solid #48BBEC;
   	color: white;
   	text-align: center;
   	text-decoration: none;
-  	font-size: 20px;
+  	font-size: 30px;
 	border-radius: 5px;
 	margin: 20px auto;
   	display: block;
-	width: auto;
+	width: 200px;
+	height: 45px;
 	justify-content: center;
 }
 
@@ -186,9 +187,13 @@ button {
 	padding: 15px;
 	margin: auto;
 	margin-bottom: 0px;
-	width: 75%;
+	width: 85%;
 	text-align: center;
 
+}
+
+.fc-time{
+   display : none;
 }
 
 #createWrkoutBtn {
@@ -248,7 +253,7 @@ button {
 }
 /* Add a black background color to the top navigation */
 .topnav {
-    background-color: #333;
+    background-color: #08373f;
     overflow: hidden;
 }
 
