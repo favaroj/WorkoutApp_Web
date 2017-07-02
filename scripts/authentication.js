@@ -256,12 +256,15 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 
 
 
+			var getDate = new Date();
+			var d = getDate.getDate();
+			var m = getDate.getMonth();
+			var y = getDate.getFullYear();
 
-
-
-			var date = new Date().toLocaleString();
-			var newDate = new Date();
-			var getday = newDate.getDay();
+			var date = new Date(y,m,d);
+			//var date = new Date().toLocaleString();
+			//var newDate = new Date();
+			var getday = getDate.getDay();
 			var day = '';
 			if(getday === 0) {
 				day = 'Sunday';
@@ -484,13 +487,56 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 		   });*/
 	});
 	document.getElementById('calendarLink').addEventListener('click', function() {
-		johnRef.on('child_added', function(snapshot) {
-			var key = snapshot.key;
-			return key;
-		});
-		function log(key){
-			johnRef.child(key).child('Log').on('child_added', function(snapshot) {
-				var workoutName = snapshot.val().WorkoutName;
+		function keyFunc() {
+			johnRef.on('child_added', function(snapshot) {
+				var key = snapshot.key;
+				return key;
+				console.log(key);
+			});
+
+		}
+
+		function log(){
+
+
+			johnRef.on('child_added', function(childSnapshot) {
+				var childKey = childSnapshot.key;
+				console.log(childKey);
+				var ref = johnRef.child(childKey);
+				ref.child('Log').on('child_added', function(snapshot) {
+					//var logKey = childSnapshot.key;
+					var dateCompleted = snapshot.val().DateCompleted;
+					var workoutName = snapshot.val().WorkoutName;
+					console.log(workoutName);
+					console.log(dateCompleted);
+
+					$(document).ready(function()
+					{
+						var date = new Date();
+						var d = date.getDate();
+						var m = date.getMonth();
+						var y = date.getFullYear();
+
+		    			$('#showCalendar').fullCalendar({
+		        			googleCalendarApiKey: 'AIzaSyBvBaCN1y4klYAtCCeB6zvUAm4pxUR44aE',
+		        			events: {
+		            			googleCalendarId: 'jmfavaro62@gmail.com'
+		        			}
+		    			});
+
+		            	var newEvent = {
+		                	title: workoutName,
+		                	start: dateCompleted
+		            	};
+		            	$('#showCalendar').fullCalendar( 'renderEvent', newEvent , true);
+
+		        		$('#showCalendar').fullCalendar({
+		            		editable: true
+		        		});
+					});// END document.ready()
+				});
+
+				/*var workoutName = snapshot.val().WorkoutName;
 				var dateCompleted = snapshot.val().DateCompleted;
 				var dayCompleted = snapshot.val().DayCompleted;
 				var exercise1 = snapshot.val().Exercise1;
@@ -518,13 +564,16 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 				//console.log(dateCompleted);
 				//var ke = snapshot.key;
 				//alert(dayCompleted);
-				console.log(logKey);
-				return logKey;
-				alert('' + dayCompleted + ' ' + dateCompleted + '\n' + showWorkouts + '\n' + '' +
-				exercise1 + ': ' + 'Reps: ' + reps1 + ' Weight: ' + '' + weight1 + ' Sets: ' + '' + sets1 + '\n' );
+				//console.log(logKey);
+				//return logKey;
+				return workoutName;
+				console.log(workoutName);
+				//alert('' + dayCompleted + ' ' + dateCompleted + '\n' + showWorkouts + '\n' + '' +
+				//exercise1 + ': ' + 'Reps: ' + reps1 + ' Weight: ' + '' + weight1 + ' Sets: ' + '' + sets1 + '\n' );*/
 			});
-		}
 
+		}
+		log();
 
 
 		//alert('Calendar Link Pressed!');
@@ -532,49 +581,40 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 		//document.appendChild(calendarDiv);
 		//calendarDiv.innerText = 'Test';
 		var cal = document.getElementById('showCalendar');
+		//console.log(workoutName);
 		//var x = document.getElementById('myDIV');
    		if (cal.style.display === 'none') {
 	   		cal.style.display = 'inline-block';
 			document.getElementById('subHeader').innerHTML = 'Calendar';
 			$(document).ready(function()
-	{
-		/*
-			date store today date.
-			d store today date.
-			m store current month.
-			y store current year.
-		*/
-		var date = new Date();
-		var d = date.getDate();
-		var m = date.getMonth();
-		var y = date.getFullYear();
+			{
+				var date = new Date();
+				var d = date.getDate();
+				var m = date.getMonth();
+				var y = date.getFullYear();
 
+    			$('#showCalendar').fullCalendar({
+        			googleCalendarApiKey: 'AIzaSyBvBaCN1y4klYAtCCeB6zvUAm4pxUR44aE',
+        			events: {
+            			googleCalendarId: 'jmfavaro62@gmail.com'
+        			}
+    			});
 
-    $('#calendar').fullCalendar({
-        googleCalendarApiKey: 'AIzaSyBI5ZZD4LzneRjsUWb8fYPqjtWxWOWW-7Y',
-        events: {
-            googleCalendarId: 'jmfavaro62@gmail.com'
-        }
-    });
+            	var newEvent = {
+                	title: 'NEW EVENT',
+                	start: new Date(y, m, d)
+            	};
+            	$('#showCalendar').fullCalendar( 'renderEvent', newEvent , true);
 
-		/*
-			Initialize fullCalendar and store into variable.
-			Why in variable?
-			Because doing so we can use it inside other function.
-			In order to modify its option later.
-		*/
-
-
-
-	});
+        		$('#showCalendar').fullCalendar({
+            		editable: true
+        		});
+			});// END document.ready()
    		} else {
 	   		cal.style.display = 'none';
 			document.getElementById('subHeader').innerHTML = 'Workouts';
    		}
-		//console.log(calVal);
-
-
-	});
+	});// END Calendar onclick function
 });
 }// END userPage function //FOR TESTING - DELETE IF NOT NEEDED!!\\
 
