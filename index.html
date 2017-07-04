@@ -16,7 +16,7 @@
 		<div class="topnav" id="myTopnav">
   		<a href="index.html">Home</a>
   		<a id="calendarLink">Calendar</a>
-  		<a href="workouts.html">Workouts</a>
+  		<a id="createWrkoutBtn">Create Workout</a>
   		<a href="#about">Videos</a>
 		<a id="authorize-button" style="display: none;">Authorize</a>
    <a id="signout-button" style="display: none;">Sign Out</a>
@@ -43,7 +43,7 @@
 			<table id='workoutTable' style="width:100%">
 			</table>
 		</div>
-		<button id="createWrkoutBtn">Create Workout</button>
+		<!--<button id="createWrkoutBtn">Create Workout</button>-->
 		<br />
 		<h3 id='subHeader2' style="display: none">First Time Registration</h3>
 		<div id="createWorkoutArea" style="display: none">
@@ -141,6 +141,77 @@
 		<input type="text" class="formatInput" id="setInput5" placeholder="5"/>
 		<br />
 		<button id='prmptCreateWrkoutBtn'>Create</button>
+	</div>
+  </div>
+
+</div>
+
+<!-- The Modal -->
+<div id="completeWorkModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Complete Workout</p>
+	<div class="usrNameRow">
+		<h5 class="formatInput" id='prmptCompWorkName' style='color: green'></h5>
+		<br />
+
+		<h5 class="formatInput" id='prmptCompWorkEx1' style='color: red'></h5>
+		<h5 class="formatInput">Weight:</h5>
+		<h5 class="formatInput" id='prmptCompWorkWeight1'></h5>
+
+		<h5 class="formatInput">Reps:</h5>
+		<h5 class="formatInput" id='prmptCompWorkReps1'></h5>
+
+		<h5 class="formatInput">Sets:</h5>
+		<input type="text" class="formatInput" id="cmpWrkSetInput1" placeholder="5"/>
+		<br />
+
+		<h5 class="formatInput" id='prmptCompWorkEx2' style='color: red'></h5>
+		<h5 class="formatInput">Weight:</h5>
+		<h5 class="formatInput" id='prmptCompWorkWeight2'></h5>
+
+		<h5 class="formatInput">Reps:</h5>
+		<h5 class="formatInput" id='prmptCompWorkReps2'></h5>
+
+		<h5 class="formatInput">Sets:</h5>
+		<input type="text" class="formatInput" id="cmpWrkSetInput2" placeholder="5"/>
+		<br />
+
+		<h5 class="formatInput" id='prmptCompWorkEx3' style='color: red'></h5>
+		<h5 class="formatInput">Weight:</h5>
+		<h5 class="formatInput" id='prmptCompWorkWeight3'></h5>
+
+		<h5 class="formatInput">Reps:</h5>
+		<h5 class="formatInput" id='prmptCompWorkReps3'></h5>
+
+		<h5 class="formatInput">Sets:</h5>
+		<input type="text" class="formatInput" id="cmpWrkSetInput3" placeholder="5"/>
+		<br />
+
+		<h5 class="formatInput" id='prmptCompWorkEx4' style='color: red'></h5>
+		<h5 class="formatInput">Weight:</h5>
+		<h5 class="formatInput" id='prmptCompWorkWeight4'></h5>
+
+		<h5 class="formatInput">Reps:</h5>
+		<h5 class="formatInput" id='prmptCompWorkReps4'></h5>
+
+		<h5 class="formatInput">Sets:</h5>
+		<input type="text" class="formatInput" id="cmpWrkSetInput4" placeholder="5"/>
+		<br />
+
+		<h5 class="formatInput" id='prmptCompWorkEx5' style='color: red'></h5>
+		<h5 class="formatInput">Weight:</h5>
+		<h5 class="formatInput" id='prmptCompWorkWeight5'></h5>
+
+		<h5 class="formatInput">Reps:</h5>
+		<h5 class="formatInput" id='prmptCompWorkReps5'></h5>
+
+		<h5 class="formatInput">Sets:</h5>
+		<input type="text" class="formatInput" id="cmpWrkSetInput5" placeholder="5"/>
+		<br />
+		<button id='prmptCompleteWrkoutBtn'>Complete</button>
 	</div>
   </div>
 

@@ -119,7 +119,9 @@ h3 {
 	flex-direction: row;
 	display: inline;
 	margin: auto;
-	width: 50px;
+	width: 150px;
+	height: 30px;
+	font-size: 25px;
 }
 
 li {
@@ -137,7 +139,7 @@ ul {
 
 
 
-#loginBtn, #signUpBtn, #verifyEmailBtn, #createWrkoutBtn {
+#loginBtn, #signUpBtn, #verifyEmailBtn {
 	background-color: #48BBEC; /* Green */
   	border: 3px solid #48BBEC;
   	color: white;
@@ -216,7 +218,7 @@ button {
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: black;
+    background-color: white;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 10px;
     border: 1px solid #888;

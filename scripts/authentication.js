@@ -1,10 +1,11 @@
 
 
+var userRef = firebase.database().ref('Users');
+var johnRef = userRef.child('John');
+function userPage() {
 
-function userPage(johnRef) {
-	var userRef = firebase.database().ref('Users');
-	var johnRef = userRef.child('John');
 document.getElementById('johnBtn').addEventListener('click', function() {
+
 	displayModal();
 	var signUpBtn = document.getElementById('signUpBtn');
 	signUpBtn.style.display = 'none';
@@ -240,31 +241,67 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 		completeWorkoutBtn.addEventListener('click', function() {
 
 
+			document.getElementById('prmptCompWorkName').innerHTML = showWorkouts;
+
+			document.getElementById('prmptCompWorkEx1').innerHTML = exercise1;
+			document.getElementById('prmptCompWorkWeight1').innerHTML = weight1;
+			document.getElementById('prmptCompWorkReps1').innerHTML = reps1;
+
+
+			document.getElementById('prmptCompWorkEx2').innerHTML = exercise2;
+			document.getElementById('prmptCompWorkWeight2').innerHTML = weight2;
+			document.getElementById('prmptCompWorkReps2').innerHTML = reps2;
+
+
+			document.getElementById('prmptCompWorkEx3').innerHTML = exercise3;
+			document.getElementById('prmptCompWorkWeight3').innerHTML = weight3;
+			document.getElementById('prmptCompWorkReps3').innerHTML = reps3;
+
+
+			document.getElementById('prmptCompWorkEx4').innerHTML = exercise4;
+			document.getElementById('prmptCompWorkWeight4').innerHTML = weight4;
+			document.getElementById('prmptCompWorkReps4').innerHTML = reps4;
+
+
+			document.getElementById('prmptCompWorkEx5').innerHTML = exercise5;
+			document.getElementById('prmptCompWorkWeight5').innerHTML = weight5;
+			document.getElementById('prmptCompWorkReps5').innerHTML = reps5;
+
+		// Get the modal
+		var modal = document.getElementById('completeWorkModal');
 
 
 
+		// Get the <span> element that closes the modal
+		var span = document.getElementsByClassName("close")[0];
+
+		// When the user clicks on the button, open the modal
+
+		    modal.style.display = "block";
 
 
+		// When the user clicks on <span> (x), close the modal
+		span.onclick = function() {
+		    modal.style.display = "none";
+		}
 
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+		    if (event.target == modal) {
+		        modal.style.display = "none";
+		    }
+		}
+		});
 
-
-
-
-
-
-
-
-
-
-			var getDate = new Date();
-			var d = getDate.getDate();
-			var m = getDate.getMonth();
-			var y = getDate.getFullYear();
-
-			//var date = new Date(y,m,d);
+		document.getElementById('prmptCompleteWrkoutBtn').addEventListener('click', function() {
+			var setVal1 = document.getElementById('cmpWrkSetInput1').value.trim();
+			var setVal2 = document.getElementById('cmpWrkSetInput2').value.trim();
+			var setVal3 = document.getElementById('cmpWrkSetInput3').value.trim();
+			var setVal4 = document.getElementById('cmpWrkSetInput4').value.trim();
+			var setVal5 = document.getElementById('cmpWrkSetInput5').value.trim();
+			console.log(setVal1);
 			var date = moment().format();
-			//var date = new Date().toLocaleString();
-			//var newDate = new Date();
+			var getDate = new Date();
 			var getday = getDate.getDay();
 			var day = '';
 			if(getday === 0) {
@@ -288,59 +325,36 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 			else if(getday === 6) {
 				day = 'Saturday';
 			}
-			console.log(day);
-			alert(showWorkouts + '' + ' has been logged for ' + '' + day + ' ' + date);
-			console.log(day);
+
 			johnRef.child(key).child('Log').push({
 				WorkoutName: showWorkouts,
 				DayCompleted: day,
 				DateCompleted: date,
   			  	Exercise1: exercise1,
   			  	Weight1: weight1,
-  			  	Sets1: sets1,
+  			  	Sets1: setVal1,
   			  	Reps1: reps1,
    			  	Exercise2: exercise2,
   			  	Weight2: weight2,
-  			  	Sets2: sets2,
+  			  	Sets2: setVal2,
   			  	Reps2: reps2,
    			  	Exercise3: exercise3,
   			  	Weight3: weight3,
-  			  	Sets3: sets3,
+  			  	Sets3: setVal3,
   			  	Reps3: reps3,
    			  	Exercise4: exercise4,
   			  	Weight4: weight4,
-  			  	Sets4: sets4,
+  			  	Sets4: setVal4,
   			  	Reps4: reps4,
    			  	Exercise5: exercise5,
   			  	Weight5: weight5,
-  			  	Sets5: sets5,
+  			  	Sets5: setVal5,
   			  	Reps5: reps5,
 			});
-
-
-
-
-			/*
-			/////Note:Use this for Google Calendar hookup/////////
-			$(document).ready(function() {
-
-	    // page is now ready, initialize the calendar...
-		var date = new Date();
-        var d = date.getDate();
-        var m = date.getMonth();
-        var y = date.getFullYear();
-
-		var newEvent = {
-			title: 'NEW EVENT',
-			start: new Date(y, m, d)
-		};
-		$('#showCalendar').fullCalendar( 'renderEvent', newEvent , 'stick');
-
-
-
-	});*/
-	//window.open('https://calendar.google.com/calendar/render?cid=jmfavaro62%40gmail.com#main_7%7Cmonth','_blank');
-});
+			alert(showWorkouts + '' + ' has been logged for ' + '' + day + ' ' + date);
+			var modal = document.getElementById('completeWorkModal');
+			modal.style.display = 'none';
+		});
 
 		var showWrkoutLogBtn = document.createElement('button');
 		showWrkoutLogBtn.innerText = 'Workout Log';
@@ -381,6 +395,7 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 				//alert(dayCompleted);
 				console.log(logKey);
 				return logKey;
+
 				alert('' + dayCompleted + ' ' + dateCompleted + '\n' + showWorkouts + '\n' + '' +
 				exercise1 + ': ' + 'Reps: ' + reps1 + ' Weight: ' + '' + weight1 + ' Sets: ' + '' + sets1 + '\n' );
 			});
@@ -612,7 +627,9 @@ function createSetRadioBtns(setData1, sets1) {
 		var radioBtns = document.createElement('input');
 		radioBtns.setAttribute('type', 'radio');
 		radioBtns.setAttribute('class', 'setRadioBtns');
-		radioBtns.setAttribute('id', 'radioBtn ' + x);
+		radioBtns.setAttribute('id', 'radioBtn' + x);
+		var n = 0;
+		var j = 0;
 		radioBtns.onclick = function() {
 			var clock = $('.showClock').FlipClock({
 				clockFace: 'MinuteCounter'
@@ -621,6 +638,41 @@ function createSetRadioBtns(setData1, sets1) {
 			clock.start(function() {
 				// Optional callback will fire when the clock starts
 			});
+			//var johnRef = firebase.database().ref('Users').child('John');
+			//var johnRef = userRef.child('John');
+
+			n++;
+			j++;
+			johnRef.on('child_added', function(childSnapshot) {
+				var childKey = childSnapshot.key;
+				console.log(childKey);
+				var ref = johnRef.child(childKey);
+				ref.child('Log').once('child_added', function(childSnapshot) {
+					var logKey = childSnapshot.key;
+					const dateCompleted = childSnapshot.val().DateCompleted;
+					const workoutName = childSnapshot.val().WorkoutName;
+					console.log(workoutName);
+					console.log(dateCompleted);
+
+					console.log(n);
+					var setsLog = childSnapshot.val().Sets1;
+					console.log(setsLog);
+					console.log(logKey);
+					/*ref.child('Log').child(logKey).update({
+						Sets1: n
+
+
+
+					});
+					ref.child('Log').child(logKey).update({
+						Sets2: n
+
+					});*/
+				return n;
+				});
+				console.log(n + ' sets');
+			});
+			console.log(n + ' sets');
 			/*
 			var clockDiv = document.createElement('div'); clockDiv.setAttribute('class', 'clockDisplay'); clockDiv.style.color = 'red'; setData1.appendChild(clockDiv); var initialTime = Date.now();
 function checkTime(){
@@ -637,7 +689,7 @@ function convertTime(miliseconds) {
 window.setInterval(checkTime, 100);*/};
 		setData1.appendChild(radioBtns);
 	}//END FOR LOOP
-}
+}//END createSetRadioBtns() Function
 
 
 
@@ -717,7 +769,35 @@ var div = document.getElementById('border');
 
  //div.innerHTML = '<button id=" "+ child.val().name + value=""+child.val().name onClick="goToUserPage()"/>';
 //});
+var displayNameInput = document.getElementById('displayNameInput').value.trim();
+	//alert(displayNameInput);
 
+	// Get the modal
+	var modal = document.getElementById('completeWorkModal');
+
+	// Get the button that opens the modal
+	var btn = document.getElementById("createWrkoutBtn");
+	btn.style.display = "block";
+
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
+
+	// When the user clicks on the button, open the modal
+	btn.onclick = function() {
+	    modal.style.display = "block";
+	}
+
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+	    modal.style.display = "none";
+	}
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+	    if (event.target == modal) {
+	        modal.style.display = "none";
+	    }
+	}
 function displayModal() {
 
 	var displayNameInput = document.getElementById('displayNameInput').value.trim();
@@ -750,6 +830,40 @@ function displayModal() {
 	    }
 	}
 }
+
+function displayComplWorkModal() {
+
+	var displayNameInput = document.getElementById('displayNameInput').value.trim();
+	//alert(displayNameInput);
+
+	// Get the modal
+	var modal = document.getElementById('completeWorkModal');
+
+	// Get the button that opens the modal
+	var btn = document.getElementById("createWrkoutBtn");
+	btn.style.display = "block";
+
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
+
+	// When the user clicks on the button, open the modal
+	btn.onclick = function() {
+	    modal.style.display = "block";
+	}
+
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+	    modal.style.display = "none";
+	}
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+	    if (event.target == modal) {
+	        modal.style.display = "none";
+	    }
+	}
+}
+
 
 
 
