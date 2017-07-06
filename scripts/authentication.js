@@ -226,10 +226,11 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 		});
 		var btnDiv = document.createElement('div');
 		btnDiv.setAttribute('id', 'btnDiv');
-		//btnDiv.style.flexdirection = 'row';
+		//btnDiv.style.display = 'row';
 		border.appendChild(btnDiv);
+
 		var completeWorkoutBtn = document.createElement('button');
-		completeWorkoutBtn.innerText = 'Complete Workout';
+		completeWorkoutBtn.innerText = 'Complete';
 		completeWorkoutBtn.setAttribute('id', 'completeWorkoutBtn');
 		btnDiv.appendChild(completeWorkoutBtn);
 		border.appendChild(completeWorkoutBtn);
@@ -291,7 +292,6 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 		        modal.style.display = "none";
 		    }
 		}
-		});
 
 		document.getElementById('prmptCompleteWrkoutBtn').addEventListener('click', function() {
 			var setVal1 = document.getElementById('cmpWrkSetInput1').value.trim();
@@ -326,41 +326,53 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 				day = 'Saturday';
 			}
 
-			johnRef.child(key).child('Log').push({
+			/*johnRef.once('value', function(childSnapshot) {
+				var key2 = childSnapshot.key;
+				console.log(key2);
+				return key2;
+			});*/
+			var ref = johnRef.child(key);
+			ref.child('Log').push({
 				WorkoutName: showWorkouts,
 				DayCompleted: day,
 				DateCompleted: date,
-  			  	Exercise1: exercise1,
-  			  	Weight1: weight1,
-  			  	Sets1: setVal1,
-  			  	Reps1: reps1,
-   			  	Exercise2: exercise2,
-  			  	Weight2: weight2,
-  			  	Sets2: setVal2,
-  			  	Reps2: reps2,
-   			  	Exercise3: exercise3,
-  			  	Weight3: weight3,
-  			  	Sets3: setVal3,
-  			  	Reps3: reps3,
-   			  	Exercise4: exercise4,
-  			  	Weight4: weight4,
-  			  	Sets4: setVal4,
-  			  	Reps4: reps4,
-   			  	Exercise5: exercise5,
-  			  	Weight5: weight5,
-  			  	Sets5: setVal5,
-  			  	Reps5: reps5,
+				Exercise1: exercise1,
+				Weight1: weight1,
+				Sets1: setVal1,
+				Reps1: reps1,
+				Exercise2: exercise2,
+				Weight2: weight2,
+				Sets2: setVal2,
+				Reps2: reps2,
+				Exercise3: exercise3,
+				Weight3: weight3,
+				Sets3: setVal3,
+				Reps3: reps3,
+				Exercise4: exercise4,
+				Weight4: weight4,
+				Sets4: setVal4,
+				Reps4: reps4,
+				Exercise5: exercise5,
+				Weight5: weight5,
+				Sets5: setVal5,
+				Reps5: reps5,
 			});
 			alert(showWorkouts + '' + ' has been logged for ' + '' + day + ' ' + date);
 			var modal = document.getElementById('completeWorkModal');
 			modal.style.display = 'none';
+			ref.child('Log').off('child_added');
+			location.reload();
+		});
+
+
 		});
 
 		var showWrkoutLogBtn = document.createElement('button');
 		showWrkoutLogBtn.innerText = 'Workout Log';
 		showWrkoutLogBtn.style.marginbottom = '20px';
+		showWrkoutLogBtn.setAttribute('id', 'showWrkoutLogBtn');
 		btnDiv.appendChild(showWrkoutLogBtn);
-		border.appendChild(showWrkoutLogBtn);
+		//border.appendChild(showWrkoutLogBtn);
 
 		showWrkoutLogBtn.addEventListener('click', function() {
 
@@ -398,11 +410,24 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 
 				alert('' + dayCompleted + ' ' + dateCompleted + '\n' + showWorkouts + '\n' + '' +
 				exercise1 + ': ' + 'Reps: ' + reps1 + ' Weight: ' + '' + weight1 + ' Sets: ' + '' + sets1 + '\n' );
+				johnRef.child(key).child('Log').off('child_added');
 			});
 			//console.log(key);
 
 		});
 
+		var deleteWrkoutBtn = document.createElement('button');
+		deleteWrkoutBtn.innerText = 'Delete';
+		deleteWrkoutBtn.setAttribute('id', 'deleteWrkoutBtn');
+		btnDiv.appendChild(deleteWrkoutBtn);
+
+		deleteWrkoutBtn.addEventListener('click', function() {
+			var response = confirm("Delete \"" + showWorkouts + "\" ?");
+    		if (response == true) {
+        		johnRef.child(key).remove();
+				location.reload();
+    		}
+		});
 		//tableRow2.appendChild(exerciseData1);
 		//table.appendChild(tableRow2);
 		//var tableHeader2 = document.createElement('th');
@@ -489,6 +514,7 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 			  Reps5: repInput5,
 		   });
 		   document.getElementById('workoutNameInput').value = '';
+		   document.getElementById('myModal').style.display = 'none';
 		   /*newWorkoutRef.set({
 			  WorkoutName: workoutName,
 			  Exercise1: 'None',
@@ -544,6 +570,7 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 		        		});
 
 					});// END document.ready()
+
 				});
 
 				/*var workoutName = snapshot.val().WorkoutName;
@@ -580,7 +607,9 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 				console.log(workoutName);
 				//alert('' + dayCompleted + ' ' + dateCompleted + '\n' + showWorkouts + '\n' + '' +
 				//exercise1 + ': ' + 'Reps: ' + reps1 + ' Weight: ' + '' + weight1 + ' Sets: ' + '' + sets1 + '\n' );*/
+				
 			});
+			//var ref = johnRef.child(childKey);
 
 		//}
 		//log();
@@ -769,35 +798,7 @@ var div = document.getElementById('border');
 
  //div.innerHTML = '<button id=" "+ child.val().name + value=""+child.val().name onClick="goToUserPage()"/>';
 //});
-var displayNameInput = document.getElementById('displayNameInput').value.trim();
-	//alert(displayNameInput);
 
-	// Get the modal
-	var modal = document.getElementById('completeWorkModal');
-
-	// Get the button that opens the modal
-	var btn = document.getElementById("createWrkoutBtn");
-	btn.style.display = "block";
-
-	// Get the <span> element that closes the modal
-	var span = document.getElementsByClassName("close")[0];
-
-	// When the user clicks on the button, open the modal
-	btn.onclick = function() {
-	    modal.style.display = "block";
-	}
-
-	// When the user clicks on <span> (x), close the modal
-	span.onclick = function() {
-	    modal.style.display = "none";
-	}
-
-	// When the user clicks anywhere outside of the modal, close it
-	window.onclick = function(event) {
-	    if (event.target == modal) {
-	        modal.style.display = "none";
-	    }
-	}
 function displayModal() {
 
 	var displayNameInput = document.getElementById('displayNameInput').value.trim();
@@ -831,38 +832,7 @@ function displayModal() {
 	}
 }
 
-function displayComplWorkModal() {
 
-	var displayNameInput = document.getElementById('displayNameInput').value.trim();
-	//alert(displayNameInput);
-
-	// Get the modal
-	var modal = document.getElementById('completeWorkModal');
-
-	// Get the button that opens the modal
-	var btn = document.getElementById("createWrkoutBtn");
-	btn.style.display = "block";
-
-	// Get the <span> element that closes the modal
-	var span = document.getElementsByClassName("close")[0];
-
-	// When the user clicks on the button, open the modal
-	btn.onclick = function() {
-	    modal.style.display = "block";
-	}
-
-	// When the user clicks on <span> (x), close the modal
-	span.onclick = function() {
-	    modal.style.display = "none";
-	}
-
-	// When the user clicks anywhere outside of the modal, close it
-	window.onclick = function(event) {
-	    if (event.target == modal) {
-	        modal.style.display = "none";
-	    }
-	}
-}
 
 
 
