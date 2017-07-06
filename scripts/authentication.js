@@ -568,6 +568,15 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 		        		$('#showCalendar').fullCalendar({
 		            		editable: true
 		        		});
+						$('#showCalendar').fullCalendar({
+		    				eventClick:  function(event, jsEvent, view) {
+            					$('#modalTitle').html(event.title);
+            					$('#modalBody').html(event.description);
+            					$('#eventUrl').attr('href',event.url);
+            					$('#calendarModal').modal();
+        					},
+						});
+
 
 					});// END document.ready()
 
@@ -607,7 +616,7 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 				console.log(workoutName);
 				//alert('' + dayCompleted + ' ' + dateCompleted + '\n' + showWorkouts + '\n' + '' +
 				//exercise1 + ': ' + 'Reps: ' + reps1 + ' Weight: ' + '' + weight1 + ' Sets: ' + '' + sets1 + '\n' );*/
-				
+
 			});
 			//var ref = johnRef.child(childKey);
 
@@ -638,6 +647,7 @@ document.getElementById('johnBtn').addEventListener('click', function() {
             			googleCalendarId: 'jmfavaro62@gmail.com'
         			}
     			});
+
 
 
 			});// END document.ready()
