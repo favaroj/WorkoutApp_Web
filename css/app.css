@@ -46,12 +46,18 @@ th, td, tr, .displayTable, #workoutTable {
 
 .clockContainer {
 	text-align: center;
-	margin-left: 20%;
-	margin-right: 5%;
+	/*margin-left: 20%;
+	margin-right: 5%;*/
 }
-.showCLock {
+.showClock {
+	text-align: center;
 	display: inline-block;
 	width: auto;
+}
+
+#closeClock, #stopClock, #resetClock, #startClock {
+	display: none;
+	text-align: center;
 }
 
 .calendarContainer {
@@ -70,7 +76,7 @@ th, td, tr, .displayTable, #workoutTable {
 .setRadioBtns {
 	transform: scale(3);
 	margin: 0 15px 0 15px;
-	
+
 }
 
 body {

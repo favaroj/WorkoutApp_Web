@@ -2,17 +2,17 @@
 
 var userRef = firebase.database().ref('Users');
 var johnRef = userRef.child('John');
-function userPage() {
+function johnPage() {
 
-document.getElementById('johnBtn').addEventListener('click', function() {
+//document.getElementById('johnBtn').addEventListener('click', function() {
 
-	displayModal();
-	var signUpBtn = document.getElementById('signUpBtn');
-	signUpBtn.style.display = 'none';
-	document.getElementById('mainHeader').innerHTML = 'John';
+	//displayModal();
+	//var signUpBtn = document.getElementById('signUpBtn');
+	//signUpBtn.style.display = 'none';
+	document.getElementById('userHeader').innerHTML = 'John';
 	document.getElementById('subHeader').innerHTML = 'Workouts';
 	document.getElementById('border').innerHTML = '';
-	document.getElementById('subHeader2').style.display = 'none';
+	//document.getElementById('subHeader2').style.display = 'none';
 	document.getElementById('exercise1Text').style.display = 'inline';
 	document.getElementById('createWorkoutArea').style.display = 'none';
 
@@ -408,9 +408,9 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 				console.log(logKey);
 				return logKey;
 
-				alert('' + dayCompleted + ' ' + dateCompleted + '\n' + showWorkouts + '\n' + '' +
-				exercise1 + ': ' + 'Reps: ' + reps1 + ' Weight: ' + '' + weight1 + ' Sets: ' + '' + sets1 + '\n' );
-				johnRef.child(key).child('Log').off('child_added');
+				//alert('' + dayCompleted + ' ' + dateCompleted + '\n' + showWorkouts + '\n' + '' +
+				//exercise1 + ': ' + 'Reps: ' + reps1 + ' Weight: ' + '' + weight1 + ' Sets: ' + '' + sets1 + '\n' );
+				//johnRef.child(key).child('Log').off('child_added');
 			});
 			//console.log(key);
 
@@ -656,10 +656,10 @@ document.getElementById('johnBtn').addEventListener('click', function() {
 			document.getElementById('subHeader').innerHTML = 'Workouts';
    		}
 	},false);// END Calendar onclick function
-});
+//});
 }// END userPage function //FOR TESTING - DELETE IF NOT NEEDED!!\\
 
-userPage();
+johnPage();
 
 function createSetRadioBtns(setData1, sets1) {
 	for(var x = 0; x < sets1; x++) {
@@ -677,11 +677,39 @@ function createSetRadioBtns(setData1, sets1) {
 			clock.start(function() {
 				// Optional callback will fire when the clock starts
 			});
+
 			//var johnRef = firebase.database().ref('Users').child('John');
 			//var johnRef = userRef.child('John');
 
-			n++;
-			j++;
+			var closeClock = document.getElementById('closeClock');
+			closeClock.style.display = 'inline-block';
+			closeClock.addEventListener('click', function() {
+				var showClock = document.getElementsByClassName('showClock');
+				//showClock.style.display = 'none';
+				location.reload();
+			});
+
+			var stopClock = document.getElementById('stopClock');
+			stopClock.style.display = 'inline-block';
+			stopClock.addEventListener('click', function() {
+				clock.stop(function() {
+				});
+			});
+
+			var resetClock = document.getElementById('resetClock');
+			resetClock.style.display = 'inline-block';
+			resetClock.addEventListener('click', function() {
+				clock.reset(function() {
+				});
+			});
+
+			var startClock = document.getElementById('startClock');
+			startClock.style.display = 'inline-block';
+			startClock.addEventListener('click', function() {
+				clock.start(function() {
+				});
+			});
+
 			johnRef.on('child_added', function(childSnapshot) {
 				var childKey = childSnapshot.key;
 				console.log(childKey);
@@ -732,7 +760,7 @@ window.setInterval(checkTime, 100);*/};
 
 
 
-document.getElementById('signUpBtn').addEventListener('click', function() {
+/*document.getElementById('signUpBtn').addEventListener('click', function() {
 	var userName = document.getElementById('displayNameInput').value.trim();
 	var userDisplay = document.getElementById('border');
 	if(userName.length > 0) {
@@ -754,7 +782,7 @@ document.getElementById('signUpBtn').addEventListener('click', function() {
     btn.appendChild(t);
     document.body.appendChild(btn);
 	*/
-}, false);
+//}, false);
 var userHeader = document.getElementById('userHeader');
 var div = document.getElementById('border');
 /*userRef.on("child_added", function(child) {
@@ -809,7 +837,7 @@ var div = document.getElementById('border');
  //div.innerHTML = '<button id=" "+ child.val().name + value=""+child.val().name onClick="goToUserPage()"/>';
 //});
 
-function displayModal() {
+/*function displayModal() {
 
 	var displayNameInput = document.getElementById('displayNameInput').value.trim();
 	//alert(displayNameInput);
@@ -840,7 +868,7 @@ function displayModal() {
 	        modal.style.display = "none";
 	    }
 	}
-}
+}*/
 
 
 
