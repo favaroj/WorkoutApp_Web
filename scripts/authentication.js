@@ -528,16 +528,16 @@ function johnPage() {
 			   WorkoutName: workoutName
 		   });*/
 	});
+	document.getElementById('prmptCloseCrteWrktBtn').addEventListener('click', function() {
+		location.reload();
+	});
 	document.getElementById('calendarLink').addEventListener('click', function() {
-
 		var closeCalBtn = document.getElementById('closeCalendarBtn');
 		closeCalBtn.style.display = 'inline-block';
 		closeCalBtn.addEventListener('click', function(){
 			location.reload();
 		});
 		//function log(){
-
-
 			johnRef.on('child_added', function(childSnapshot) {
 				var childKey = childSnapshot.key;
 				console.log(childKey);
@@ -584,7 +584,7 @@ function johnPage() {
 		            	const newEvent = {
 		                	title: workoutName,
 		                	start: dateCompleted,
-							description: 'Exercise 1: ' + exercise1 + ' Sets: ' + sets1 + ' Reps: ' + reps1 + ' Weight: ' + weight1 +'\nExercise 2: ' + exercise2 + ' Sets: ' + sets2 + ' Reps: ' + reps2 + ' Weight: ' + weight2 + '\nExercise 3: ' + exercise3 + ' Sets: ' + sets3 + ' Reps: ' + reps3 + ' Weight: ' + weight3 + '\nExercise 4: ' + exercise4 + ' Sets: ' + sets4 + ' Reps: ' + reps4 + ' Weight: ' + weight4 + '\nExercise 5: ' + exercise5 + ' Sets: ' + sets5 + ' Reps: ' + reps5 + ' Weight: ' + weight5
+							description: 'Exercise 1: ' + exercise1 + ' S: ' + sets1 + ' R: ' + reps1 + ' W: ' + weight1 +'\nExercise 2: ' + exercise2 + ' S: ' + sets2 + ' R: ' + reps2 + ' W: ' + weight2 + '\nExercise 3: ' + exercise3 + ' S: ' + sets3 + ' R: ' + reps3 + ' W: ' + weight3 + '\nExercise 4: ' + exercise4 + ' S: ' + sets4 + ' R: ' + reps4 + ' W: ' + weight4 + '\nExercise 5: ' + exercise5 + ' S: ' + sets5 + ' R: ' + reps5 + ' W: ' + weight5
 		            	};
 		            	$('#showCalendar').fullCalendar( 'renderEvent', newEvent , true);
 

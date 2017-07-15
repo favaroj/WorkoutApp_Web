@@ -122,6 +122,12 @@ h3 {
 	margin-right: 10px;
 }
 
+#prmptCloseCrteWrktBtn, #prmptCreateWrkoutBtn {
+	display: inline;
+	width: 110px;
+	text-align: center;
+}
+
 
 .formatInput {
 	flex-direction: row;
@@ -231,7 +237,7 @@ button {
     margin: 2% auto; /* 15% from the top and centered */
     padding: ;
     border: 1px solid #888;
-    width: 70%; /* Could be more or less, depending on screen size */
+    width: 90%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
