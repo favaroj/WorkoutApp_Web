@@ -6,7 +6,7 @@ function johnPage() {
 
 //document.getElementById('johnBtn').addEventListener('click', function() {
 
-	//displayModal();
+	displayModal();
 	//var signUpBtn = document.getElementById('signUpBtn');
 	//signUpBtn.style.display = 'none';
 	document.getElementById('userHeader').innerHTML = 'John';
@@ -837,7 +837,7 @@ var div = document.getElementById('border');
  //div.innerHTML = '<button id=" "+ child.val().name + value=""+child.val().name onClick="goToUserPage()"/>';
 //});
 
-/*function displayModal() {
+function displayModal() {
 
 	var displayNameInput = document.getElementById('displayNameInput').value.trim();
 	//alert(displayNameInput);
@@ -868,7 +868,7 @@ var div = document.getElementById('border');
 	        modal.style.display = "none";
 	    }
 	}
-}*/
+}
 
 
 

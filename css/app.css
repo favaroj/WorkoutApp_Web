@@ -189,7 +189,7 @@ button {
 
 }
 
-#border {
+#border, #userDisplay {
 	border: 5px;
 	border-color: #333;
 	border-style: solid;
@@ -219,7 +219,7 @@ button {
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
+    overflow: ; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 	white-space: nowrap;
@@ -228,10 +228,10 @@ button {
 /* Modal Content/Box */
 .modal-content {
     background-color: white;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 10px;
+    margin: 2% auto; /* 15% from the top and centered */
+    padding: ;
     border: 1px solid #888;
-    width: 100%; /* Could be more or less, depending on screen size */
+    width: 70%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
@@ -276,7 +276,7 @@ button {
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 22px;
 	font-family: 'Prosto One', cursive;
 }
 
