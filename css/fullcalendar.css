@@ -173,11 +173,11 @@ NOTE: use percentage font sizes or else old IE chokes
 
 	/* dimensions */
 	margin: 0;
-	height: 2.1em;
+	/*height: 2.1em;*/
 	padding: 0 .6em;
 
 	/* text & cursor */
-	font-size: 1em; /* normalize */
+	/*font-size: 1em;*/ /* normalize */
 	white-space: nowrap;
 	cursor: pointer;
 }
@@ -531,7 +531,7 @@ temporary rendered events).
 	border-radius: 3px;
 	border: 1px solid #3a87ad; /* default BORDER color */
 	font-weight: normal; /* undo jqui's ui-widget-header bold */
-	
+
 }
 
 .fc-event,
@@ -840,18 +840,18 @@ a.fc-more:hover {
 }
 
 .fc-toolbar .fc-center {
-	display: inline-block;
+	display: inline;
 }
 
 /* the things within each left/right/center section */
 .fc .fc-toolbar > * > * { /* extra precedence to override button border margins */
 	float: left;
-	margin-left: .75em;
+	/*margin-left: .75em;*/
 }
 
 /* the first thing within each left/center/right section */
 .fc .fc-toolbar > * > :first-child { /* extra precedence to override button border margins */
-	margin-left: 0;
+	/*margin-left: 0;*/
 }
 
 /* title text */

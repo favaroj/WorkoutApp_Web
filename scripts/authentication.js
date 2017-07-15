@@ -584,7 +584,7 @@ function johnPage() {
 		            	const newEvent = {
 		                	title: workoutName,
 		                	start: dateCompleted,
-							description: 'Exercise 1: ' + exercise1 + ' S: ' + sets1 + ' R: ' + reps1 + ' W: ' + weight1 +'\nExercise 2: ' + exercise2 + ' S: ' + sets2 + ' R: ' + reps2 + ' W: ' + weight2 + '\nExercise 3: ' + exercise3 + ' S: ' + sets3 + ' R: ' + reps3 + ' W: ' + weight3 + '\nExercise 4: ' + exercise4 + ' S: ' + sets4 + ' R: ' + reps4 + ' W: ' + weight4 + '\nExercise 5: ' + exercise5 + ' S: ' + sets5 + ' R: ' + reps5 + ' W: ' + weight5
+							description: 'Ex1: ' + exercise1 + ' S: ' + sets1 + ' R: ' + reps1 + ' W: ' + weight1 +'\nEx2: ' + exercise2 + ' S: ' + sets2 + ' R: ' + reps2 + ' W: ' + weight2 + '\nEx3: ' + exercise3 + ' S: ' + sets3 + ' R: ' + reps3 + ' W: ' + weight3 + '\nEx4: ' + exercise4 + ' S: ' + sets4 + ' R: ' + reps4 + ' W: ' + weight4 + '\nEx5: ' + exercise5 + ' S: ' + sets5 + ' R: ' + reps5 + ' W: ' + weight5
 		            	};
 		            	$('#showCalendar').fullCalendar( 'renderEvent', newEvent , true);
 
