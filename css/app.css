@@ -55,7 +55,7 @@ th, td, tr, .displayTable, #workoutTable {
 	width: auto;
 }
 
-#closeClock, #stopClock, #resetClock, #startClock {
+#closeClock, #stopClock, #resetClock, #startClock, #closeCalendarBtn {
 	display: none;
 	text-align: center;
 }

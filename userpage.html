@@ -8,7 +8,6 @@
 	<link rel="stylesheet" href="./css/flipclock.css">
 	<link rel='stylesheet' href='./css/fullcalendar.css' />
 	<script src='./scripts/jquery.min.js'></script>
-
 	<script src='./scripts/moment.min.js'></script>
 	<script src='./scripts/fullcalendar.js'></script>
 	<script type='text/javascript' src='./scripts/gcal.js'></script>
@@ -20,37 +19,27 @@
 		<a id="createWrkoutBtn">Create Workout</a>
 		<a href="#about">Videos</a>
 		<a id='startClock'>Start Clock</a>
-		<a id='stopClock'>Stop Clock</a>
-		<a id='resetClock'>Reset Clock</a>
-		<a id='closeClock'>Close Clock</a>
+		<a id='stopClock'>Stop</a>
+		<a id='resetClock'>Reset</a>
+		<a id='closeClock'>Close</a>
 		<a id="authorize-button" style="display: none;">Authorize</a>
 		<a id="signout-button" style="display: none;">Sign Out</a>
-
 	</div>
 </head>
 
 <body>
 	<h2 id='subHeader'>Users</h2>
-
 	<div class='clockContainer'>
-
-
-
-
 		<div class='showClock'>
-
 		</div>
-
 	</div>
-
-
 	<div class='calendarConatiner'>
+		<button id='closeCalendarBtn'>Close</button>
 		<div id='showCalendar'>
 			<!--<iframe src="https://calendar.google.com/calendar/embed?src=jmfavaro62%40gmail.com&ctz=America/Los_Angeles" marin = '20%' style="border: 0" width="400" height="300" frameborder="0" scrolling="no"></iframe>-->
 		</div>
 	</div>
 	<!--<pre id="content"></pre>-->
-
 	<h4 id='workoutHeader' onclick="loadWorkout()"></h4>
 	<div id="border">
 		<button id='johnBtn'>John</button>
@@ -74,9 +63,7 @@
 				<h5 id="sgnUpText">Exercise 2:</h5>
 				<input id="displayNameInput" type="text" placeholder="Name" />
 			</div>
-
 		</div>
-
 		<!--<br />
 			<div class="usrNameRow">
 				<h5 id="sgnUpText">Email:</h5>
@@ -91,7 +78,6 @@
 			<button id="verifyEmailBtn">Verify Email</button>
 			-->
 		<button id="signUpBtn">Register</button>
-
 	</div>
 	<br />
 	<!-- Modal content -->
@@ -229,9 +215,7 @@
 				<button id='prmptCompleteWrkoutBtn'>Complete</button>
 			</div>
 		</div>
-
 	</div>
-
 	<div id="calendarModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -253,7 +237,6 @@
             <pre><code id="quickstart-account-details">null</code></pre>
           </div>
 	  	-->
-
 </body>
 <script>
 	function loadWorkout() {

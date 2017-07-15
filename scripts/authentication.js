@@ -530,7 +530,11 @@ function johnPage() {
 	});
 	document.getElementById('calendarLink').addEventListener('click', function() {
 
-
+		var closeCalBtn = document.getElementById('closeCalendarBtn');
+		closeCalBtn.style.display = 'inline-block';
+		closeCalBtn.addEventListener('click', function(){
+			location.reload();
+		});
 		//function log(){
 
 
@@ -542,8 +546,26 @@ function johnPage() {
 					//var logKey = childSnapshot.key;
 					const dateCompleted = snapshot.val().DateCompleted;
 					const workoutName = snapshot.val().WorkoutName;
-					console.log(workoutName);
-					console.log(dateCompleted);
+					var exercise1 = snapshot.val().Exercise1;
+					var exercise2 = snapshot.val().Exercise2;
+					var exercise3 = snapshot.val().Exercise3;
+					var exercise4 = snapshot.val().Exercise4;
+					var exercise5 = snapshot.val().Exercise5;
+					var weight1 = snapshot.val().Weight1;
+					var weight2 = snapshot.val().Weight2;
+					var weight3 = snapshot.val().Weight3;
+					var weight4 = snapshot.val().Weight4;
+					var weight5 = snapshot.val().Weight5;
+					var reps1 = snapshot.val().Reps1;
+					var reps2 = snapshot.val().Reps2;
+					var reps3 = snapshot.val().Reps3;
+					var reps4 = snapshot.val().Reps4;
+					var reps5 = snapshot.val().Reps5;
+					var sets1 = snapshot.val().Sets1;
+					var sets2 = snapshot.val().Sets2;
+					var sets3 = snapshot.val().Sets3;
+					var sets4 = snapshot.val().Sets4;
+					var sets5 = snapshot.val().Sets5;
 
 					$(document).ready(function()
 					{
@@ -561,25 +583,18 @@ function johnPage() {
 
 		            	const newEvent = {
 		                	title: workoutName,
-		                	start: dateCompleted
+		                	start: dateCompleted,
+							description: 'Exercise 1: ' + exercise1 + ' Sets: ' + sets1 + ' Reps: ' + reps1 + ' Weight: ' + weight1 +'\nExercise 2: ' + exercise2 + ' Sets: ' + sets2 + ' Reps: ' + reps2 + ' Weight: ' + weight2 + '\nExercise 3: ' + exercise3 + ' Sets: ' + sets3 + ' Reps: ' + reps3 + ' Weight: ' + weight3 + '\nExercise 4: ' + exercise4 + ' Sets: ' + sets4 + ' Reps: ' + reps4 + ' Weight: ' + weight4 + '\nExercise 5: ' + exercise5 + ' Sets: ' + sets5 + ' Reps: ' + reps5 + ' Weight: ' + weight5
 		            	};
 		            	$('#showCalendar').fullCalendar( 'renderEvent', newEvent , true);
 
 		        		$('#showCalendar').fullCalendar({
-		            		editable: true
+		            		editable: true,
+							eventClick: function (event, jsEvent, view) {
+								alert('' + event.title + '\n' + event.description);
+							}
 		        		});
-						$('#showCalendar').fullCalendar({
-		    				eventClick:  function(event, jsEvent, view) {
-            					$('#modalTitle').html(event.title);
-            					$('#modalBody').html(event.description);
-            					$('#eventUrl').attr('href',event.url);
-            					$('#calendarModal').modal();
-        					},
-						});
-
-
 					});// END document.ready()
-
 				});
 
 				/*var workoutName = snapshot.val().WorkoutName;
@@ -647,10 +662,12 @@ function johnPage() {
             			googleCalendarId: 'jmfavaro62@gmail.com'
         			}
     			});
-
-
-
 			});// END document.ready()
+			johnRef.on('child_added', function(childSnapshot) {
+				var childKey = childSnapshot.key;
+				var ref = johnRef.child(childKey);
+				ref.child('Log').off('child_added');
+			});
    		} else {
 	   		cal.style.display = 'none';
 			document.getElementById('subHeader').innerHTML = 'Workouts';
