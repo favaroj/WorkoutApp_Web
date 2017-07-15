@@ -234,10 +234,10 @@ button {
 /* Modal Content/Box */
 .modal-content {
     background-color: white;
-    margin: 2% auto; /* 15% from the top and centered */
+    margin: 10% auto; /* 15% from the top and centered */
     padding: ;
     border: 1px solid #888;
-    width: 90%; /* Could be more or less, depending on screen size */
+    width: ; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
