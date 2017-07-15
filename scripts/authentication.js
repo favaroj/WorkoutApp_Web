@@ -367,7 +367,7 @@ function johnPage() {
 
 		});
 
-		var showWrkoutLogBtn = document.createElement('button');
+		/*var showWrkoutLogBtn = document.createElement('button');
 		showWrkoutLogBtn.innerText = 'Workout Log';
 		showWrkoutLogBtn.style.marginbottom = '20px';
 		showWrkoutLogBtn.setAttribute('id', 'showWrkoutLogBtn');
@@ -414,7 +414,7 @@ function johnPage() {
 			});
 			//console.log(key);
 
-		});
+		});*/
 
 		var deleteWrkoutBtn = document.createElement('button');
 		deleteWrkoutBtn.innerText = 'Delete';
