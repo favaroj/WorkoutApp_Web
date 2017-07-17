@@ -1,11 +1,9 @@
-
-
 var userRef = firebase.database().ref('Users');
 var johnRef = userRef.child('John');
+var meganRef = userRef.child('Megan');
+
 function johnPage() {
-
 //document.getElementById('johnBtn').addEventListener('click', function() {
-
 	displayModal();
 	//var signUpBtn = document.getElementById('signUpBtn');
 	//signUpBtn.style.display = 'none';
@@ -15,7 +13,6 @@ function johnPage() {
 	//document.getElementById('subHeader2').style.display = 'none';
 	document.getElementById('exercise1Text').style.display = 'inline';
 	document.getElementById('createWorkoutArea').style.display = 'none';
-
 	//document.getElementById('workoutTable').style.display = 'table';
 
 	johnRef.on('child_added', function(snapshot) {
@@ -93,7 +90,6 @@ function johnPage() {
 		var textNode = document.createTextNode(exercise1);
 		exerciseData1.appendChild(textNode);
 
-
 		tableRow2.appendChild(exerciseData1);
 		exerciseData1.addEventListener('click', function() {
 			var exerciseName = prompt("Update the exercise name:");
@@ -155,7 +151,6 @@ function johnPage() {
 			});
 			alert(weightAmount + ' saved as weight amount.');
 		});
-
 
 		var tableRow3 = document.createElement('tr');
 		border.appendChild(tableRow3);
@@ -235,34 +230,24 @@ function johnPage() {
 		btnDiv.appendChild(completeWorkoutBtn);
 		border.appendChild(completeWorkoutBtn);
 
-
-
-
-
 		completeWorkoutBtn.addEventListener('click', function() {
-
-
 			document.getElementById('prmptCompWorkName').innerHTML = showWorkouts;
 
 			document.getElementById('prmptCompWorkEx1').innerHTML = exercise1;
 			document.getElementById('prmptCompWorkWeight1').innerHTML = weight1;
 			document.getElementById('prmptCompWorkReps1').innerHTML = reps1;
 
-
 			document.getElementById('prmptCompWorkEx2').innerHTML = exercise2;
 			document.getElementById('prmptCompWorkWeight2').innerHTML = weight2;
 			document.getElementById('prmptCompWorkReps2').innerHTML = reps2;
-
 
 			document.getElementById('prmptCompWorkEx3').innerHTML = exercise3;
 			document.getElementById('prmptCompWorkWeight3').innerHTML = weight3;
 			document.getElementById('prmptCompWorkReps3').innerHTML = reps3;
 
-
 			document.getElementById('prmptCompWorkEx4').innerHTML = exercise4;
 			document.getElementById('prmptCompWorkWeight4').innerHTML = weight4;
 			document.getElementById('prmptCompWorkReps4').innerHTML = reps4;
-
 
 			document.getElementById('prmptCompWorkEx5').innerHTML = exercise5;
 			document.getElementById('prmptCompWorkWeight5').innerHTML = weight5;
@@ -270,22 +255,14 @@ function johnPage() {
 
 		// Get the modal
 		var modal = document.getElementById('completeWorkModal');
-
-
-
 		// Get the <span> element that closes the modal
 		var span = document.getElementsByClassName("close")[0];
-
 		// When the user clicks on the button, open the modal
-
-		    modal.style.display = "block";
-
-
+		modal.style.display = "block";
 		// When the user clicks on <span> (x), close the modal
 		span.onclick = function() {
 		    modal.style.display = "none";
 		}
-
 		// When the user clicks anywhere outside of the modal, close it
 		window.onclick = function(event) {
 		    if (event.target == modal) {
@@ -363,7 +340,6 @@ function johnPage() {
 			ref.child('Log').off('child_added');
 			location.reload();
 		});
-
 
 		});
 
@@ -456,8 +432,6 @@ function johnPage() {
 		border.appendChild(weightData1);
 		border.appendChild(repData1);*/
 	});
-
-
 
 	document.getElementById('prmptCreateWrkoutBtn').addEventListener('click', function() {
 		   //alert('Create Workout Button Pressed');
@@ -596,53 +570,8 @@ function johnPage() {
 		        		});
 					});// END document.ready()
 				});
-
-				/*var workoutName = snapshot.val().WorkoutName;
-				var dateCompleted = snapshot.val().DateCompleted;
-				var dayCompleted = snapshot.val().DayCompleted;
-				var exercise1 = snapshot.val().Exercise1;
-				var exercise2 = snapshot.val().Exercise2;
-				var exercise3 = snapshot.val().Exercise3;
-				var exercise4 = snapshot.val().Exercise4;
-				var exercise5 = snapshot.val().Exercise5;
-				var weight1 = snapshot.val().Weight1;
-				var weight2 = snapshot.val().Weight2;
-				var weight3 = snapshot.val().Weight3;
-				var weight4 = snapshot.val().Weight4;
-				var weight5 = snapshot.val().Weight5;
-				var reps1 = snapshot.val().Reps1;
-				var reps2 = snapshot.val().Reps2;
-				var reps3 = snapshot.val().Reps3;
-				var reps4 = snapshot.val().Reps4;
-				var reps5 = snapshot.val().Reps5;
-				var sets1 = snapshot.val().Sets1;
-				var sets2 = snapshot.val().Sets2;
-				var sets3 = snapshot.val().Sets3;
-				var sets4 = snapshot.val().Sets4;
-				var sets5 = snapshot.val().Sets5;
-				//console.log(exercise1);
-				var logKey = snapshot.key;
-				//console.log(dateCompleted);
-				//var ke = snapshot.key;
-				//alert(dayCompleted);
-				//console.log(logKey);
-				//return logKey;
-				return workoutName;
-				console.log(workoutName);
-				//alert('' + dayCompleted + ' ' + dateCompleted + '\n' + showWorkouts + '\n' + '' +
-				//exercise1 + ': ' + 'Reps: ' + reps1 + ' Weight: ' + '' + weight1 + ' Sets: ' + '' + sets1 + '\n' );*/
-
 			});
-			//var ref = johnRef.child(childKey);
 
-		//}
-		//log();
-
-
-		//alert('Calendar Link Pressed!');
-		//var calendarDiv = document.createElement('div');
-		//document.appendChild(calendarDiv);
-		//calendarDiv.innerText = 'Test';
 		var cal = document.getElementById('showCalendar');
 		//console.log(workoutName);
 		//var x = document.getElementById('myDIV');
@@ -689,7 +618,6 @@ function createSetRadioBtns(setData1, sets1) {
 		radioBtns.onclick = function() {
 			var clock = $('.showClock').FlipClock({
 				clockFace: 'MinuteCounter'
-
 			});
 			clock.start(function() {
 				// Optional callback will fire when the clock starts
@@ -744,33 +672,16 @@ function createSetRadioBtns(setData1, sets1) {
 					console.log(logKey);
 					/*ref.child('Log').child(logKey).update({
 						Sets1: n
-
-
-
 					});
 					ref.child('Log').child(logKey).update({
 						Sets2: n
-
 					});*/
 				return n;
 				});
 				console.log(n + ' sets');
 			});
 			console.log(n + ' sets');
-			/*
-			var clockDiv = document.createElement('div'); clockDiv.setAttribute('class', 'clockDisplay'); clockDiv.style.color = 'red'; setData1.appendChild(clockDiv); var initialTime = Date.now();
-function checkTime(){
-  var timeDifference = Date.now() - initialTime;
-  var formatted = convertTime(timeDifference);
-  clockDiv.innerHTML = '' + formatted;
-}
-function convertTime(miliseconds) {
-  var totalSeconds = Math.floor(miliseconds/1000);
-  var minutes = Math.floor(totalSeconds/60);
-  var seconds = totalSeconds - minutes * 60;
-  return minutes + ':' + seconds;
-}
-window.setInterval(checkTime, 100);*/};
+		};
 		setData1.appendChild(radioBtns);
 	}//END FOR LOOP
 }//END createSetRadioBtns() Function
@@ -802,57 +713,6 @@ window.setInterval(checkTime, 100);*/};
 //}, false);
 var userHeader = document.getElementById('userHeader');
 var div = document.getElementById('border');
-/*userRef.on("child_added", function(child) {
-  //console.log(child.key+': '+child.val().name);
-  var tr = document.createElement('button');
-  tr.id = " " + child.val().name;
-  //console.log(" " + tr.id);
-  var td = document.createElement('td');
-  td.innerText = child.val().name;
-  //td.onclick = btnHistorySelect;
-  tr.appendChild(td);
-  div.appendChild(tr);
-  tr.onclick = function() {
-	  var userHeader = document.getElementById('userHeader');
-	  var div = document.getElementById('createWorkoutArea');
-	  div.style.display = 'none';
-	var id = this.id;
-	//alert(id);
-	//document.getElementById('userHeader').innerHTML = child.val().name;
-	//userHeader.innerHTML = " " + id;
-	displayModal();
-	var signUpBtn = document.getElementById('signUpBtn');
-	signUpBtn.style.display = 'none';
-	document.getElementById('mainHeader').innerHTML = id;
-	document.getElementById('subHeader').innerHTML = 'Workouts';
-	document.getElementById('border').innerHTML = '';
-	document.getElementById('subHeader2').style.display = 'none';
-	document.getElementById('exercise1Text').style.display = 'inline';
-	//var text1 = document.createElement('h5');
-	//text1.id = 'exercise1Text';
-	//text1.innerText = "Exercise 1";
-	//div.appendChild(text1);
-  };
-*/
-/*
- document.getElementById('prmptCreateWrkoutBtn').addEventListener('click', function() {
- 		//alert('Create Workout Button Pressed');
- 		var workoutName = document.getElementById('workoutNameInput').value.trim();
- 		//alert(' ' + workoutName);
-		var childName = child.val().name;
-		//alert(childName);
-		var rootRef = firebase.database().ref('Users').child(childName);
-		//rootRef.child.val().name;
-		//alert(rootRef);
-		/*rootRef.update({
-			name: userName,
-			workoutName: workoutName
-		});*/
-
- //});
-
- //div.innerHTML = '<button id=" "+ child.val().name + value=""+child.val().name onClick="goToUserPage()"/>';
-//});
 
 function displayModal() {
 
@@ -886,11 +746,6 @@ function displayModal() {
 	    }
 	}
 }
-
-
-
-
-
 
 function saveToFB(userName) {
 	// save data to Amazon Firebase

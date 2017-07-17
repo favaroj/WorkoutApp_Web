@@ -208,6 +208,10 @@ button {
 
 }
 
+td:empty {
+	display: none;
+}
+
 .fc-time{
    display : none;
 }
