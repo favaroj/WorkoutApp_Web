@@ -208,9 +208,27 @@ button {
 
 }
 
+#border2 {
+	border: 5px;
+	border-color: #333;
+	border-style: solid;
+	border-radius: 12px;
+	padding: 15px;
+	margin: auto;
+	margin-bottom: 0px;
+	width: 85%;
+	text-align: center;
+	/*display: none;*/
+}
+
 td:empty {
 	display: none;
 }
+
+tr, th {
+	/*display: none;*/
+}
+
 
 .fc-time{
    display : none;

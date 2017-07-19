@@ -1,6 +1,5 @@
 var userRef = firebase.database().ref('Users');
 var johnRef = userRef.child('John');
-var meganRef = userRef.child('Megan');
 
 function johnPage() {
 //document.getElementById('johnBtn').addEventListener('click', function() {
@@ -55,40 +54,55 @@ function johnPage() {
 		header.innerText = showWorkouts;
 		header.style.color = 'green';
 		div1.appendChild(header);
+
 		var border = document.getElementById('border');
 		border.appendChild(header);
 		header.style.marginTop = '40px';
-		var table = document.createElement('table');
+		/*var table = document.createElement('table');
 		//table.style.cellspacing = '10';
 		table.setAttribute('class', 'workoutTable');
-		border.appendChild(table);
-
+		border.appendChild(table);*/
+		var displayWrkout = document.createElement('div');
+		border.appendChild(displayWrkout);
+		displayWrkout.style.display = 'none';
 		var tableRow1 = document.createElement('tr');
-		border.appendChild(tableRow1);
+		displayWrkout.appendChild(tableRow1);
 
 		var tableHeader1 = document.createElement('th');
 		tableHeader1.innerText = 'Exercise';
-		border.appendChild(tableHeader1);
+		displayWrkout.appendChild(tableHeader1);
 
 		var tableHeader2 = document.createElement('th');
 		tableHeader2.innerText = 'Sets';
-		border.appendChild(tableHeader2);
+		displayWrkout.appendChild(tableHeader2);
 
 		var tableHeader3 = document.createElement('th');
 		tableHeader3.innerText = 'Reps';
-		border.appendChild(tableHeader3);
+		displayWrkout.appendChild(tableHeader3);
 
 		var tableHeader4 = document.createElement('th');
 		tableHeader4.innerText = 'Weight';
-		border.appendChild(tableHeader4);
+		displayWrkout.appendChild(tableHeader4);
 
 		var tableRow2 = document.createElement('tr');
-		border.appendChild(tableRow2);
+		//tableRow2.setAttribute('id', 'tableRow2');
+		//document.getElementById('tableRow2').style.display = 'none';
+		displayWrkout.appendChild(tableRow2);
 
 		var exerciseData1 = document.createElement('td');
 		//exerciseData1.contentEditable = 'true';
 		var textNode = document.createTextNode(exercise1);
 		exerciseData1.appendChild(textNode);
+		header.addEventListener('click', function() {
+			//document.getElementsByTagName('TR').style.display = 'inline-block';
+			//document.getElementsByTagName('TH').style.display = 'inline-block';
+			if(displayWrkout.style.display == 'none') {
+				displayWrkout.style.display = 'block';
+			} else {
+				displayWrkout.style.display = 'none';
+			}
+
+		});
 
 		tableRow2.appendChild(exerciseData1);
 		exerciseData1.addEventListener('click', function() {
@@ -109,7 +123,12 @@ function johnPage() {
 		editSets.setAttribute('class', 'editSetBtn');
 		editSets.innerText = 'Edit';
 		//setData1.appendChild(editBr);
-		setData1.appendChild(editSets);
+		if(sets1 === '') {
+			editSets.style.display = 'none';
+		} else {
+			setData1.appendChild(editSets);
+		}
+
 
 		//setData1.appendChild(textNode);
 		tableRow2.appendChild(setData1);
@@ -152,8 +171,9 @@ function johnPage() {
 			alert(weightAmount + ' saved as weight amount.');
 		});
 
+
 		var tableRow3 = document.createElement('tr');
-		border.appendChild(tableRow3);
+		displayWrkout.appendChild(tableRow3);
 
 		var exerciseData2 = document.createElement('td');
 		//exerciseData1.contentEditable = 'true';
@@ -178,7 +198,12 @@ function johnPage() {
 		editSets2.setAttribute('class', 'editSetBtn');
 		editSets2.innerText = 'Edit';
 		//setData1.appendChild(editBr);
-		setData2.appendChild(editSets2);
+		if(sets2 === '') {
+			editSets2.style.display = 'none';
+		} else {
+			setData2.appendChild(editSets2);
+		}
+
 		//setData1.appendChild(textNode);
 		tableRow3.appendChild(setData2);
 		editSets2.addEventListener('click', function() {
@@ -219,16 +244,242 @@ function johnPage() {
 			});
 			alert(weightAmount + ' saved as weight amount.');
 		});
+		//
+		//
+		// START HERE FOR EXERCISE 3 TABLE ROW 4
+		//
+		//
+		var tableRow4 = document.createElement('tr');
+		displayWrkout.appendChild(tableRow4);
+
+		var exerciseData3 = document.createElement('td');
+		//exerciseData1.contentEditable = 'true';
+		var textNode = document.createTextNode(exercise3);
+		exerciseData3.appendChild(textNode);
+
+		tableRow4.appendChild(exerciseData3);
+		exerciseData3.addEventListener('click', function() {
+			var exerciseName = prompt("Update the exercise name:");
+			exerciseData3.innerText = exerciseName;
+			//console.log(key);
+			johnRef.child(key).update({
+				Exercise3: exerciseName
+			});
+			alert(exerciseName + ' saved as exercise name.');
+		});
+
+		var setData3 = document.createElement('td');
+		//var textNode = document.createTextNode(sets1);
+		createSetRadioBtns(setData3, sets3);
+		//var editBr = document.createElement('br');
+		var editSets3 = document.createElement('button');
+		editSets3.setAttribute('class', 'editSetBtn');
+		editSets3.innerText = 'Edit';
+		//setData1.appendChild(editBr);
+		if(sets3 === '') {
+			editSets3.style.display = 'none';
+		} else {
+			setData3.appendChild(editSets3);
+		}
+
+
+		//setData1.appendChild(textNode);
+		tableRow4.appendChild(setData3);
+		editSets3.addEventListener('click', function() {
+			var setAmount = prompt('Update set amount:');
+			setData3.innerText = setAmount;
+			johnRef.child(key).update({
+				Sets3: setAmount
+			});
+			alert(setAmount + ' saved as set amount.');
+			window.location.reload();
+			userPage();
+		});
+
+		var repData3 = document.createElement('td');
+		var textNode = document.createTextNode(reps3);
+		repData3.appendChild(textNode);
+		tableRow4.appendChild(repData3);
+		repData3.addEventListener('click', function() {
+			var repAmount = prompt("Update the rep amount:");
+			repData3.innerText = repAmount;
+			//console.log(key);
+			johnRef.child(key).update({
+				Reps3: repAmount
+			});
+			alert(repAmount + ' saved as rep amount.');
+		});
+
+		var weightData3 = document.createElement('td');
+		var textNode = document.createTextNode(weight3);
+		weightData3.appendChild(textNode);
+		tableRow4.appendChild(weightData3);
+		weightData3.addEventListener('click', function() {
+			var weightAmount = prompt("Update the weight amount:");
+			weightData3.innerText = weightAmount;
+			//console.log(key);
+			johnRef.child(key).update({
+				Weight3: weightAmount
+			});
+			alert(weightAmount + ' saved as weight amount.');
+		});
+
+		var tableRow5 = document.createElement('tr');
+		displayWrkout.appendChild(tableRow5);
+
+		var exerciseData4 = document.createElement('td');
+		//exerciseData1.contentEditable = 'true';
+		var textNode = document.createTextNode(exercise4);
+		exerciseData4.appendChild(textNode);
+		tableRow5.appendChild(exerciseData4);
+		exerciseData4.addEventListener('click', function() {
+			var exerciseName = prompt("Update the exercise name:");
+			exerciseData4.innerText = exerciseName;
+			//console.log(key);
+			johnRef.child(key).update({
+				Exercise4: exerciseName
+			});
+			alert(exerciseName + ' saved as exercise name.');
+		});
+
+		var setData4 = document.createElement('td');
+		//var textNode = document.createTextNode(sets1);
+		createSetRadioBtns(setData4, sets4);
+		//var editBr = document.createElement('br');
+		var editSets4 = document.createElement('button');
+		editSets4.setAttribute('class', 'editSetBtn');
+		editSets4.innerText = 'Edit';
+		//setData1.appendChild(editBr);
+		if(sets4 === '') {
+			editSets4.style.display = 'none';
+		} else {
+			setData4.appendChild(editSets4);
+		}
+
+		//setData1.appendChild(textNode);
+		tableRow5.appendChild(setData4);
+		editSets4.addEventListener('click', function() {
+			var setAmount = prompt('Update set amount:');
+			setData4.innerText = setAmount;
+			johnRef.child(key).update({
+				Sets4: setAmount
+			});
+			alert(setAmount + ' saved as set amount.');
+			window.location.reload();
+			userPage();
+		});
+
+		var repData4 = document.createElement('td');
+		var textNode = document.createTextNode(reps4);
+		repData4.appendChild(textNode);
+		tableRow5.appendChild(repData4);
+		repData4.addEventListener('click', function() {
+			var repAmount = prompt("Update the rep amount:");
+			repData4.innerText = repAmount;
+			//console.log(key);
+			johnRef.child(key).update({
+				Reps4: repAmount
+			});
+			alert(repAmount + ' saved as rep amount.');
+		});
+
+		var weightData4 = document.createElement('td');
+		var textNode = document.createTextNode(weight4);
+		weightData4.appendChild(textNode);
+		tableRow5.appendChild(weightData4);
+		weightData4.addEventListener('click', function() {
+			var weightAmount = prompt("Update the weight amount:");
+			weightData4.innerText = weightAmount;
+			//console.log(key);
+			johnRef.child(key).update({
+				Weight4: weightAmount
+			});
+			alert(weightAmount + ' saved as weight amount.');
+		});
+
+		var tableRow6 = document.createElement('tr');
+		displayWrkout.appendChild(tableRow6);
+
+		var exerciseData5 = document.createElement('td');
+		//exerciseData1.contentEditable = 'true';
+		var textNode = document.createTextNode(exercise4);
+		exerciseData5.appendChild(textNode);
+		tableRow6.appendChild(exerciseData5);
+		exerciseData5.addEventListener('click', function() {
+			var exerciseName = prompt("Update the exercise name:");
+			exerciseData5.innerText = exerciseName;
+			//console.log(key);
+			johnRef.child(key).update({
+				Exercise5: exerciseName
+			});
+			alert(exerciseName + ' saved as exercise name.');
+		});
+
+		var setData5 = document.createElement('td');
+		//var textNode = document.createTextNode(sets1);
+		createSetRadioBtns(setData5, sets5);
+		//var editBr = document.createElement('br');
+		var editSets5 = document.createElement('button');
+		editSets5.setAttribute('class', 'editSetBtn');
+		editSets5.innerText = 'Edit';
+		//setData1.appendChild(editBr);
+		if(sets5 === '') {
+			editSets5.style.display = 'none';
+		} else {
+			setData5.appendChild(editSets5);
+		}
+
+		//setData1.appendChild(textNode);
+		tableRow6.appendChild(setData5);
+		editSets5.addEventListener('click', function() {
+			var setAmount = prompt('Update set amount:');
+			setData5.innerText = setAmount;
+			johnRef.child(key).update({
+				Sets5: setAmount
+			});
+			alert(setAmount + ' saved as set amount.');
+			window.location.reload();
+			userPage();
+		});
+
+		var repData5 = document.createElement('td');
+		var textNode = document.createTextNode(reps5);
+		repData5.appendChild(textNode);
+		tableRow6.appendChild(repData5);
+		repData5.addEventListener('click', function() {
+			var repAmount = prompt("Update the rep amount:");
+			repData5.innerText = repAmount;
+			//console.log(key);
+			johnRef.child(key).update({
+				Reps5: repAmount
+			});
+			alert(repAmount + ' saved as rep amount.');
+		});
+
+		var weightData5 = document.createElement('td');
+		var textNode = document.createTextNode(weight5);
+		weightData5.appendChild(textNode);
+		tableRow6.appendChild(weightData5);
+		weightData5.addEventListener('click', function() {
+			var weightAmount = prompt("Update the weight amount:");
+			weightData5.innerText = weightAmount;
+			//console.log(key);
+			johnRef.child(key).update({
+				Weight5: weightAmount
+			});
+			alert(weightAmount + ' saved as weight amount.');
+		});
+
 		var btnDiv = document.createElement('div');
 		btnDiv.setAttribute('id', 'btnDiv');
 		//btnDiv.style.display = 'row';
-		border.appendChild(btnDiv);
+		displayWrkout.appendChild(btnDiv);
 
 		var completeWorkoutBtn = document.createElement('button');
 		completeWorkoutBtn.innerText = 'Complete';
 		completeWorkoutBtn.setAttribute('id', 'completeWorkoutBtn');
 		btnDiv.appendChild(completeWorkoutBtn);
-		border.appendChild(completeWorkoutBtn);
+		displayWrkout.appendChild(completeWorkoutBtn);
 
 		completeWorkoutBtn.addEventListener('click', function() {
 			document.getElementById('prmptCompWorkName').innerHTML = showWorkouts;
@@ -687,30 +938,6 @@ function createSetRadioBtns(setData1, sets1) {
 }//END createSetRadioBtns() Function
 
 
-
-/*document.getElementById('signUpBtn').addEventListener('click', function() {
-	var userName = document.getElementById('displayNameInput').value.trim();
-	var userDisplay = document.getElementById('border');
-	if(userName.length > 0) {
-			saveToFB(userName);
-			//var li = "<li>" + userName + "<li>";
-			//document.getElementById('userList').innerHTML += li;
-		}
-		document.getElementById("displayNameInput").value = "";
-		alert('Welcome ' + userName);
-		location.reload();
-	/*
-	alert('Welcome ' + userName + '!');
-	document.getElementById('displayNameInput').value = "";
-	var userRef = firebase.database().ref('Users').push({
-		name: userName
-	});
-	var btn = document.createElement("BUTTON");
-    var t = document.createTextNode(userName);
-    btn.appendChild(t);
-    document.body.appendChild(btn);
-	*/
-//}, false);
 var userHeader = document.getElementById('userHeader');
 var div = document.getElementById('border');
 
@@ -746,283 +973,3 @@ function displayModal() {
 	    }
 	}
 }
-
-function saveToFB(userName) {
-	// save data to Amazon Firebase
-	userRef.push({
-		name: userName,
-		workoutName: 'Default'
-	});
-	document.getElementById("displayNameInput").value = "";
-
-};
-
-function btnHistorySelect(event) {
-	//console.log("Button Pressed!");
-	//alert(event.target);
-	var id = this.id;
-	console.log(id);
-}
-/*
-function refreshList(list, element) {
-	var ls = '';
-	for (var i = 0; i < list.length; i++) {
-		ls += '<li data-key="' + list[i].key + '">' + list[i].title + ' ' + genLinks(list[i].key, list[i].title) + '</li>';
-	};
-	/*document.getElementById('amazonList').innerHTML = ls;*/
-	/*document.getElementById('cannedList').innerHTML = ls;*/
-	//document.getElementById(element).innerHTML = ls;
-//};
-/*
-function genLinks(key, usName) {
-    var links = '';
-    links += '<a id="editBtn" href="javascript:edit(\'' + key + '\',\'' + usName + '\')">Edit</a> | ';
-    links += '<a id="deleteBtn" href="javascript:del(\'' + key + '\',\'' + usName + '\')">Delete</a>';
-    return links;
-};
-function edit(key, usName) {
-    var userName = prompt("Update the user name", usName);
-    if (usName && userName.length > 0) {
-        // Build the FireBase endpoint to the item
-        var updateUserRef = buildEndPoint(key);
-        updateUserRef.update({
-            name: userName
-        });
-    }
-}
-function del(key, usName) {
-    var response = confirm("Remove \"" + usName + "\" from the list?");
-    if (response == true) {
-        // build the FB endpoint to the item in movies collection
-        var deleteItemRef = buildEndPoint(key);
-        deleteItemRef.remove();
-    }
-}
-function buildEndPoint(key) {
-	var userEnd = firebase.database().ref('Users').child(key);
-	location.reload();
-	return userEnd;
-}
-// this will get fired on inital load as well as when ever there is a change in the data
-userRef.on("value", function(snapshot) {
-	var data = snapshot.val();
-	console.log(data);
-  	var list = [];
-	var element = 'userList';
-  	for (var key in data) {
-  		if (data.hasOwnProperty(key)) {
-    	title = data[key].title ? data[key].title : '';
-      if (title.trim().length > 0) {
-      	list.push({
-        	title: title,
-          key: key
-        })
-      }
-    }
-  }
-  // refresh the UI
-  refreshList(list, element);
-});
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-/**
- * Handles the sign in button press.
- */
- /*
-function toggleSignIn() {
-	if (firebase.auth().currentUser) {
-        // [START signout]
-        firebase.auth().signOut();
-        // [END signout]
-      } else {
-        var email = document.getElementById('usrNameInput').value;
-        var password = document.getElementById('passwordInput').value;
-        if (email.length < 4) {
-          alert('Please enter an email address.');
-          return;
-        }
-        if (password.length < 4) {
-          alert('Please enter a password.');
-		  email.value = "";
-          return;
-        }
-		email.value = "";
-        // Sign in with email and pass.
-        // [START authwithemail]
-        firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-          // Handle Errors here.
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          // [START_EXCLUDE]
-          if (errorCode === 'auth/wrong-password') {
-            alert('Wrong password.');
-          } else {
-            alert(errorMessage);
-          }
-          console.log(error);
-          document.getElementById('loginBtn').disabled = false;
-          // [END_EXCLUDE]
-		  email.value = "";
-        });
-        // [END authwithemail]
-		email.value = "";
-      }
-      document.getElementById('loginBtn').disabled = true;
-	  email.value = "";
-	}
-    /**
-     * Handles the sign up button press.
-     */
-
-	 /*
-    function handleSignUp() {
-      var email = document.getElementById('sgnUpUsrInput').value;
-      var password = document.getElementById('sgnUpPswrdInput').value;
-	 alert(" " + email);
-	 if (email.length < 4) {
-        alert('Please enter an email address.');
-        return;
-      }
-      if (password.length < 4) {
-        alert('Please enter a password.');
-        return;
-      }
-      // Sign in with email and pass.
-      // [START createwithemail]
-      firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // [START_EXCLUDE]
-        if (errorCode == 'auth/weak-password') {
-          alert('The password is too weak.');
-        } else {
-          alert(errorMessage);
-        }
-        console.log(error);
-        // [END_EXCLUDE]
-      });
-      // [END createwithemail]
-	  var userRef = firebase.database().ref('Users');
-	  var userName = document.getElementById('displayNameInput').value;
-	  alert(" " + userName);
-	  //email.value = "";
-	  //password.value = "";
-	 // userRef.push({
-		//  name: userName
-	  //});
-	  var uid = firebase.auth().currentUser.uid;
-	  firebase.database().ref('Users').child(uid).set({
-  		username: userName,
-  		userId: uid
-	});
-		/*
-	  var workoutsRef = firebase.database().ref('Users').child(uid);
-	  workoutsRef.push({
-		  username: userName,
-		  name: 'Workouts'
-	  })
-	  */
-    //}
-    /**
-     * Sends an email verification to the user.
-     */
-	 /*
-    function sendEmailVerification() {
-      // [START sendemailverification]
-      firebase.auth().currentUser.sendEmailVerification().then(function() {
-        // Email Verification sent!
-        // [START_EXCLUDE]
-        alert('Email Verification Sent!');
-        // [END_EXCLUDE]
-      });
-      // [END sendemailverification]
-    }
-    function sendPasswordReset() {
-      var email = document.getElementById('email').value;
-      // [START sendpasswordemail]
-      firebase.auth().sendPasswordResetEmail(email).then(function() {
-        // Password Reset Email Sent!
-        // [START_EXCLUDE]
-        alert('Password Reset Email Sent!');
-        // [END_EXCLUDE]
-      }).catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // [START_EXCLUDE]
-        if (errorCode == 'auth/invalid-email') {
-          alert(errorMessage);
-        } else if (errorCode == 'auth/user-not-found') {
-          alert(errorMessage);
-        }
-        console.log(error);
-        // [END_EXCLUDE]
-      });
-      // [END sendpasswordemail];
-    }
-	*/
-    /*
-     * initApp handles setting up UI event listeners and registering Firebase auth listeners:
-     *  - firebase.auth().onAuthStateChanged: This listener is called when the user is signed in or
-     *    out, and that is where we update the UI.
-     */
-	/*
-    function initApp() {
-      // Listening for auth state changes.
-      // [START authstatelistener]
-      firebase.auth().onAuthStateChanged(function(user) {
-        // [START_EXCLUDE silent]
-        document.getElementById('verifyEmailBtn').disabled = true;
-        // [END_EXCLUDE]
-        if (user) {
-          // User is signed in.
-          var displayName = user.displayName;
-          var email = user.email;
-          var emailVerified = user.emailVerified;
-          var photoURL = user.photoURL;
-          var isAnonymous = user.isAnonymous;
-          var uid = user.uid;
-          var providerData = user.providerData;
-          // [START_EXCLUDE]
-          document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
-          document.getElementById('loginBtn').textContent = 'Sign out';
-          document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
-          if (!emailVerified) {
-            document.getElementById('verifyEmailBtn').disabled = false;
-          }
-          // [END_EXCLUDE]
-        } else {
-          // User is signed out.
-          // [START_EXCLUDE]
-          document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
-          document.getElementById('loginBtn').textContent = 'Sign in';
-          document.getElementById('quickstart-account-details').textContent = 'null';
-          // [END_EXCLUDE]
-        }
-        // [START_EXCLUDE silent]
-        document.getElementById('quickstart-sign-in').disabled = false;
-        // [END_EXCLUDE]
-      });
-      // [END authstatelistener]
-      document.getElementById('loginBtn').addEventListener('click', toggleSignIn, false);
-      document.getElementById('signUpBtn').addEventListener('click', handleSignUp, false);
-      document.getElementById('verifyEmailBtn').addEventListener('click', sendEmailVerification, false);
-      document.getElementById('quickstart-password-reset').addEventListener('click', sendPasswordReset, false);
-    }
-    window.onload = function() {
-      initApp();
-	  document.getElementById('usrNameInput').value = "";
-    };
-	*/
