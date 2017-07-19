@@ -1,0 +1,269 @@
+<!DOCTYPE HTML>
+<HTML>
+
+<head>
+	<meta charset="utf-8" />
+	<link href="css/app.css" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Prosto+One" rel="stylesheet">
+	<link rel="stylesheet" href="./css/flipclock.css">
+	<link rel='stylesheet' href='./css/fullcalendar.css' />
+	<script src='./scripts/jquery.min.js'></script>
+	<script src='./scripts/moment.min.js'></script>
+	<script src='./scripts/fullcalendar.js'></script>
+	<script type='text/javascript' src='./scripts/gcal.js'></script>
+	<title>JMF Workout</title>
+	<h1 id='userHeader'></h1>
+	<div class="topnav" id="myTopnav">
+		<a href="index.html">Home</a>
+		<a id="calendarLink">Calendar</a>
+		<a id="createWrkoutBtn">Create Workout</a>
+		<a href="videos.html">Videos</a>
+		<a id='startClock'>Start Clock</a>
+		<a id='stopClock'>Stop</a>
+		<a id='resetClock'>Reset</a>
+		<a id='closeClock'>Close</a>
+		<a id="authorize-button" style="display: none;">Authorize</a>
+		<a id="signout-button" style="display: none;">Sign Out</a>
+	</div>
+</head>
+
+<body>
+	<h2 id='subHeader'>Users</h2>
+	<div class='clockContainer'>
+		<div class='showClock'>
+		</div>
+	</div>
+	<div class='calendarConatiner'>
+		<button id='closeCalendarBtn'>Close</button>
+		<div id='showCalendar'>
+			<!--<iframe src="https://calendar.google.com/calendar/embed?src=jmfavaro62%40gmail.com&ctz=America/Los_Angeles" marin = '20%' style="border: 0" width="400" height="300" frameborder="0" scrolling="no"></iframe>-->
+		</div>
+	</div>
+	<!--<pre id="content"></pre>-->
+	<h4 id='workoutHeader' onclick="loadWorkout()"></h4>
+	<div id="border">
+
+
+	</div>
+	<!--<button id="createWrkoutBtn">Create Workout</button>-->
+	<br />
+	<h3 id='subHeader2' style="display: none">First Time Registration</h3>
+	<div id="createWorkoutArea" style="display: none">
+		<div class="usrNameRow">
+			<h5 id="sgnUpText">Name:</h5>
+			<input id="displayNameInput" type="text" placeholder="Name" />
+			<br>
+			<div id='createWorkoutArea' class='createWorkoutArea'>
+				<h5 id="sgnUpText">Name:</h5>
+				<input id="displayNameInput" type="text" placeholder="Name" />
+				<h5 class='exercise1Text' id="exercise1Text">Exercise 1:</h5>
+				<input class='exercise1Input' id="displayNameInput" type="text" placeholder="Name" />
+				<h5 id="sgnUpText">Exercise 2:</h5>
+				<input id="displayNameInput" type="text" placeholder="Name" />
+			</div>
+		</div>
+		<!--<br />
+			<div class="usrNameRow">
+				<h5 id="sgnUpText">Email:</h5>
+				<input id="sgnUpUsrInput" type="text" placeholder="Bob@gmail.com"/>
+			</div>
+			<br />
+			<div class="passwordRow">
+				<h5 id="sgnUpPswrdText">Password:</h5>
+				<input id="sgnUpPswrdInput" type="password" placeholder="Password"/>
+			</div>
+			<br />
+			<button id="verifyEmailBtn">Verify Email</button>
+			-->
+		<button id="signUpBtn">Register</button>
+	</div>
+	<br />
+	<!-- Modal content -->
+
+	<!-- Trigger/Open The Modal -->
+
+
+	<!-- The Modal -->
+	<div id="myModal" class="modal">
+
+		<!-- Modal content -->
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<p>Create Workout</p>
+			<div class="usrNameRow">
+				<h5 class="formatInput">Workout Name:</h5>
+				<input type="text" class="formatInput" id="workoutNameInput" placeholder="Workout 1" />
+				<br />
+				<h5 class="formatInput">Exercise 1:</h5>
+				<input type="text" class="formatInput" id="exerciseInput1" placeholder="Squat" />
+				<h5 class="formatInput">Weight:</h5>
+				<input type="text" class="formatInput" id="weightInput1" placeholder="80 Lbs" />
+				<h5 class="formatInput">Reps:</h5>
+				<input type="text" class="formatInput" id="repInput1" placeholder="5" />
+				<h5 class="formatInput">Sets:</h5>
+				<input type="text" class="formatInput" id="setInput1" placeholder="5" />
+				<br />
+				<h5 class="formatInput">Exercise 2:</h5>
+				<input type="text" class="formatInput" id="exerciseInput2" placeholder="Squat" />
+				<h5 class="formatInput">Weight:</h5>
+				<input type="text" class="formatInput" id="weightInput2" placeholder="80 Lbs" />
+				<h5 class="formatInput">Reps:</h5>
+				<input type="text" class="formatInput" id="repInput2" placeholder="5" />
+				<h5 class="formatInput">Sets:</h5>
+				<input type="text" class="formatInput" id="setInput2" placeholder="5" />
+				<br />
+				<h5 class="formatInput">Exercise 3:</h5>
+				<input type="text" class="formatInput" id="exerciseInput3" placeholder="Squat" />
+				<h5 class="formatInput">Weight:</h5>
+				<input type="text" class="formatInput" id="weightInput3" placeholder="80 Lbs" />
+				<h5 class="formatInput">Reps:</h5>
+				<input type="text" class="formatInput" id="repInput3" placeholder="5" />
+				<h5 class="formatInput">Sets:</h5>
+				<input type="text" class="formatInput" id="setInput3" placeholder="5" />
+				<br />
+				<h5 class="formatInput">Exercise 4:</h5>
+				<input type="text" class="formatInput" id="exerciseInput4" placeholder="Squat" />
+				<h5 class="formatInput">Weight:</h5>
+				<input type="text" class="formatInput" id="weightInput4" placeholder="80 Lbs" />
+				<h5 class="formatInput">Reps:</h5>
+				<input type="text" class="formatInput" id="repInput4" placeholder="5" />
+				<h5 class="formatInput">Sets:</h5>
+				<input type="text" class="formatInput" id="setInput4" placeholder="5" />
+				<br />
+				<h5 class="formatInput">Exercise 5:</h5>
+				<input type="text" class="formatInput" id="exerciseInput5" placeholder="Squat" />
+				<h5 class="formatInput">Weight:</h5>
+				<input type="text" class="formatInput" id="weightInput5" placeholder="80 Lbs" />
+				<h5 class="formatInput">Reps:</h5>
+				<input type="text" class="formatInput" id="repInput5" placeholder="5" />
+				<h5 class="formatInput">Sets:</h5>
+				<input type="text" class="formatInput" id="setInput5" placeholder="5" />
+				<br />
+				<button id='prmptCreateWrkoutBtn'>Create</button>
+				<button id='prmptCloseCrteWrktBtn'>Cancel</button>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- The Modal -->
+	<div id="completeWorkModal" class="modal">
+
+		<!-- Modal content -->
+		<div class="modal-content">
+			<!--<span class="close">&times;</span>-->
+			<p>Complete Workout</p>
+			<div class="usrNameRow">
+				<h5 class="formatInput" id='prmptCompWorkName' style='color: green'></h5>
+				<br />
+
+				<h5 class="formatInput" id='prmptCompWorkEx1' style='color: red'></h5>
+				<h5 class="formatInput">Weight:</h5>
+				<h5 class="formatInput" id='prmptCompWorkWeight1'></h5>
+
+				<h5 class="formatInput">Reps:</h5>
+				<h5 class="formatInput" id='prmptCompWorkReps1'></h5>
+
+				<h5 class="formatInput">Sets:</h5>
+				<input type="text" class="formatInput" id="cmpWrkSetInput1" placeholder="5" />
+				<br />
+
+				<h5 class="formatInput" id='prmptCompWorkEx2' style='color: red'></h5>
+				<h5 class="formatInput">Weight:</h5>
+				<h5 class="formatInput" id='prmptCompWorkWeight2'></h5>
+
+				<h5 class="formatInput">Reps:</h5>
+				<h5 class="formatInput" id='prmptCompWorkReps2'></h5>
+
+				<h5 class="formatInput">Sets:</h5>
+				<input type="text" class="formatInput" id="cmpWrkSetInput2" placeholder="5" />
+				<br />
+
+				<h5 class="formatInput" id='prmptCompWorkEx3' style='color: red'></h5>
+				<h5 class="formatInput">Weight:</h5>
+				<h5 class="formatInput" id='prmptCompWorkWeight3'></h5>
+
+				<h5 class="formatInput">Reps:</h5>
+				<h5 class="formatInput" id='prmptCompWorkReps3'></h5>
+
+				<h5 class="formatInput">Sets:</h5>
+				<input type="text" class="formatInput" id="cmpWrkSetInput3" placeholder="5" />
+				<br />
+
+				<h5 class="formatInput" id='prmptCompWorkEx4' style='color: red'></h5>
+				<h5 class="formatInput">Weight:</h5>
+				<h5 class="formatInput" id='prmptCompWorkWeight4'></h5>
+
+				<h5 class="formatInput">Reps:</h5>
+				<h5 class="formatInput" id='prmptCompWorkReps4'></h5>
+
+				<h5 class="formatInput">Sets:</h5>
+				<input type="text" class="formatInput" id="cmpWrkSetInput4" placeholder="5" />
+				<br />
+
+				<h5 class="formatInput" id='prmptCompWorkEx5' style='color: red'></h5>
+				<h5 class="formatInput">Weight:</h5>
+				<h5 class="formatInput" id='prmptCompWorkWeight5'></h5>
+
+				<h5 class="formatInput">Reps:</h5>
+				<h5 class="formatInput" id='prmptCompWorkReps5'></h5>
+
+				<h5 class="formatInput">Sets:</h5>
+				<input type="text" class="formatInput" id="cmpWrkSetInput5" placeholder="5" />
+				<br />
+				<button id='prmptCompleteWrkoutBtn'>Complete</button>
+			</div>
+		</div>
+	</div>
+	<div id="calendarModal" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
+					<h4 id="modalTitle" class="modal-title"></h4>
+				</div>
+				<div id="modalBody" class="modal-body"> </div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Container where we'll display the user details -->
+	<!-- <div class="quickstart-user-details-container">
+            Firebase sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
+            <div>Firebase auth <code>currentUser</code> object value:</div>
+            <pre><code id="quickstart-account-details">null</code></pre>
+          </div>
+	  	-->
+</body>
+<script>
+	function loadWorkout() {
+		//document.getElementById('workoutTable').style.display = 'table';
+		console.log('WorkoutHeader clicked!');
+	}
+</script>
+<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+<script>
+	// Initialize Firebase
+	var config = {
+		apiKey: "AIzaSyBvBaCN1y4klYAtCCeB6zvUAm4pxUR44aE",
+		authDomain: "workoutapp-c49bb.firebaseapp.com",
+		databaseURL: "https://workoutapp-c49bb.firebaseio.com",
+		projectId: "workoutapp-c49bb",
+		storageBucket: "workoutapp-c49bb.appspot.com",
+		messagingSenderId: "588388264497"
+	};
+	firebase.initializeApp(config);
+</script>
+<script src="./scripts/jquery-3.2.1.js"></script>
+<script>
+	jq321 = jQuery.noConflict(true);
+</script>
+<script src="./scripts/flipclock.min.js"></script>
+<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+<script src="./scripts/momen-with-locales.js"></script>
+<script src="./scripts/meganPage.js"></script>
+
+
+</HTML>
