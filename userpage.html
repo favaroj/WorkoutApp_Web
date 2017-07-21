@@ -156,8 +156,16 @@
 			<!--<span class="close">&times;</span>-->
 			<p>Complete Workout</p>
 			<div class="usrNameRow">
-				<h5 class="formatInput" id='prmptCompWorkName' style='color: green'></h5>
+
+				<h4 class="formatInput" id='prmptCompWorkName' style='color: green'></h5>
 				<br />
+
+				<h5 class="formatInput" id='prmptCompWorkDate' style='color: blue'>Date:</h5>
+				<input type="text" class="formatInput" id="cmpWrkDateYear" placeholder="2017" />
+				<input type="text" class="formatInput" id="cmpWrkDateMonth" placeholder="01" />
+				<input type="text" class="formatInput" id="cmpWrkDateDay" placeholder="31" />
+				<br/>
+
 
 				<h5 class="formatInput" id='prmptCompWorkEx1' style='color: red'></h5>
 				<h5 class="formatInput">Weight:</h5>
@@ -223,13 +231,13 @@
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
 					<h4 id="modalTitle" class="modal-title"></h4>
-				</div>
-				<div id="modalBody" class="modal-body"> </div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
+			</div>
+			<div id="modalBody" class="modal-body"> </div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			</div>
 		</div>
+	</div>
 	</div>
 	<!-- Container where we'll display the user details -->
 	<!-- <div class="quickstart-user-details-container">
@@ -264,7 +272,7 @@
 </script>
 <script src="./scripts/flipclock.min.js"></script>
 <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
-<script src="./scripts/momen-with-locales.js"></script>
+<script src="./scripts/moment-with-locales.js"></script>
 <script src="./scripts/authentication.js"></script>
 
 </HTML>
