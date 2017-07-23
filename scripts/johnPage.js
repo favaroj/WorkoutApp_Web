@@ -140,7 +140,7 @@ function johnPage() {
 			});
 			alert(setAmount + ' saved as set amount.');
 			window.location.reload();
-			userPage();
+			johnPage();
 		});
 
 		var repData1 = document.createElement('td');
@@ -214,7 +214,7 @@ function johnPage() {
 			});
 			alert(setAmount + ' saved as set amount.');
 			window.location.reload();
-			userPage();
+			johnPage();
 		});
 
 		var repData2 = document.createElement('td');
@@ -293,7 +293,7 @@ function johnPage() {
 			});
 			alert(setAmount + ' saved as set amount.');
 			window.location.reload();
-			userPage();
+			johnPage();
 		});
 
 		var repData3 = document.createElement('td');
@@ -366,7 +366,7 @@ function johnPage() {
 			});
 			alert(setAmount + ' saved as set amount.');
 			window.location.reload();
-			userPage();
+			johnPage();
 		});
 
 		var repData4 = document.createElement('td');
@@ -439,7 +439,7 @@ function johnPage() {
 			});
 			alert(setAmount + ' saved as set amount.');
 			window.location.reload();
-			userPage();
+			johnPage();
 		});
 
 		var repData5 = document.createElement('td');
@@ -779,7 +779,7 @@ function johnPage() {
 	document.getElementById('prmptCloseCrteWrktBtn').addEventListener('click', function() {
 		location.reload();
 	});
-	document.getElementById('calendarLink').addEventListener('click', function() {
+	/*document.getElementById('calendarLink').addEventListener('click', function() {
 		var cal = document.getElementById('showCalendar');
 		cal.style.display = 'inline-block';
 		var closeCalBtn = document.getElementById('closeCalendarBtn');
@@ -882,8 +882,8 @@ function johnPage() {
 					var ref = johnRef.child(childKey);
 					ref.child('Log').off('child_added');
 				});*/
-			});
-		});
+			//});
+		//});
 
 		/*var cal = document.getElementById('showCalendar');
 		//console.log(workoutName);
@@ -914,9 +914,9 @@ function johnPage() {
 	   		cal.style.display = 'none';
 			document.getElementById('subHeader').innerHTML = 'Workouts';
    		}*/
-	}, false); // END Calendar onclick function
+	//}, false); // END Calendar onclick function
 	//});
-} // END userPage function //FOR TESTING - DELETE IF NOT NEEDED!!\\
+} // END johnPage function //FOR TESTING - DELETE IF NOT NEEDED!!\\
 
 johnPage();
 

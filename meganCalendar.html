@@ -9,8 +9,8 @@
 	<script src='./scripts/jquery.min.js'></script>
 	<script src='./scripts/moment.min.js'></script>
 	<script src='./scripts/fullcalendar.js'></script>
-	<title>JMF Workout</title>
-	<h1>Calendar</h1>
+	<title>M Calendar</title>
+	<h1>M Calendar</h1>
 	<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
 	<script>
 		// Initialize Firebase
@@ -26,12 +26,12 @@
 	</script>
 	<script>
 		var userRef = firebase.database().ref('Users');
-		var johnRef = userRef.child('John');
-		johnRef.on('child_added', function(childSnapshot) {
+		var meganRef = userRef.child('Megan');
+		meganRef.on('child_added', function(childSnapshot) {
 			var childKey = childSnapshot.key;
 			console.log(childKey);
-			var ref = johnRef.child(childKey);
-			ref.child('Log').once('child_added', function(snapshot) {
+			var ref = meganRef.child(childKey);
+			ref.child('Log').on('child_added', function(snapshot) {
 				//var logKey = childSnapshot.key;
 				var dateCompleted = snapshot.val().DateCompleted;
 				var workoutName = snapshot.val().WorkoutName;
@@ -56,16 +56,16 @@
 				var sets4 = snapshot.val().Sets4;
 				var sets5 = snapshot.val().Sets5;
 				console.log(dateCompleted);
-
 				$(document).ready(function() {
 					// page is now ready, initialize the calendar...
 					var newEvent = {
 						title: workoutName,
 						start: dateCompleted,
+						allDay: true,
 						description: 'Ex1: ' + exercise1 + ' S: ' + sets1 + ' R: ' + reps1 + ' W: ' + weight1 + '\nEx2: ' + exercise2 + ' S: ' + sets2 + ' R: ' + reps2 + ' W: ' + weight2 + '\nEx3: ' + exercise3 + ' S: ' + sets3 + ' R: ' + reps3 + ' W: ' +
 							weight3 + '\nEx4: ' + exercise4 + ' S: ' + sets4 + ' R: ' + reps4 + ' W: ' + weight4 + '\nEx5: ' + exercise5 + ' S: ' + sets5 + ' R: ' + reps5 + ' W: ' + weight5
 					};
-					//$('#showCalendar').fullCalendar('renderEvent', newEvent, true);
+					$('#calendar').fullCalendar('renderEvent', newEvent, true);
 					$('#calendar').fullCalendar({
 						events: [{
 							title: workoutName,
@@ -86,14 +86,12 @@
 	<div class="topnav" id="myTopnav">
 		<a href="index.html">Home</a>
 		<a href="videos.html">Videos</a>
-		<a href="userpage.html">Return To Workouts</a>
-
+		<a href="meganPage.html">Return To Workouts</a>
 	</div>
 </head>
 
 <body>
 	<div id='calendar'></div>
-
 </body>
 
 </HTML>

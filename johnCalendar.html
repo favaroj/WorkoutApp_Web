@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<HTML>
+
+<head>
+	<meta charset="utf-8" />
+	<link href="css/calendar.css" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Prosto+One" rel="stylesheet">
+	<link rel='stylesheet' href='./css/fullcalendar.css' />
+	<script src='./scripts/jquery.min.js'></script>
+	<script src='./scripts/moment.min.js'></script>
+	<script src='./scripts/fullcalendar.js'></script>
+	<title>J Calendar</title>
+	<h1>J Calendar</h1>
+	<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+	<script>
+		// Initialize Firebase
+		var config = {
+			apiKey: "AIzaSyBvBaCN1y4klYAtCCeB6zvUAm4pxUR44aE",
+			authDomain: "workoutapp-c49bb.firebaseapp.com",
+			databaseURL: "https://workoutapp-c49bb.firebaseio.com",
+			projectId: "workoutapp-c49bb",
+			storageBucket: "workoutapp-c49bb.appspot.com",
+			messagingSenderId: "588388264497"
+		};
+		firebase.initializeApp(config);
+	</script>
+	<script>
+		var userRef = firebase.database().ref('Users');
+		var johnRef = userRef.child('John');
+		johnRef.on('child_added', function(childSnapshot) {
+			var childKey = childSnapshot.key;
+			console.log(childKey);
+			var ref = johnRef.child(childKey);
+			ref.child('Log').on('child_added', function(snapshot) {
+				//var logKey = childSnapshot.key;
+				var dateCompleted = snapshot.val().DateCompleted;
+				var workoutName = snapshot.val().WorkoutName;
+				var exercise1 = snapshot.val().Exercise1;
+				var exercise2 = snapshot.val().Exercise2;
+				var exercise3 = snapshot.val().Exercise3;
+				var exercise4 = snapshot.val().Exercise4;
+				var exercise5 = snapshot.val().Exercise5;
+				var weight1 = snapshot.val().Weight1;
+				var weight2 = snapshot.val().Weight2;
+				var weight3 = snapshot.val().Weight3;
+				var weight4 = snapshot.val().Weight4;
+				var weight5 = snapshot.val().Weight5;
+				var reps1 = snapshot.val().Reps1;
+				var reps2 = snapshot.val().Reps2;
+				var reps3 = snapshot.val().Reps3;
+				var reps4 = snapshot.val().Reps4;
+				var reps5 = snapshot.val().Reps5;
+				var sets1 = snapshot.val().Sets1;
+				var sets2 = snapshot.val().Sets2;
+				var sets3 = snapshot.val().Sets3;
+				var sets4 = snapshot.val().Sets4;
+				var sets5 = snapshot.val().Sets5;
+				console.log(dateCompleted);
+				$(document).ready(function() {
+					// page is now ready, initialize the calendar...
+					var newEvent = {
+						title: workoutName,
+						start: dateCompleted,
+						allDay: true,
+						description: 'Ex1: ' + exercise1 + ' S: ' + sets1 + ' R: ' + reps1 + ' W: ' + weight1 + '\nEx2: ' + exercise2 + ' S: ' + sets2 + ' R: ' + reps2 + ' W: ' + weight2 + '\nEx3: ' + exercise3 + ' S: ' + sets3 + ' R: ' + reps3 + ' W: ' +
+							weight3 + '\nEx4: ' + exercise4 + ' S: ' + sets4 + ' R: ' + reps4 + ' W: ' + weight4 + '\nEx5: ' + exercise5 + ' S: ' + sets5 + ' R: ' + reps5 + ' W: ' + weight5
+					};
+					$('#calendar').fullCalendar('renderEvent', newEvent, true);
+					$('#calendar').fullCalendar({
+						events: [{
+							title: workoutName,
+							start: dateCompleted,
+							allDay: true,
+							description: 'Ex1: ' + exercise1 + ' S: ' + sets1 + ' R: ' + reps1 + ' W: ' + weight1 + '\nEx2: ' + exercise2 + ' S: ' + sets2 + ' R: ' + reps2 + ' W: ' + weight2 + '\nEx3: ' + exercise3 + ' S: ' + sets3 + ' R: ' + reps3 + ' W: ' +
+								weight3 + '\nEx4: ' + exercise4 + ' S: ' + sets4 + ' R: ' + reps4 + ' W: ' + weight4 + '\nEx5: ' + exercise5 + ' S: ' + sets5 + ' R: ' + reps5 + ' W: ' + weight5
+						}],
+						editable: true,
+						eventClick: function(event, jsEvent, view) {
+							alert('' + event.title + '\n' + event.description);
+						}
+					});
+				});
+			});
+		});
+	</script>
+	<div class="topnav" id="myTopnav">
+		<a href="index.html">Home</a>
+		<a href="videos.html">Videos</a>
+		<a href="johnPage.html">Return To Workouts</a>
+	</div>
+</head>
+
+<body>
+	<div id='calendar'></div>
+</body>
+
+</HTML>
