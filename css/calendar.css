@@ -1,0 +1,49 @@
+HTML {
+	text-align: center;
+	font-size: 35px;
+}
+
+#calendar {
+	width: 80%;
+	text-align: center;
+	/*margin-left: 8%;*/
+	margin: 10px auto;
+}
+
+h1 {
+	text-align: center;
+	color: black;
+	border-color: #08373f;
+	border: 5px;
+	text-shadow: 3px 3px 1px white;
+	font-family: 'Prosto One', cursive;
+}
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: #08373f;
+    overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 22px;
+	font-family: 'Prosto One', cursive;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+}

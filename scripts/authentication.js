@@ -823,7 +823,7 @@ function johnPage() {
 				var sets5 = snapshot.val().Sets5;
 				console.log(dateCompleted);
 
-				$(document).ready(function() {
+				/*$(document).ready(function() {
 					var date = new Date();
 					var d = date.getDate();
 					var m = date.getMonth();
@@ -865,12 +865,23 @@ function johnPage() {
 
 
 
-				}); // END document.ready()
-				johnRef.on('child_added', function(childSnapshot) {
+				}); // END document.ready()*/
+				/*$(document).ready(function() {
+
+					// page is now ready, initialize the calendar...
+
+					$('#showCalendar').fullCalendar({
+						// put your options and callbacks here
+					})
+
+				});
+				var moment = $('#showCalendar').fullCalendar('getDate');
+    alert("The current date of the calendar is " + moment.format());*/
+				/*johnRef.on('child_added', function(childSnapshot) {
 					var childKey = childSnapshot.key;
 					var ref = johnRef.child(childKey);
 					ref.child('Log').off('child_added');
-				});
+				});*/
 			});
 		});
 
