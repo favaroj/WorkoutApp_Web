@@ -3,7 +3,8 @@ var meganRef = userRef.child('Megan');
 
 function meganPage() {
 	//document.getElementById('meganBtn').addEventListener('click', function() {
-	displayModal();
+	displayCreateWrktModal();
+	displayEditWrktModal();
 	//var signUpBtn = document.getElementById('signUpBtn');
 	//signUpBtn.style.display = 'none';
 	document.getElementById('userHeader').innerHTML = 'Megan';
@@ -49,21 +50,35 @@ function meganPage() {
 		console.log(key);
 
 		var div1 = document.createElement('div');
+
+		div1.style.border = 'solid #48BBEC';
+		div1.style.borderWidth = '5px';
+		div1.style.borderRadius = '12px';
+		div1.style.background = '#08373f';
+		div1.style.width = '600px';
+		div1.style.height = '50px';
+		div1.style.margin = '0 auto';
+		div1.style.marginBottom = '20px';
+
 		var header = document.createElement('h4');
 		//header.style.margin-top = '20px';
+		header.style.margin = '0 auto 0';
 		header.innerText = showWorkouts;
-		header.style.color = 'green';
+		header.style.color = 'white';
 		div1.appendChild(header);
 
 		var border = document.getElementById('border');
-		border.appendChild(header);
-		header.style.marginTop = '40px';
+		//border.appendChild(header);
+		border.appendChild(div1);
+		header.style.marginTop = '10px';
 		/*var table = document.createElement('table');
 		//table.style.cellspacing = '10';
 		table.setAttribute('class', 'workoutTable');
 		border.appendChild(table);*/
 		var displayWrkout = document.createElement('div');
 		border.appendChild(displayWrkout);
+		displayWrkout.style.border = 'solid #48BBEC';
+		displayWrkout.style.marginBottom = '20px';
 		displayWrkout.style.display = 'none';
 		var tableRow1 = document.createElement('tr');
 		displayWrkout.appendChild(tableRow1);
@@ -94,12 +109,14 @@ function meganPage() {
 		var textNode = document.createTextNode(exercise1);
 		exerciseData1.appendChild(textNode);
 		header.addEventListener('click', function() {
+			header.style.color = 'red';
 			//document.getElementsByTagName('TR').style.display = 'inline-block';
 			//document.getElementsByTagName('TH').style.display = 'inline-block';
 			if (displayWrkout.style.display == 'none') {
 				displayWrkout.style.display = 'block';
 			} else {
 				displayWrkout.style.display = 'none';
+				header.style.color = 'white';
 			}
 
 		});
@@ -119,7 +136,7 @@ function meganPage() {
 		//var textNode = document.createTextNode(sets1);
 		createSetRadioBtns(setData1, sets1);
 		//var editBr = document.createElement('br');
-		var editSets = document.createElement('button');
+		/*var editSets = document.createElement('button');
 		editSets.setAttribute('class', 'editSetBtn');
 		editSets.innerText = 'Edit';
 		//setData1.appendChild(editBr);
@@ -129,9 +146,6 @@ function meganPage() {
 			setData1.appendChild(editSets);
 		}
 
-
-		//setData1.appendChild(textNode);
-		tableRow2.appendChild(setData1);
 		editSets.addEventListener('click', function() {
 			var setAmount = prompt('Update set amount:');
 			setData1.innerText = setAmount;
@@ -142,6 +156,11 @@ function meganPage() {
 			window.location.reload();
 			meganPage();
 		});
+		*/
+
+		//setData1.appendChild(textNode);
+		tableRow2.appendChild(setData1);
+
 
 		var repData1 = document.createElement('td');
 		var textNode = document.createTextNode(reps1);
@@ -156,6 +175,8 @@ function meganPage() {
 			});
 			alert(repAmount + ' saved as rep amount.');
 		});
+
+
 
 		var weightData1 = document.createElement('td');
 		var textNode = document.createTextNode(weight1);
@@ -194,7 +215,7 @@ function meganPage() {
 		//var textNode = document.createTextNode(sets1);
 		createSetRadioBtns(setData2, sets2);
 		//var editBr = document.createElement('br');
-		var editSets2 = document.createElement('button');
+		/*var editSets2 = document.createElement('button');
 		editSets2.setAttribute('class', 'editSetBtn');
 		editSets2.innerText = 'Edit';
 		//setData1.appendChild(editBr);
@@ -203,9 +224,6 @@ function meganPage() {
 		} else {
 			setData2.appendChild(editSets2);
 		}
-
-		//setData1.appendChild(textNode);
-		tableRow3.appendChild(setData2);
 		editSets2.addEventListener('click', function() {
 			var setAmount = prompt('Update set amount:');
 			setData2.innerText = setAmount;
@@ -215,7 +233,10 @@ function meganPage() {
 			alert(setAmount + ' saved as set amount.');
 			window.location.reload();
 			meganPage();
-		});
+		});*/
+		//setData1.appendChild(textNode);
+		tableRow3.appendChild(setData2);
+
 
 		var repData2 = document.createElement('td');
 		var textNode = document.createTextNode(reps2);
@@ -272,7 +293,7 @@ function meganPage() {
 		//var textNode = document.createTextNode(sets1);
 		createSetRadioBtns(setData3, sets3);
 		//var editBr = document.createElement('br');
-		var editSets3 = document.createElement('button');
+		/*var editSets3 = document.createElement('button');
 		editSets3.setAttribute('class', 'editSetBtn');
 		editSets3.innerText = 'Edit';
 		//setData1.appendChild(editBr);
@@ -281,10 +302,6 @@ function meganPage() {
 		} else {
 			setData3.appendChild(editSets3);
 		}
-
-
-		//setData1.appendChild(textNode);
-		tableRow4.appendChild(setData3);
 		editSets3.addEventListener('click', function() {
 			var setAmount = prompt('Update set amount:');
 			setData3.innerText = setAmount;
@@ -295,6 +312,10 @@ function meganPage() {
 			window.location.reload();
 			meganPage();
 		});
+		*/
+		//setData1.appendChild(textNode);
+		tableRow4.appendChild(setData3);
+
 
 		var repData3 = document.createElement('td');
 		var textNode = document.createTextNode(reps3);
@@ -346,7 +367,7 @@ function meganPage() {
 		//var textNode = document.createTextNode(sets1);
 		createSetRadioBtns(setData4, sets4);
 		//var editBr = document.createElement('br');
-		var editSets4 = document.createElement('button');
+		/*var editSets4 = document.createElement('button');
 		editSets4.setAttribute('class', 'editSetBtn');
 		editSets4.innerText = 'Edit';
 		//setData1.appendChild(editBr);
@@ -355,9 +376,6 @@ function meganPage() {
 		} else {
 			setData4.appendChild(editSets4);
 		}
-
-		//setData1.appendChild(textNode);
-		tableRow5.appendChild(setData4);
 		editSets4.addEventListener('click', function() {
 			var setAmount = prompt('Update set amount:');
 			setData4.innerText = setAmount;
@@ -368,6 +386,10 @@ function meganPage() {
 			window.location.reload();
 			meganPage();
 		});
+		*/
+		//setData1.appendChild(textNode);
+		tableRow5.appendChild(setData4);
+
 
 		var repData4 = document.createElement('td');
 		var textNode = document.createTextNode(reps4);
@@ -419,7 +441,7 @@ function meganPage() {
 		//var textNode = document.createTextNode(sets1);
 		createSetRadioBtns(setData5, sets5);
 		//var editBr = document.createElement('br');
-		var editSets5 = document.createElement('button');
+		/*var editSets5 = document.createElement('button');
 		editSets5.setAttribute('class', 'editSetBtn');
 		editSets5.innerText = 'Edit';
 		//setData1.appendChild(editBr);
@@ -428,9 +450,6 @@ function meganPage() {
 		} else {
 			setData5.appendChild(editSets5);
 		}
-
-		//setData1.appendChild(textNode);
-		tableRow6.appendChild(setData5);
 		editSets5.addEventListener('click', function() {
 			var setAmount = prompt('Update set amount:');
 			setData5.innerText = setAmount;
@@ -441,6 +460,10 @@ function meganPage() {
 			window.location.reload();
 			meganPage();
 		});
+		*/
+		//setData1.appendChild(textNode);
+		tableRow6.appendChild(setData5);
+
 
 		var repData5 = document.createElement('td');
 		var textNode = document.createTextNode(reps5);
@@ -472,14 +495,16 @@ function meganPage() {
 
 		var btnDiv = document.createElement('div');
 		btnDiv.setAttribute('id', 'btnDiv');
+		btnDiv.style.display = 'inline';
 		//btnDiv.style.display = 'row';
 		displayWrkout.appendChild(btnDiv);
 
 		var completeWorkoutBtn = document.createElement('button');
 		completeWorkoutBtn.innerText = 'Complete';
 		completeWorkoutBtn.setAttribute('id', 'completeWorkoutBtn');
+		completeWorkoutBtn.style.display = 'inline';
 		btnDiv.appendChild(completeWorkoutBtn);
-		displayWrkout.appendChild(completeWorkoutBtn);
+		//displayWrkout.appendChild(completeWorkoutBtn);
 
 		completeWorkoutBtn.addEventListener('click', function() {
 			document.getElementById('prmptCompWorkName').innerHTML = showWorkouts;
@@ -511,6 +536,12 @@ function meganPage() {
 			var span = document.getElementsByClassName("close")[0];
 			// When the user clicks on the button, open the modal
 			modal.style.display = "block";
+
+			document.getElementById('prmptCancelCompleteWrkoutBtn').addEventListener('click', function() {
+				modal.style.display = 'none';
+				//location.reload();
+				completeWorkoutBtn.style.display = 'inline';
+			});
 			// When the user clicks on <span> (x), close the modal
 			span.onclick = function() {
 				modal.style.display = "none";
@@ -665,10 +696,140 @@ function meganPage() {
 			//console.log(key);
 
 		});*/
+		var editWrkoutBtn = document.createElement('button');
+		editWrkoutBtn.innerText = 'Edit';
+		editWrkoutBtn.setAttribute('id', 'editWrkoutBtn');
+		editWrkoutBtn.style.display = 'inline';
+		editWrkoutBtn.style.marginLeft = '5px';
+		editWrkoutBtn.style.marginRight = '5px';
+		btnDiv.appendChild(editWrkoutBtn);
+		//displayWrkout.appendChild(editWrkoutBtn);
+
+		editWrkoutBtn.addEventListener('click', function() {
+			document.getElementById('editworkoutNameInput').value = showWorkouts;
+
+			document.getElementById('editexerciseInput1').value = exercise1;
+			document.getElementById('editweightInput1').value = weight1;
+			document.getElementById('editrepInput1').value = reps1;
+			document.getElementById('editsetInput1').value = sets1;
+
+			document.getElementById('editexerciseInput2').value = exercise2;
+			document.getElementById('editweightInput2').value = weight2;
+			document.getElementById('editrepInput2').value = reps2;
+			document.getElementById('editsetInput2').value = sets2;
+
+			document.getElementById('editexerciseInput3').value = exercise3;
+			document.getElementById('editweightInput3').value = weight3;
+			document.getElementById('editrepInput3').value = reps3;
+			document.getElementById('editsetInput3').value = sets3;
+
+			document.getElementById('editexerciseInput4').value = exercise4;
+			document.getElementById('editweightInput4').value = weight4;
+			document.getElementById('editrepInput4').value = reps4;
+			document.getElementById('editsetInput4').value = sets4;
+
+			document.getElementById('editexerciseInput5').value = exercise5;
+			document.getElementById('editweightInput5').value = weight5;
+			document.getElementById('editrepInput5').value = reps5;
+			document.getElementById('editsetInput5').value = sets5;
+
+
+			//alert(displayNameInput);
+
+			// Get the modal
+			var modal = document.getElementById('editWrktModal');
+
+			// Get the button that opens the modal
+			var btn = document.getElementById("editWrkoutBtn");
+			btn.style.display = "block";
+
+			// Get the <span> element that closes the modal
+			var span = document.getElementsByClassName("close")[0];
+
+			// When the user clicks on the button, open the modal
+			modal.style.display = "block";
+
+			var close = document.getElementById('prmptCloseEditWrktBtn').addEventListener('click', function() {
+				modal.style.display = 'none';
+				editWrkoutBtn.style.display = 'inline';
+			});
+
+			// When the user clicks on <span> (x), close the modal
+			span.onclick = function() {
+				modal.style.display = "none";
+			}
+
+			// When the user clicks anywhere outside of the modal, close it
+			window.onclick = function(event) {
+				if (event.target == modal) {
+					modal.style.display = "none";
+				}
+			}
+
+			document.getElementById('prmptEditWrkoutBtn').addEventListener('click', function() {
+				var workoutName = document.getElementById('editworkoutNameInput').value.trim();
+
+				var exerciseInput1 = document.getElementById('editexerciseInput1').value.trim();
+				var weightInput1 = document.getElementById('editweightInput1').value.trim();
+				var repInput1 = document.getElementById('editrepInput1').value.trim();
+				var setInput1 = document.getElementById('editsetInput1').value.trim();
+
+				var exerciseInput2 = document.getElementById('editexerciseInput2').value.trim();
+				var weightInput2 = document.getElementById('editweightInput2').value.trim();
+				var repInput2 = document.getElementById('editrepInput2').value.trim();
+				var setInput2 = document.getElementById('editsetInput2').value.trim();
+
+				var exerciseInput3 = document.getElementById('editexerciseInput3').value.trim();
+				var weightInput3 = document.getElementById('editweightInput3').value.trim();
+				var repInput3 = document.getElementById('editrepInput3').value.trim();
+				var setInput3 = document.getElementById('editsetInput3').value.trim();
+
+				var exerciseInput4 = document.getElementById('editexerciseInput4').value.trim();
+				var weightInput4 = document.getElementById('editweightInput4').value.trim();
+				var repInput4 = document.getElementById('editrepInput4').value.trim();
+				var setInput4 = document.getElementById('editsetInput4').value.trim();
+
+				var exerciseInput5 = document.getElementById('editexerciseInput5').value.trim();
+				var weightInput5 = document.getElementById('editweightInput5').value.trim();
+				var repInput5 = document.getElementById('editrepInput5').value.trim();
+				var setInput5 = document.getElementById('editsetInput5').value.trim();
+
+				var ref = meganRef.child(key);
+				ref.update({
+					WorkoutName: workoutName,
+					Exercise1: exerciseInput1,
+					Weight1: weightInput1,
+					Sets1: setInput1,
+					Reps1: repInput1,
+					Exercise2: exerciseInput2,
+					Weight2: weightInput2,
+					Sets2: setInput2,
+					Reps2: repInput2,
+					Exercise3: exerciseInput3,
+					Weight3: weightInput3,
+					Sets3: setInput3,
+					Reps3: repInput3,
+					Exercise4: exerciseInput4,
+					Weight4: weightInput4,
+					Sets4: setInput4,
+					Reps4: repInput4,
+					Exercise5: exerciseInput5,
+					Weight5: weightInput5,
+					Sets5: setInput5,
+					Reps5: repInput5,
+				});
+				alert(showWorkouts + '' + ' has been edited!');
+				//var modal = document.getElementById('editWrktModal');
+				//modal.style.display = 'none';
+				ref.child('Log').off('child_added');
+				location.reload();
+			});
+		});
 
 		var deleteWrkoutBtn = document.createElement('button');
 		deleteWrkoutBtn.innerText = 'Delete';
 		deleteWrkoutBtn.setAttribute('id', 'deleteWrkoutBtn');
+		deleteWrkoutBtn.style.display = 'inline';
 		btnDiv.appendChild(deleteWrkoutBtn);
 
 		deleteWrkoutBtn.addEventListener('click', function() {
@@ -736,7 +897,7 @@ function meganPage() {
 		var repInput5 = document.getElementById('repInput5').value.trim();
 		var setInput5 = document.getElementById('setInput5').value.trim();
 
-		alert(' ' + workoutName + ' Created!');
+
 		//var newWorkoutRef = meganRef.push();
 		meganRef.push({
 			WorkoutName: workoutName,
@@ -761,6 +922,7 @@ function meganPage() {
 			Sets5: setInput5,
 			Reps5: repInput5,
 		});
+		alert(' ' + workoutName + ' Created!');
 		document.getElementById('workoutNameInput').value = '';
 		document.getElementById('myModal').style.display = 'none';
 		/*newWorkoutRef.set({
@@ -866,7 +1028,7 @@ function meganPage() {
 
 
 				}); // END document.ready()*/
-				/*$(document).ready(function() {
+	/*$(document).ready(function() {
 
 					// page is now ready, initialize the calendar...
 
@@ -877,15 +1039,15 @@ function meganPage() {
 				});
 				var moment = $('#showCalendar').fullCalendar('getDate');
     alert("The current date of the calendar is " + moment.format());*/
-				/*meganRef.on('child_added', function(childSnapshot) {
-					var childKey = childSnapshot.key;
-					var ref = meganRef.child(childKey);
-					ref.child('Log').off('child_added');
-				});*/
-			//});
-		//});
+	/*meganRef.on('child_added', function(childSnapshot) {
+		var childKey = childSnapshot.key;
+		var ref = meganRef.child(childKey);
+		ref.child('Log').off('child_added');
+	});*/
+	//});
+	//});
 
-		/*var cal = document.getElementById('showCalendar');
+	/*var cal = document.getElementById('showCalendar');
 		//console.log(workoutName);
 		//var x = document.getElementById('myDIV');
    		if (cal.style.display === 'none') {
@@ -914,7 +1076,6 @@ function meganPage() {
 	   		cal.style.display = 'none';
 			document.getElementById('subHeader').innerHTML = 'Workouts';
    		}*/
-	
 	//}, false); // END Calendar onclick function
 	//});
 } // END meganPage function //FOR TESTING - DELETE IF NOT NEEDED!!\\
@@ -1001,7 +1162,7 @@ function createSetRadioBtns(setData1, sets1) {
 var userHeader = document.getElementById('userHeader');
 var div = document.getElementById('border');
 
-function displayModal() {
+function displayCreateWrktModal() {
 
 	var displayNameInput = document.getElementById('displayNameInput').value.trim();
 	//alert(displayNameInput);
@@ -1032,4 +1193,9 @@ function displayModal() {
 			modal.style.display = "none";
 		}
 	}
+}
+
+function displayEditWrktModal() {
+
+
 }

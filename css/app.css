@@ -82,8 +82,8 @@ th, td, tr, .displayTable, #workoutTable {
 }
 
 .setRadioBtns {
-	transform: scale(3);
-	margin: 0 15px 0 15px;
+	transform: scale(4);
+	margin: 2px 20px 12px 20px;
 
 }
 
@@ -127,12 +127,12 @@ h3 {
 */
 #btnDiv, #completeWorkoutBtn, #showWrkoutLogBtn, #deleteWrkoutBtn {
 	display: inline;
-	margin-right: 10px;
+	/*margin-right: 10px;*/
 }
 
-#prmptCloseCrteWrktBtn, #prmptCreateWrkoutBtn {
+.modalBtns {
 	display: inline;
-	width: 110px;
+	width: 150px;
 	text-align: center;
 }
 
@@ -141,7 +141,16 @@ h3 {
 	flex-direction: row;
 	display: inline;
 	margin: auto;
-	width: 30px;
+	width: 50px;
+	height: 30px;
+	font-size: 25px;
+}
+
+.formatNameInput {
+	flex-direction: row;
+	display: inline;
+	margin: auto;
+	width: 150px;
 	height: 30px;
 	font-size: 25px;
 }
@@ -273,10 +282,11 @@ tr, th {
 /* Modal Content/Box */
 .modal-content {
     background-color: white;
-    margin: 10% auto; /* 15% from the top and centered */
+    margin: 3% auto; /* 15% from the top and centered */
     padding: ;
-    border: 1px solid #888;
-    width: ; /* Could be more or less, depending on screen size */
+    border: 8px solid #08373f;
+	border-radius: 12px;
+    width: 750px; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */

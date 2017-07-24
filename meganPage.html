@@ -42,6 +42,7 @@
 	<!--<pre id="content"></pre>-->
 	<h4 id='workoutHeader' onclick="loadWorkout()"></h4>
 	<div id="border">
+
 		<table id='workoutTable' style="width:100%">
 		</table>
 	</div>
@@ -89,58 +90,121 @@
 		<!-- Modal content -->
 		<div class="modal-content">
 			<span class="close">&times;</span>
-			<p>Create Workout</p>
+			<p id='wrkoutModalHeader'>Create Workout</p>
 			<div class="usrNameRow">
 				<h5 class="formatInput">Workout Name:</h5>
-				<input type="text" class="formatInput" id="workoutNameInput" placeholder="Workout 1" />
+				<input type="text" class="formatNameInput" id="workoutNameInput" placeholder="Workout 1" />
 				<br />
 				<h5 class="formatInput">Exercise 1:</h5>
-				<input type="text" class="formatInput" id="exerciseInput1" placeholder="Squat" />
+				<input type="text" class="formatNameInput" id="exerciseInput1" placeholder="Squat" />
 				<h5 class="formatInput">Weight:</h5>
-				<input type="text" class="formatInput" id="weightInput1" placeholder="80 Lbs" />
+				<input type="text" class="formatInput" id="weightInput1" placeholder="80" />
 				<h5 class="formatInput">Reps:</h5>
 				<input type="text" class="formatInput" id="repInput1" placeholder="5" />
 				<h5 class="formatInput">Sets:</h5>
 				<input type="text" class="formatInput" id="setInput1" placeholder="5" />
 				<br />
 				<h5 class="formatInput">Exercise 2:</h5>
-				<input type="text" class="formatInput" id="exerciseInput2" placeholder="Squat" />
+				<input type="text" class="formatNameInput" id="exerciseInput2" placeholder="Squat" />
 				<h5 class="formatInput">Weight:</h5>
-				<input type="text" class="formatInput" id="weightInput2" placeholder="80 Lbs" />
+				<input type="text" class="formatInput" id="weightInput2" placeholder="80" />
 				<h5 class="formatInput">Reps:</h5>
 				<input type="text" class="formatInput" id="repInput2" placeholder="5" />
 				<h5 class="formatInput">Sets:</h5>
 				<input type="text" class="formatInput" id="setInput2" placeholder="5" />
 				<br />
 				<h5 class="formatInput">Exercise 3:</h5>
-				<input type="text" class="formatInput" id="exerciseInput3" placeholder="Squat" />
+				<input type="text" class="formatNameInput" id="exerciseInput3" placeholder="Squat" />
 				<h5 class="formatInput">Weight:</h5>
-				<input type="text" class="formatInput" id="weightInput3" placeholder="80 Lbs" />
+				<input type="text" class="formatInput" id="weightInput3" placeholder="80" />
 				<h5 class="formatInput">Reps:</h5>
 				<input type="text" class="formatInput" id="repInput3" placeholder="5" />
 				<h5 class="formatInput">Sets:</h5>
 				<input type="text" class="formatInput" id="setInput3" placeholder="5" />
 				<br />
 				<h5 class="formatInput">Exercise 4:</h5>
-				<input type="text" class="formatInput" id="exerciseInput4" placeholder="Squat" />
+				<input type="text" class="formatNameInput" id="exerciseInput4" placeholder="Squat" />
 				<h5 class="formatInput">Weight:</h5>
-				<input type="text" class="formatInput" id="weightInput4" placeholder="80 Lbs" />
+				<input type="text" class="formatInput" id="weightInput4" placeholder="80" />
 				<h5 class="formatInput">Reps:</h5>
 				<input type="text" class="formatInput" id="repInput4" placeholder="5" />
 				<h5 class="formatInput">Sets:</h5>
 				<input type="text" class="formatInput" id="setInput4" placeholder="5" />
 				<br />
 				<h5 class="formatInput">Exercise 5:</h5>
-				<input type="text" class="formatInput" id="exerciseInput5" placeholder="Squat" />
+				<input type="text" class="formatNameInput" id="exerciseInput5" placeholder="Squat" />
 				<h5 class="formatInput">Weight:</h5>
-				<input type="text" class="formatInput" id="weightInput5" placeholder="80 Lbs" />
+				<input type="text" class="formatInput" id="weightInput5" placeholder="80" />
 				<h5 class="formatInput">Reps:</h5>
 				<input type="text" class="formatInput" id="repInput5" placeholder="5" />
 				<h5 class="formatInput">Sets:</h5>
 				<input type="text" class="formatInput" id="setInput5" placeholder="5" />
 				<br />
-				<button id='prmptCreateWrkoutBtn'>Create</button>
-				<button id='prmptCloseCrteWrktBtn'>Cancel</button>
+				<button class='modalBtns' id='prmptCreateWrkoutBtn'>Create</button>
+				<button class='modalBtns' id='prmptCloseCrteWrktBtn'>Cancel</button>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- The Modal -->
+	<div id="editWrktModal" class="modal">
+
+		<!-- Modal content -->
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<p id='wrkoutModalHeader'>Edit Workout</p>
+			<div class="usrNameRow">
+				<h5 class="formatInput">Workout Name:</h5>
+				<input type="text" class="formatNameInput" id="editworkoutNameInput" placeholder="Workout 1" />
+				<br />
+				<h5 class="formatInput">Exercise 1:</h5>
+				<input type="text" class="formatNameInput" id="editexerciseInput1" placeholder="Squat" />
+				<h5 class="formatInput">Weight:</h5>
+				<input type="text" class="formatInput" id="editweightInput1" placeholder="80" />
+				<h5 class="formatInput">Reps:</h5>
+				<input type="text" class="formatInput" id="editrepInput1" placeholder="5" />
+				<h5 class="formatInput">Sets:</h5>
+				<input type="text" class="formatInput" id="editsetInput1" placeholder="5" />
+				<br />
+				<h5 class="formatInput">Exercise 2:</h5>
+				<input type="text" class="formatNameInput" id="editexerciseInput2" placeholder="Squat" />
+				<h5 class="formatInput">Weight:</h5>
+				<input type="text" class="formatInput" id="editweightInput2" placeholder="80" />
+				<h5 class="formatInput">Reps:</h5>
+				<input type="text" class="formatInput" id="editrepInput2" placeholder="5" />
+				<h5 class="formatInput">Sets:</h5>
+				<input type="text" class="formatInput" id="editsetInput2" placeholder="5" />
+				<br />
+				<h5 class="formatInput">Exercise 3:</h5>
+				<input type="text" class="formatNameInput" id="editexerciseInput3" placeholder="Squat" />
+				<h5 class="formatInput">Weight:</h5>
+				<input type="text" class="formatInput" id="editweightInput3" placeholder="80" />
+				<h5 class="formatInput">Reps:</h5>
+				<input type="text" class="formatInput" id="editrepInput3" placeholder="5" />
+				<h5 class="formatInput">Sets:</h5>
+				<input type="text" class="formatInput" id="editsetInput3" placeholder="5" />
+				<br />
+				<h5 class="formatInput">Exercise 4:</h5>
+				<input type="text" class="formatNameInput" id="editexerciseInput4" placeholder="Squat" />
+				<h5 class="formatInput">Weight:</h5>
+				<input type="text" class="formatInput" id="editweightInput4" placeholder="80" />
+				<h5 class="formatInput">Reps:</h5>
+				<input type="text" class="formatInput" id="editrepInput4" placeholder="5" />
+				<h5 class="formatInput">Sets:</h5>
+				<input type="text" class="formatInput" id="editsetInput4" placeholder="5" />
+				<br />
+				<h5 class="formatInput">Exercise 5:</h5>
+				<input type="text" class="formatNameInput" id="editexerciseInput5" placeholder="Squat" />
+				<h5 class="formatInput">Weight:</h5>
+				<input type="text" class="formatInput" id="editweightInput5" placeholder="80" />
+				<h5 class="formatInput">Reps:</h5>
+				<input type="text" class="formatInput" id="editrepInput5" placeholder="5" />
+				<h5 class="formatInput">Sets:</h5>
+				<input type="text" class="formatInput" id="editsetInput5" placeholder="5" />
+				<br />
+				<button class='modalBtns' id='prmptEditWrkoutBtn'>Done</button>
+				<button class='modalBtns' id='prmptCloseEditWrktBtn'>Cancel</button>
 			</div>
 		</div>
 
@@ -212,7 +276,8 @@
 				<h5 class="formatInput">Sets:</h5>
 				<input type="text" class="formatInput" id="cmpWrkSetInput5" placeholder="5" />
 				<br />
-				<button id='prmptCompleteWrkoutBtn'>Complete</button>
+				<button class='modalBtns' id='prmptCompleteWrkoutBtn'>Complete</button>
+				<button class='modalBtns' id='prmptCancelCompleteWrkoutBtn'>Cancel</button>
 			</div>
 		</div>
 	</div>
