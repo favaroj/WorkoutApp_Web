@@ -70,7 +70,7 @@ function johnPage() {
 		var border = document.getElementById('border');
 		//border.appendChild(header);
 		border.appendChild(div1);
-		header.style.marginTop = '10px';
+		header.style.marginTop = '5px';
 		/*var table = document.createElement('table');
 		//table.style.cellspacing = '10';
 		table.setAttribute('class', 'workoutTable');
