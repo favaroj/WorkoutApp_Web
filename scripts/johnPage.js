@@ -123,13 +123,20 @@ function johnPage() {
 
 		tableRow2.appendChild(exerciseData1);
 		exerciseData1.addEventListener('click', function() {
-			var exerciseName = prompt("Update the exercise name:");
-			exerciseData1.innerText = exerciseName;
-			//console.log(key);
-			johnRef.child(key).update({
-				Exercise1: exerciseName
-			});
-			alert(exerciseName + ' saved as exercise name.');
+			var exerciseName = prompt("Update the exercise name:", exerciseData1.innerText);
+			if(exerciseName === null) {
+				return;
+			}
+			else if(exerciseName !== '') {
+				exerciseData1.innerText = exerciseName;
+				//console.log(key);
+				johnRef.child(key).update({
+					Exercise1: exerciseName
+				});
+				alert(exerciseName + ' saved as exercise name.');
+			} else {
+				alert('Input must not be empty!');
+			}
 		});
 
 		var setData1 = document.createElement('td');
@@ -167,13 +174,20 @@ function johnPage() {
 		repData1.appendChild(textNode);
 		tableRow2.appendChild(repData1);
 		repData1.addEventListener('click', function() {
-			var repAmount = prompt("Update the rep amount:");
-			repData1.innerText = repAmount;
-			//console.log(key);
-			johnRef.child(key).update({
-				Reps1: repAmount
-			});
-			alert(repAmount + ' saved as rep amount.');
+			var repAmount = prompt("Update the rep amount:", repData1.innerText);
+			if(repAmount === null) {
+				return;
+			}
+			else if(repAmount !== '') {
+				repData1.innerText = repAmount;
+				//console.log(key);
+				johnRef.child(key).update({
+					Reps1: repAmount
+				});
+				alert(repAmount + ' saved as rep amount.');
+			} else {
+				alert('Input must not be empty!');
+			}
 		});
 
 
@@ -183,13 +197,20 @@ function johnPage() {
 		weightData1.appendChild(textNode);
 		tableRow2.appendChild(weightData1);
 		weightData1.addEventListener('click', function() {
-			var weightAmount = prompt("Update the weight amount:");
-			weightData1.innerText = weightAmount;
-			//console.log(key);
-			johnRef.child(key).update({
-				Weight1: weightAmount
-			});
-			alert(weightAmount + ' saved as weight amount.');
+			var weightAmount = prompt("Update the weight amount:", weightData1.innerText);
+			if(weightAmount === null) {
+				return;
+			}
+			else if(weightAmount !== '') {
+				weightData1.innerText = weightAmount;
+				//console.log(key);
+				johnRef.child(key).update({
+					Weight1: weightAmount
+				});
+				alert(weightAmount + ' saved as weight amount.');
+			} else {
+				alert('Input must not be empty!');
+			}
 		});
 
 
@@ -202,13 +223,20 @@ function johnPage() {
 		exerciseData2.appendChild(textNode);
 		tableRow3.appendChild(exerciseData2);
 		exerciseData2.addEventListener('click', function() {
-			var exerciseName = prompt("Update the exercise name:");
-			exerciseData2.innerText = exerciseName;
-			//console.log(key);
-			johnRef.child(key).update({
-				Exercise2: exerciseName
-			});
-			alert(exerciseName2 + ' saved as exercise name.');
+			var exerciseName = prompt("Update the exercise name:", exerciseData2.innerText);
+			if(exerciseName === null) {
+				return;
+			}
+			else if(exerciseName !== '') {
+				exerciseData2.innerText = exerciseName;
+				//console.log(key);
+				johnRef.child(key).update({
+					Exercise2: exerciseName
+				});
+				alert(exerciseName + ' saved as exercise name.');
+			} else {
+				alert('Input must not be empty!');
+			}
 		});
 
 		var setData2 = document.createElement('td');
@@ -243,13 +271,20 @@ function johnPage() {
 		repData2.appendChild(textNode);
 		tableRow3.appendChild(repData2);
 		repData2.addEventListener('click', function() {
-			var repAmount = prompt("Update the rep amount:");
-			repData2.innerText = repAmount;
-			//console.log(key);
-			johnRef.child(key).update({
-				Reps2: repAmount
-			});
-			alert(repAmount + ' saved as rep amount.');
+			var repAmount = prompt("Update the rep amount:", repData2.innerText);
+			if(repAmount === null) {
+				return;
+			}
+			else if(repAmount !== '') {
+				repData2.innerText = repAmount;
+				//console.log(key);
+				johnRef.child(key).update({
+					Reps2: repAmount
+				});
+				alert(repAmount + ' saved as rep amount.');
+			} else {
+				alert('Input must not be empty!');
+			}
 		});
 
 		var weightData2 = document.createElement('td');
@@ -257,13 +292,20 @@ function johnPage() {
 		weightData2.appendChild(textNode);
 		tableRow3.appendChild(weightData2);
 		weightData2.addEventListener('click', function() {
-			var weightAmount = prompt("Update the weight amount:");
-			weightData2.innerText = weightAmount;
-			//console.log(key);
-			johnRef.child(key).update({
-				Weight2: weightAmount
-			});
-			alert(weightAmount + ' saved as weight amount.');
+			var weightAmount = prompt("Update the weight amount:", weightData2.innerText);
+			if(weightAmount === null) {
+				return;
+			}
+			else if(weightAmount !== '') {
+				weightData2.innerText = weightAmount;
+				//console.log(key);
+				johnRef.child(key).update({
+					Weight2: weightAmount
+				});
+				alert(weightAmount + ' saved as weight amount.');
+			} else {
+				alert('Input must not be empty!');
+			}
 		});
 		//
 		//
@@ -280,13 +322,20 @@ function johnPage() {
 
 		tableRow4.appendChild(exerciseData3);
 		exerciseData3.addEventListener('click', function() {
-			var exerciseName = prompt("Update the exercise name:");
-			exerciseData3.innerText = exerciseName;
-			//console.log(key);
-			johnRef.child(key).update({
-				Exercise3: exerciseName
-			});
-			alert(exerciseName + ' saved as exercise name.');
+			var exerciseName = prompt("Update the exercise name:", exerciseData3.innerText);
+			if(exerciseName === null) {
+				return;
+			}
+			else if(exerciseName !== '') {
+				exerciseData3.innerText = exerciseName;
+				//console.log(key);
+				johnRef.child(key).update({
+					Exercise3: exerciseName
+				});
+				alert(exerciseName + ' saved as exercise name.');
+			} else {
+				alert('Input must not be empty!');
+			}
 		});
 
 		var setData3 = document.createElement('td');
@@ -322,13 +371,20 @@ function johnPage() {
 		repData3.appendChild(textNode);
 		tableRow4.appendChild(repData3);
 		repData3.addEventListener('click', function() {
-			var repAmount = prompt("Update the rep amount:");
-			repData3.innerText = repAmount;
-			//console.log(key);
-			johnRef.child(key).update({
-				Reps3: repAmount
-			});
-			alert(repAmount + ' saved as rep amount.');
+			var repAmount = prompt("Update the rep amount:", repData3.innerText);
+			if(repAmount === null) {
+				return;
+			}
+			else if(repAmount !== '') {
+				repData3.innerText = repAmount;
+				//console.log(key);
+				johnRef.child(key).update({
+					Reps3: repAmount
+				});
+				alert(repAmount + ' saved as rep amount.');
+			} else {
+				alert('Input must not be empty!');
+			}
 		});
 
 		var weightData3 = document.createElement('td');
@@ -336,13 +392,20 @@ function johnPage() {
 		weightData3.appendChild(textNode);
 		tableRow4.appendChild(weightData3);
 		weightData3.addEventListener('click', function() {
-			var weightAmount = prompt("Update the weight amount:");
-			weightData3.innerText = weightAmount;
-			//console.log(key);
-			johnRef.child(key).update({
-				Weight3: weightAmount
-			});
-			alert(weightAmount + ' saved as weight amount.');
+			var weightAmount = prompt("Update the weight amount:", weightData3.innerText);
+			if(weightAmount === null) {
+				return;
+			}
+			else if(weightAmount !== '') {
+				weightData3.innerText = weightAmount;
+				//console.log(key);
+				johnRef.child(key).update({
+					Weight3: weightAmount
+				});
+				alert(weightAmount + ' saved as weight amount.');
+			} else {
+				alert('Input must not be empty!');
+			}
 		});
 
 		var tableRow5 = document.createElement('tr');
@@ -354,13 +417,20 @@ function johnPage() {
 		exerciseData4.appendChild(textNode);
 		tableRow5.appendChild(exerciseData4);
 		exerciseData4.addEventListener('click', function() {
-			var exerciseName = prompt("Update the exercise name:");
-			exerciseData4.innerText = exerciseName;
-			//console.log(key);
-			johnRef.child(key).update({
-				Exercise4: exerciseName
-			});
-			alert(exerciseName + ' saved as exercise name.');
+			var exerciseName = prompt("Update the exercise name:", exerciseData4.innerText);
+			if(exerciseName === null) {
+				return;
+			}
+			else if(exerciseName !== '') {
+				exerciseData4.innerText = exerciseName;
+				//console.log(key);
+				johnRef.child(key).update({
+					Exercise4: exerciseName
+				});
+				alert(exerciseName + ' saved as exercise name.');
+			} else {
+				alert('Input must not be empty!');
+			}
 		});
 
 		var setData4 = document.createElement('td');
@@ -396,13 +466,20 @@ function johnPage() {
 		repData4.appendChild(textNode);
 		tableRow5.appendChild(repData4);
 		repData4.addEventListener('click', function() {
-			var repAmount = prompt("Update the rep amount:");
-			repData4.innerText = repAmount;
-			//console.log(key);
-			johnRef.child(key).update({
-				Reps4: repAmount
-			});
-			alert(repAmount + ' saved as rep amount.');
+			var repAmount = prompt("Update the rep amount:", repData4.innerText);
+			if(repAmount === null) {
+				return;
+			}
+			else if(repAmount !== '') {
+				repData4.innerText = repAmount;
+				//console.log(key);
+				johnRef.child(key).update({
+					Reps4: repAmount
+				});
+				alert(repAmount + ' saved as rep amount.');
+			} else {
+				alert('Input must not be empty!');
+			}
 		});
 
 		var weightData4 = document.createElement('td');
@@ -410,13 +487,20 @@ function johnPage() {
 		weightData4.appendChild(textNode);
 		tableRow5.appendChild(weightData4);
 		weightData4.addEventListener('click', function() {
-			var weightAmount = prompt("Update the weight amount:");
-			weightData4.innerText = weightAmount;
-			//console.log(key);
-			johnRef.child(key).update({
-				Weight4: weightAmount
-			});
-			alert(weightAmount + ' saved as weight amount.');
+			var weightAmount = prompt("Update the weight amount:", weightData4.innerText);
+			if(weightAmount === null) {
+				return;
+			}
+			else if(weightAmount !== '') {
+				weightData4.innerText = weightAmount;
+				//console.log(key);
+				johnRef.child(key).update({
+					Weight4: weightAmount
+				});
+				alert(weightAmount + ' saved as weight amount.');
+			} else {
+				alert('Input must not be empty!');
+			}
 		});
 
 		var tableRow6 = document.createElement('tr');
@@ -428,13 +512,20 @@ function johnPage() {
 		exerciseData5.appendChild(textNode);
 		tableRow6.appendChild(exerciseData5);
 		exerciseData5.addEventListener('click', function() {
-			var exerciseName = prompt("Update the exercise name:");
-			exerciseData5.innerText = exerciseName;
-			//console.log(key);
-			johnRef.child(key).update({
-				Exercise5: exerciseName
-			});
-			alert(exerciseName + ' saved as exercise name.');
+			var exerciseName = prompt("Update the exercise name:", exerciseData5.innerText);
+			if(exerciseName === null) {
+				return;
+			}
+			else if(exerciseName !== '') {
+				exerciseData5.innerText = exerciseName;
+				//console.log(key);
+				johnRef.child(key).update({
+					Exercise5: exerciseName
+				});
+				alert(exerciseName + ' saved as exercise name.');
+			} else {
+				alert('Input must not be empty!');
+			}
 		});
 
 		var setData5 = document.createElement('td');
@@ -470,13 +561,20 @@ function johnPage() {
 		repData5.appendChild(textNode);
 		tableRow6.appendChild(repData5);
 		repData5.addEventListener('click', function() {
-			var repAmount = prompt("Update the rep amount:");
-			repData5.innerText = repAmount;
-			//console.log(key);
-			johnRef.child(key).update({
-				Reps5: repAmount
-			});
-			alert(repAmount + ' saved as rep amount.');
+			var repAmount = prompt("Update the rep amount:", repData5.innerText);
+			if(repAmount === null) {
+				return;
+			}
+			else if(repAmount !== '') {
+				repData5.innerText = repAmount;
+				//console.log(key);
+				johnRef.child(key).update({
+					Reps5: repAmount
+				});
+				alert(repAmount + ' saved as rep amount.');
+			} else {
+				alert('Input must not be empty!');
+			}
 		});
 
 		var weightData5 = document.createElement('td');
@@ -484,13 +582,20 @@ function johnPage() {
 		weightData5.appendChild(textNode);
 		tableRow6.appendChild(weightData5);
 		weightData5.addEventListener('click', function() {
-			var weightAmount = prompt("Update the weight amount:");
-			weightData5.innerText = weightAmount;
-			//console.log(key);
-			johnRef.child(key).update({
-				Weight5: weightAmount
-			});
-			alert(weightAmount + ' saved as weight amount.');
+			var weightAmount = prompt("Update the weight amount:", weightData5.innerText);
+			if(weightAmount === null) {
+				return;
+			}
+			else if(weightAmount !== '') {
+				weightData5.innerText = weightAmount;
+				//console.log(key);
+				johnRef.child(key).update({
+					Weight5: weightAmount
+				});
+				alert(weightAmount + ' saved as weight amount.');
+			} else {
+				alert('Input must not be empty!');
+			}
 		});
 
 		var btnDiv = document.createElement('div');
